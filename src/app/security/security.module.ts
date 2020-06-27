@@ -6,12 +6,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 import { SecurityRoutingModule } from './security-routing.module';
+import { AuthComponent } from './auth/auth.component';
+import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
+import { AccessDeniedComponent } from './access-denied/access-denied.component';
 
 
 
 @NgModule({
     declarations: [
-       
+        AuthLayoutComponent,
+        AuthComponent,
+        AccessDeniedComponent,
+
     ],
     imports: [
         CommonModule,
