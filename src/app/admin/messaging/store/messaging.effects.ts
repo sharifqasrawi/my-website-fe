@@ -1,0 +1,250 @@
+import { TranslateService } from '@ngx-translate/core';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Store } from '@ngrx/store';
+import { Actions, Effect, ofType } from '@ngrx/effects';
+import { switchMap, map, catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
+
+import { Message } from './../../../models/message.model';
+import { EmailMessage } from './../../../models/emailMessage.model';
+import * as MessagingActions from './messaging.actions';
+import * as fromApp from '../../../store/app.reducer';
+
+import { environment } from './../../../../environments/environment';
+
+@Injectable()
+export class MessagingEffects {
+
+    token = '';
+    errorAccessDenied: string = '';
+    error404: string = '';
+    errorOccured: string = '';
+
+    @Effect()
+    fetchMessages = this.actions$.pipe(
+        ofType(MessagingActions.FETCH_START),
+        switchMap(() => {
+            return this.http.get<{ messages: Message[] }>(environment.API_BASE_URL + 'messages',
+                {
+                    headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.token)
+                        .append('language', this.translate.currentLang),
+                    withCredentials: true
+                })
+                .pipe(
+                    map(resData => {
+                        return new MessagingActions.FetchSuccess(resData.messages)
+                    }),
+                    catchError(errorRes => {
+                        this.getErrorsTranslations();
+                        switch (errorRes.status) {
+                            case 403:
+                            case 401:
+                                return of(new MessagingActions.FetchFail([this.errorAccessDenied]));
+                            case 404:
+                                return of(new MessagingActions.FetchFail([this.error404]));
+                            case 400:
+                                return of(new MessagingActions.FetchFail(errorRes.error.errors));
+                            default:
+                                return of(new MessagingActions.FetchFail([this.errorOccured]));
+                        }
+                    })
+                )
+        })
+    );
+
+    @Effect()
+    fetchEmails = this.actions$.pipe(
+        ofType(MessagingActions.FETCH_EMAILS_START),
+        switchMap(() => {
+            return this.http.get<{ emailMessages: EmailMessage[] }>(environment.API_BASE_URL + 'messages/sent-emails',
+                {
+                    headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.token)
+                        .append('language', this.translate.currentLang),
+                    withCredentials: true
+                })
+                .pipe(
+                    map(resData => {
+                        return new MessagingActions.FetchEmailsSuccess(resData.emailMessages)
+                    }),
+                    catchError(errorRes => {
+                        this.getErrorsTranslations();
+                        switch (errorRes.status) {
+                            case 403:
+                            case 401:
+                                return of(new MessagingActions.FetchEmailsFail([this.errorAccessDenied]));
+                            case 404:
+                                return of(new MessagingActions.FetchEmailsFail([this.error404]));
+                            case 400:
+                                return of(new MessagingActions.FetchEmailsFail(errorRes.error.errors));
+                            default:
+                                return of(new MessagingActions.FetchEmailsFail([this.errorOccured]));
+                        }
+                    })
+                )
+        })
+    );
+
+    @Effect()
+    sendMessage = this.actions$.pipe(
+        ofType(MessagingActions.SEND_START),
+        switchMap((messageData: MessagingActions.SendStart) => {
+            return this.http.post<Message>(environment.API_BASE_URL + 'messages/send',
+                {
+                    name: messageData.payload.name,
+                    email: messageData.payload.email,
+                    subject: messageData.payload.subject,
+                    text: messageData.payload.text
+                },
+                {
+                    headers: new HttpHeaders().append('language', this.translate.currentLang)
+                })
+                .pipe(
+                    map(resData => {
+                        return new MessagingActions.SendSuccess(resData);
+                    }),
+                    catchError(errorRes => {
+                        this.getErrorsTranslations();
+                        switch (errorRes.status) {
+                            case 403:
+                            case 401:
+                                return of(new MessagingActions.SendFail([this.errorAccessDenied]));
+                            case 404:
+                                return of(new MessagingActions.SendFail([this.error404]));
+                            case 400:
+                                return of(new MessagingActions.SendFail(errorRes.error.errors));
+                            default:
+                                return of(new MessagingActions.SendFail([this.errorOccured]));
+                        }
+                    })
+                )
+        })
+    );
+
+    @Effect()
+    sendEmail = this.actions$.pipe(
+        ofType(MessagingActions.SEND_EMAIL_START),
+        switchMap((messageData: MessagingActions.SendEmailStart) => {
+            return this.http.post<{ emailMessage: EmailMessage }>(environment.API_BASE_URL + 'messages/send-email',
+                {
+                    emails: messageData.payload.emails,
+                    subject: messageData.payload.subject,
+                    message: messageData.payload.text
+                },
+                {
+                    headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.token)
+                        .append('language', this.translate.currentLang),
+                    withCredentials: true
+                })
+                .pipe(
+                    map(resData => {
+                        return new MessagingActions.SendEmailSuccess(resData.emailMessage);
+                    }),
+                    catchError(errorRes => {
+                        this.getErrorsTranslations();
+                        switch (errorRes.status) {
+                            case 403:
+                            case 401:
+                                return of(new MessagingActions.SendEmailFail([this.errorAccessDenied]));
+                            case 404:
+                                return of(new MessagingActions.SendEmailFail([this.error404]));
+                            case 400:
+                                return of(new MessagingActions.SendEmailFail(errorRes.error.errors));
+                            default:
+                                return of(new MessagingActions.SendEmailFail([this.errorOccured]));
+                        }
+                    })
+                )
+        })
+    );
+
+    @Effect()
+    deleteMessage = this.actions$.pipe(
+        ofType(MessagingActions.DELETE_START),
+        switchMap((messageData: MessagingActions.DeleteStart) => {
+            return this.http.delete<{ deletedMsgId: number }>(environment.API_BASE_URL + 'messages/delete',
+                {
+                    headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.token)
+                        .append('language', this.translate.currentLang),
+                    withCredentials: true,
+                    params: new HttpParams().set('msgId', messageData.payload.toString())
+                })
+                .pipe(
+                    map(resData => {
+                        return new MessagingActions.DeleteSuccess(resData.deletedMsgId);
+                    }),
+                    catchError(errorRes => {
+                        this.getErrorsTranslations();
+                        switch (errorRes.status) {
+                            case 403:
+                            case 401:
+                                return of(new MessagingActions.DeleteFail([this.errorAccessDenied]));
+                            case 404:
+                                return of(new MessagingActions.DeleteFail([this.error404]));
+                            case 400:
+                                return of(new MessagingActions.DeleteFail(errorRes.error.errors));
+                            default:
+                                return of(new MessagingActions.DeleteFail([this.errorOccured]));
+                        }
+                    })
+                )
+        })
+    );
+
+    @Effect()
+    changeSeen = this.actions$.pipe(
+        ofType(MessagingActions.CHANGE_SEEN_START),
+        switchMap((messageData: MessagingActions.ChangeSeenStart) => {
+            return this.http.put<{ updatedMessage: Message }>(environment.API_BASE_URL + 'messages/change-seen', null,
+                {
+                    headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.token)
+                        .append('language', this.translate.currentLang),
+                    withCredentials: true,
+                    params: new HttpParams().set('msgId', messageData.payload.toString())
+                })
+                .pipe(
+                    map(resData => {
+                        return new MessagingActions.ChangeSeenSuccess(resData.updatedMessage);
+                    }),
+                    catchError(errorRes => {
+                        this.getErrorsTranslations();
+                        switch (errorRes.status) {
+                            case 403:
+                            case 401:
+                                return of(new MessagingActions.ChangeSeenFail([this.errorAccessDenied]));
+                            case 404:
+                                return of(new MessagingActions.ChangeSeenFail([this.error404]));
+                            case 400:
+                                return of(new MessagingActions.ChangeSeenFail(errorRes.error.errors));
+                            default:
+                                return of(new MessagingActions.ChangeSeenFail([this.errorOccured]));
+                        }
+                    })
+                )
+        })
+    );
+
+
+    constructor(
+        private actions$: Actions,
+        private http: HttpClient,
+        private store: Store<fromApp.AppState>,
+        private translate: TranslateService
+    ) {
+        this.store.select('auth')
+            .pipe(
+                map(authState => authState.user)
+            )
+            .subscribe(user => {
+                if (user)
+                    this.token = user.token;
+            });
+    }
+    private getErrorsTranslations() {
+        this.translate.get(['ERRORS.ACCESS_DENIED', 'ERRORS.ERROR404', 'ERRORS.OOPS']).subscribe(trans => {
+            this.errorAccessDenied = trans['ERRORS.ACCESS_DENIED'];
+            this.error404 = trans['ERRORS.ERROR404'];
+            this.errorOccured = trans['ERRORS.OOPS'];
+        });
+    }
+}

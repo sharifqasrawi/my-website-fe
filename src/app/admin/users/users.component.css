@@ -1,0 +1,6 @@
+.dropdown-item{
+    color: lightgrey;
+}
+.dropdown-item:hover{
+    color: darkgrey;
+}

@@ -22,7 +22,8 @@ export interface AuthResponseData {
     isAdmin: boolean,
     isAuther: boolean,
     token: string,
-    expiresIn: string
+    expiresIn: string,
+    isActive: boolean,
 };
 
 @Injectable()
@@ -67,7 +68,8 @@ export class Authffects {
                             firstName: resData.firstName,
                             lastName: resData.lastName,
                             isAdmin: resData.isAdmin,
-                            redirect: true
+                            redirect: true,
+                            isActive: resData.isActive
                         });
                     }),
                     catchError(errorRes => {
@@ -135,11 +137,13 @@ export class Authffects {
                     given_name: string,
                     family_name: string,
                 } = jwt_decode(loadedUser.token);
+                
 
                 const expirationDuration =
                     new Date(userData.expiresIn).getTime() -
                     new Date().getTime();
                 this.authService.setLogoutTimer(expirationDuration);
+
                 return new AuthActions.LoginSuccess({
                     email: loadedUser.email,
                     userId: loadedUser.id,
@@ -148,7 +152,8 @@ export class Authffects {
                     firstName: decodedToken.given_name,
                     lastName: decodedToken.family_name,
                     isAdmin: decodedToken.role === 'Admin',
-                    redirect: false
+                    redirect: false,
+                    isActive: loadedUser.isActive
                 });
 
             }
@@ -162,8 +167,8 @@ export class Authffects {
         ofType(AuthActions.LOGIN_SUCCESS),
         tap((authSuccessAction: AuthActions.LoginSuccess) => {
             if (authSuccessAction.payload.redirect) {
-                // this.router.navigate(['/', 'home']);
-                this.router.navigateByUrl(this.route.snapshot.queryParams['returnUrl']);
+                this.router.navigate(['/', 'admin']);
+                // this.router.navigateByUrl(this.route.snapshot.queryParams['returnUrl']);
             }
         })
     );

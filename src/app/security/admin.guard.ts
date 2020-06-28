@@ -7,7 +7,7 @@ import {
 } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map, tap, take } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import * as jwt_decode from 'jwt-decode';
 
@@ -28,7 +28,7 @@ export class AdminGuard implements CanActivate {
         return this.store.select('auth').pipe(
             take(1),
             map(authState => {
-                // console.log(authState);
+                console.log(authState);
                 const isAuth = !!authState.user;
                 let isAdmin = false;
 
@@ -44,17 +44,13 @@ export class AdminGuard implements CanActivate {
 
                     isAdmin = authState.isAdmin && decodedToken.role === 'Admin';
                 }
+
                 if (isAuth && isAdmin) {
                     return true;
                 }
-                this.router.navigate(['/security', 'access-denied'], { queryParams: { returnUrl: router.url } });
+                this.router.navigate(['/security', 'auth'], { queryParams: { returnUrl: router.url } });
                 return false;
             })
-            // tap(isAuth => {
-            //   if (!isAuth) {
-            //     this.router.navigate(['/auth']);
-            //   }
-            // })
         );
     }
 }

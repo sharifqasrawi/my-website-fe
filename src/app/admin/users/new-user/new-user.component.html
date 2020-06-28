@@ -1,0 +1,127 @@
+<form [formGroup]="regForm" (ngSubmit)="onSubmit()">
+    <div class="adminPageTop">
+        <div class="row">
+            <div class="col-lg-8">
+                <h1 *ngIf="!editMode">
+                    <fa-icon [icon]="faUserPlus"></fa-icon>
+                    {{ 'ADMINISTRATION.USERS.CREATE' | translate }}
+                </h1>
+
+                <h1 *ngIf="editMode">
+                    <fa-icon [icon]="faUserEdit"></fa-icon>
+                    {{ 'ADMINISTRATION.USERS.EDIT' | translate }}
+                </h1>
+            </div>
+
+            <div class="col-lg-2">
+                <button type="button" mat-raised-button color="warn" class="btn-block mt-1" (click)="onCancel()">
+                    {{ 'COMMON.CANCEL' | translate }}
+                </button>
+            </div>
+            <div class="col-lg-2">
+                <button type="submit" class="btn-block mt-1" mat-raised-button color="primary"
+                    [disabled]="!regForm.valid || creating ||updating ">
+                    <span
+                        *ngIf="!editMode">{{ !creating ? ('COMMON.CREATE' | translate) : ('COMMON.LOADING' | translate) }}</span>
+                    <span
+                        *ngIf="editMode">{{ !updating ? ('COMMON.SAVE' | translate) : ('COMMON.SAVING' | translate) }}</span>
+                </button>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <div class="adminPageBottom">
+        <div *ngIf="errors">
+            <div class="alert alert-danger" *ngFor="let error of errors">
+                <strong>{{error}}</strong>
+            </div>
+        </div>
+
+        <div class="alert alert-success text-center" *ngIf="created">
+            <strong translate>ADMINISTRATION.USERS.USER_CREATED</strong>
+        </div>
+
+
+        <label translate>COMMON.ROLE</label>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-group">
+
+                    <mat-slide-toggle [color]="colorPrimary" [checked]="checked" id="isAdmin" name="isAdmin"
+                        formControlName="isAdmin">
+                        {{ 'COMMON.ADMIN' | translate }}
+                    </mat-slide-toggle>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <mat-form-field class="full-width" appearance="legacy">
+                    <mat-label translate>REGISTER.FIRSTNAME</mat-label>
+                    <input type="text" matInput formControlName="firstName">
+                    <mat-error *ngIf="!regForm.controls.firstName.valid && regForm.controls.firstName.touched">
+                        {{ 'VALIDATION.REQUIRED' | translate }}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-lg-6">
+                <mat-form-field class="full-width" appearance="legacy">
+                    <mat-label translate>REGISTER.LASTNAME</mat-label>
+                    <input type="text" matInput formControlName="lastName">
+                    <mat-error *ngIf="!regForm.controls.lastName.valid && regForm.controls.lastName.touched">
+                        {{ 'VALIDATION.REQUIRED' | translate }}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <mat-form-field class="full-width" appearance="legacy">
+                <mat-label translate>COMMON.EMAIL </mat-label>
+                <input type="email" matInput formControlName="email">
+                <mat-error *ngIf="!regForm.controls.email.valid && regForm.controls.email.touched">
+                    {{ 'VALIDATION.INVALID_EMAIL' | translate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="form-group">
+
+            <mat-slide-toggle [color]="colorWarn" [checked]="checked" id="emailConfirmed" name="emailConfirmed"
+                formControlName="emailConfirmed">
+                {{ 'COMMON.EMAIL_CONFIRMED' | translate}}
+            </mat-slide-toggle>
+        </div>
+
+
+        <div class="row" formGroupName="password" *ngIf="!editMode">
+            <div class="col-lg-6">
+                <mat-form-field class="full-width" appearance="legacy">
+                    <mat-label translate>CHANGE_PASSWORD.NEW_PASSWORD</mat-label>
+                    <input matInput formControlName="password" required [type]="hidePwd ? 'password' : 'text'">
+                    <button type="button" mat-icon-button matSuffix (click)="hidePwd = !hidePwd"
+                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePwd">
+                        <mat-icon>{{hidePwd ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error>{{ 'VALIDATION.PASSWORD_LENGTH' | translate }}</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-lg-6">
+                <mat-form-field class="full-width" appearance="legacy">
+                    <mat-label translate>CHANGE_PASSWORD.CONFIRM_PASSWORD</mat-label>
+                    <input matInput formControlName="cpassword" required [type]="hideCpwd ? 'password' : 'text'">
+                    <button type="button" mat-icon-button matSuffix (click)="hideCpwd = !hideCpwd"
+                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideCpwd">
+                        <mat-icon>{{hideCpwd ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+                <mat-error class="small" *ngIf="!regForm.controls.password.valid && regForm.controls.password.touched">
+                    {{ 'VALIDATION.PASSWORDS_MATCH' | translate }}
+                </mat-error>
+            </div>
+
+        </div>
+
+    </div>
+</form>

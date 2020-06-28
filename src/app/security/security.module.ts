@@ -1,3 +1,4 @@
+import { MaterialModule } from './../material-module';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -9,6 +10,8 @@ import { SecurityRoutingModule } from './security-routing.module';
 import { AuthComponent } from './auth/auth.component';
 import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
 import { AccessDeniedComponent } from './access-denied/access-denied.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 
@@ -17,6 +20,8 @@ import { AccessDeniedComponent } from './access-denied/access-denied.component';
         AuthLayoutComponent,
         AuthComponent,
         AccessDeniedComponent,
+        ForgotPasswordComponent,
+        ResetPasswordComponent,
 
     ],
     imports: [
@@ -24,6 +29,7 @@ import { AccessDeniedComponent } from './access-denied/access-denied.component';
         FormsModule,
         ReactiveFormsModule,
         FontAwesomeModule,
+        MaterialModule,
         TranslateModule,
         SecurityRoutingModule
     ],

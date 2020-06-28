@@ -7,9 +7,8 @@ export class User {
         public id: string,
         private _token?: string,
         private _tokenExpirationDate?: Date,
+        public isActive?: boolean,
         public emailConfirmed?: boolean,
-        public createdAt?: Date,
-        public isActive?: boolean
     )
     {}
 

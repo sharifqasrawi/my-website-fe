@@ -1,0 +1,23 @@
+.subject {
+    padding: 12px;
+    background-color: rgb(100, 100, 100);
+    border: 1px dotted grey;
+    border-radius: 5px;
+    color:lightgrey
+}
+
+.message {
+    font-size: 14px;
+    height: 300px;
+    color:lightgrey
+}
+
+.details{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+a{
+    text-decoration: none;
+}

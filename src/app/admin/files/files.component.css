@@ -1,0 +1,24 @@
+.dropdown-item{
+    color: lightgrey;
+}
+
+.dropdown-item:hover{
+    background-color: darkgrey;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.filePreview {
+    width: 150px;
+    height: 150px;
+    /* box-shadow: 3px 3px 3px grey; */
+    margin: 10px;
+    cursor: pointer;
+}
+
+.filePreview:hover {
+    opacity: .8;
+}
+

@@ -1,1 +1,62 @@
-<p>auth works!</p>
+<div class="container">
+    <div class="authBox mat-elevation-z12">
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <img src="../../../assets/images/login.png" alt="image">
+            </div>
+            <div class="col-md-8">
+                <h1>
+                    <fa-icon [icon]="faUser"></fa-icon>
+                    {{ 'AUTH.LOGIN' | translate }}
+                </h1>
+                <hr>
+
+                <div *ngIf="errors">
+                    <div class="alert alert-danger error" *ngFor="let error of errors">
+                        {{ error }}
+                    </div>
+                </div>
+
+                <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <mat-form-field class="full-width" appearance="legacy">
+                        <mat-label translate>AUTH.EMAIL</mat-label>
+                        <input type="email" matInput formControlName="username" placeholder="Ex. pat@example.com">
+                        <mat-error *ngIf="!form.controls.username.valid && form.controls.username.touched">
+                            {{ 'VALIDATION.INVALID_EMAIL' | translate }}
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width" appearance="legacy">
+                        <mat-label translate>AUTH.PASSWORD</mat-label>
+                        <input type="password" matInput formControlName="password"
+                            [type]="hidePwd ? 'password' : 'text'">
+                        <button type="button" mat-icon-button matSuffix (click)="hidePwd = !hidePwd"
+                            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePwd">
+                            <mat-icon>{{hidePwd ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <mat-error *ngIf="!form.controls.password.valid && form.controls.password.touched">
+                            {{ 'VALIDATION.PASSWORD_LENGTH' | translate }}
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-chip-list>
+                        <mat-chip class="mt-3" color="primary" selected>
+                            <a [routerLink]="['/security', 'forgot-password']" class="chipLink">
+                                {{ 'AUTH.FORGOT_PASSWORD' | translate }}
+                            </a>
+                        </mat-chip>
+                    </mat-chip-list>
+
+                    <button mat-raised-button type="submit" color="accent" [disabled]="!form.valid || loading" class="mt-2">
+                        {{ !loading ? ('AUTH.LOGIN' | translate ): ('COMMON.LOADING' | translate ) }}
+                    </button>
+
+                    <a mat-raised-button color="primary" [routerLink]="['/']" class="mt-2">
+                        {{ 'COMMON.HOME' | translate }}
+                    </a>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,3 +1,10 @@
+import { VisitsEffects } from './admin/visits/store/visits.effects';
+import { UsersEffects } from './admin/users/store/users.effects';
+import { MessagingEffects } from './admin/messaging/store/messaging.effects';
+import { FilesEffects } from './admin/files/store/files.effects';
+import { SharedModule } from './shared/shared.module';
+import { DirectoriesEffects } from './admin/directories/store/directories.effects';
+import { AdminModule } from './admin/admin.module';
 import { Authffects } from './security/store/auth.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { NgModule } from '@angular/core';
@@ -41,12 +48,17 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     StoreModule.forRoot(fromApp.appReducer),
     EffectsModule.forRoot([
-      Authffects
+      Authffects,
+      DirectoriesEffects,
+      FilesEffects,
+      MessagingEffects,
+      UsersEffects,
+      VisitsEffects
     ]),
     MaterialModule,
     CountUpModule,
+    SharedModule,
     CoreModule,
-    SecurityModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

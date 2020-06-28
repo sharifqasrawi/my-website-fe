@@ -1,1 +1,77 @@
-<p>dashboard works!</p>
+<div class="adminPageTop ">
+    <div class="row">
+        <div class="col-lg-11">
+            <h1>
+                <mat-icon>dashboard</mat-icon>
+                {{ 'ADMINISTRATION.DASHBOARD.DASHBOARD' | translate }}
+            </h1>
+        </div>
+        <div class="col-lg-1">
+            <button mat-raised-button color="primary" (click)="onRefresh()">
+                <mat-icon>autorenew</mat-icon>
+            </button>
+        </div>
+    </div>
+    <hr>
+</div>
+
+
+<hr style="border-color: lightgrey;">
+
+<div class="adminPageBottom">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card-counter success">
+                <mat-icon class="icon">message</mat-icon>
+                <span [countUp]="messagesCount" class="count-numbers">0</span>
+                <span class="count-name" translate>ADMINISTRATION.MESSAGING.INBOX</span>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card-counter danger">
+                <mat-icon class="icon">mail_outline</mat-icon>
+                <span [countUp]="sentEmailsCount" class="count-numbers">0</span>
+                <span class="count-name" translate>ADMINISTRATION.MESSAGING.SENT_EMAILS</span>
+            </div>
+        </div>
+
+
+        <div class="col-md-3">
+            <div class="card-counter burlywood">
+                <mat-icon class="icon">supervised_user_circle</mat-icon>
+                <span [countUp]="usersCount" class="count-numbers">0</span>
+                <span class="count-name" translate>ADMINISTRATION.USERS.USERS</span>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card-counter darkorange">
+                <mat-icon class="icon">dynamic_feed</mat-icon>
+                <span [countUp]="directoriesCount" class="count-numbers">0</span>
+                <span class="count-name" translate>ADMINISTRATION.FILE_MANAGEMENT.DIRECTORIES</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card-counter darkcyan">
+                <mat-icon class="icon">file_copy</mat-icon>
+                <span [countUp]="filesCount" class="count-numbers">0</span>
+                <span class="count-name" translate>ADMINISTRATION.FILE_MANAGEMENT.FILES</span>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card-counter darksalmon">
+                <mat-icon class="icon">explore</mat-icon>
+                <span [countUp]="visitsCount" class="count-numbers">0</span>
+                <span class="count-name" translate>ADMINISTRATION.VISITS.VISITS</span>
+            </div>
+        </div>
+    </div>
+
+    <hr style="border-color: lightgrey;">
+    <app-visits></app-visits>
+</div>

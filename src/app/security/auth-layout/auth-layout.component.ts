@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthLayoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(private translate: TranslateService) {
+    translate.addLangs(['en', 'fr']);
+    translate.setDefaultLang('en');
+
+    if (!localStorage.getItem('lang')) {
+      const browserLang = translate.getBrowserLang();
+      translate.use(browserLang.match(/en|fr/) ? browserLang : 'en');
+    } else {
+      translate.use(localStorage.getItem('lang'));
+    }
+  }
 
   ngOnInit(): void {
   }

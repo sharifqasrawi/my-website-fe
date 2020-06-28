@@ -1,0 +1,76 @@
+.authBox {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    background-color: rgb(77, 77, 77);
+    width: 50%;
+    /* height: 200px; */
+    border-radius: 10px;
+    padding: 20px;
+    color: lightgrey;
+    animation: authBoxAnim .4s ease-in forwards;
+}
+
+@keyframes authBoxAnim {
+    0% {
+        transform: translateY(-25%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(-50%);
+        opacity: 1;
+    }
+}
+
+button {
+    float: right;
+}
+
+hr {
+    border-color: lightgrey;
+}
+
+a {
+    color: lightgrey;
+    text-decoration: none;
+    font-size: 10px;
+}
+
+.error {
+    animation: errorAnim .4s ease-in forwards;
+}
+
+@keyframes errorAnim {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    img {
+        width: 150px;
+        margin-bottom: 20px;
+    }
+    button {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 992px) {
+    .authBox {
+        width: 80%;
+        left: 10%;
+    }
+}
+
+@media (min-width: 768px) {
+    img {
+        width: 100%;
+    }
+}
