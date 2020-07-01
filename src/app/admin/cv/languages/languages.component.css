@@ -1,0 +1,41 @@
+hr{
+    border-color: lightgrey;
+}
+
+.langBox{
+    width: 240px;
+    height: 250px;
+    background-color: #424242;
+    margin: 10px 30px 20px 0;
+    border-radius: 10px;
+    float: left;
+}
+
+.langBox .langHead{
+    padding: 10px;
+    background-color: #c2185b;
+    color:lightgrey;
+    border-radius: 10px 10px 0 0;
+    height: 55px;
+}
+
+.langBox .langBody{
+    padding: 10px;
+}
+
+.langBox .langActions span{
+    font-size: 18px;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.langBox .langActions span:hover{
+    opacity: 1;
+}
+
+.langBox .langActions {
+    padding: 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

@@ -1,0 +1,23 @@
+hr {
+    border-color: lightgrey;
+}
+
+.imageBox{
+    width: 100%;
+    height: 200px;
+    border: 1px dashed grey;
+}
+
+.imageBox img{
+    width: 100%;
+    height: 200px;
+}
+
+:host ::ng-deep .ck-editor__editable_inline {
+    min-height: 300px;
+    color: black;
+}
+
+a{
+    text-decoration: none;
+}

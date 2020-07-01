@@ -1,0 +1,12 @@
+hr {
+    border-color: lightgrey;
+}
+
+a {
+    text-decoration: none;
+}
+
+:host ::ng-deep .ck-editor__editable_inline {
+    min-height: 200px;
+    color: black;
+}

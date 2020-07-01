@@ -106,7 +106,9 @@
         "AUTHENTICATION": "Authentication",
         "EMAIL_CONFIRMATION": "Email Confirmation",
         "VISITS": "Visits",
-        "UNAVAILABLE": "Unavailable"
+        "UNAVAILABLE": "Unavailable",
+        "SAVED_SUCCESSFULLY": "Saved Successfully",
+        "DOCUMENTS": "Documents"
     },
     "CONTACT_ME": {
         "CONTACT_ME": "Contact me",
@@ -205,10 +207,100 @@
         "LOGOUT": "Logout"
     },
     "CV": {
-        "CV": "CV"
+        "CV": "CV",
+        "PERSONAL_INFO": {
+            "PERSONAL_INFO": "Personal Info",
+            "MARITAL_STATUS": "Marital Status",
+            "DATE_OF_BIRTH": "Date of Birth",
+            "ABOUT": "About me",
+            "SINGLE": "Single",
+            "IN_A_RELATIONSHIP": "In a relationship",
+            "ENGAGED": "Engaged",
+            "MARRIED": "Married",
+            "DRIVERS_LICENSE": "Driver's license"
+        },
+        "CONTACT_INFO": {
+            "CONTACT_INFO": "Contact Info",
+            "PHONE": "Phone number",
+            "EMAILS": "Emails",
+            "EMAIL": "Email",
+            "COUNTRY": "Country",
+            "CITY": "City",
+            "STREET": "Street",
+            "STREET_NUMBER": "Street Number",
+            "ZIP_CODE": "Zip Code",
+            "LINKEDIN_URL": "LinkedIn URL",
+            "GITHUB_URL": "GitHub URL",
+            "FACEBOOK_URL": "Facebook URL"
+        },
+        "CV_FILES": {
+            "CV_FILES": "CV Files",
+            "FILE_NAME": "File name",
+            "FILE_PATH": "File path",
+            "LANGUAGE": "Language",
+            "LAST_UPDATE": "Last update",
+            "ADD_NEW_FILE": "Add new file"
+        },
+        "EDUCATION": {
+            "EDUCATION": "Education",
+            "TITLE": "Title",
+            "SPECIALIZATION": "Specialization",
+            "ESTABLISHMENT": "Establishment",
+            "COUNTRY": "Issue country",
+            "CITY": "Issue city",
+            "MENTION": "Mention",
+            "YEARS_COUNT": "Years count",
+            "NOTE": "Note",
+            "START_DATE": "Start date",
+            "GRADUATE_DATE": "Graduation date"
+        },
+        "EXPERIENCES": {
+            "EXPERIENCES": "Experiences",
+            "TITLE": "Job Title",
+            "COMPANY": "Company",
+            "COUNTRY": "Country",
+            "CITY": "City",
+            "ACCOMPLISHMENTS": "Accomplishments",
+            "RESPONISBILITES": "Responsibilities",
+            "START_DATE": "Start date",
+            "END_DATE": "End date",
+            "CURRENTLY_WORKING": "Currently working"
+        },
+        "LANGUAGES": {
+            "LANGUAGES": "Languages",
+            "NAME": "Name",
+            "LEVEL_READ": "Read level",
+            "LEVEL_SPEAK": "Speak level",
+            "LEVEL_WRITE": "Write level",
+            "READ": "Read",
+            "SPEAK": "Speak",
+            "WRITE": "Write"
+        },
+        "COURSES": {
+            "COURSES": "Training courses",
+            "NAME": "Course name",
+            "TYPE": "Course type",
+            "URL": "Course URL",
+            "DURATION": "Course duration",
+            "DATETIME": "Date",
+            "ESTABLISHMENT": "Establishment",
+            "COUNTRY": "Country",
+            "CITY": "City"
+        },
+        "DOCUMENTS": {
+            "DOCUMENTS": "Documents",
+            "NAME": "Document name",
+            "DESCRIPTION": "Document description",
+            "PATH": "Document path",
+            "NO_DOCUMENTS": "No documents available",
+            "DISPLAYED": "Displayed"
+        }
     },
     "PORTFOLIO": {
-        "PORTFOLIO": "Portfolio"
+        "PORTFOLIO": "Portfolio",
+        "PROJECTS": {
+            "PROJECTS": "Projects"
+        }
     },
     "AUTH": {
         "LOGIN": "Login",

@@ -25,6 +25,25 @@ import { NewUserComponent } from './users/new-user/new-user.component';
 import { CountUpModule } from 'ngx-countup';
 import { VisitsComponent } from './visits/visits.component';
 import { VisitDetailsComponent } from './visits/visit-details/visit-details.component';
+import { PersonalInfoComponent } from './cv/personal-info/personal-info.component';
+import { ContactInfoComponent } from './cv/contact-info/contact-info.component';
+import { CvFilesComponent } from './cv/cv-files/cv-files.component';
+import { EducationComponent } from './cv/education/education.component';
+import { EditEducationComponent } from './cv/education/edit-education/edit-education.component';
+import { ExperiencesComponent } from './cv/experiences/experiences.component';
+import { EditExperienceComponent } from './cv/experiences/edit-experience/edit-experience.component';
+import { LanguagesComponent } from './cv/languages/languages.component';
+import { EditLanguageComponent } from './cv/languages/edit-language/edit-language.component';
+import { TrainingCoursesComponent } from './cv/training-courses/training-courses.component';
+import { EditTrainingCourseComponent } from './cv/training-courses/edit-training-course/edit-training-course.component';
+import { ExperienceDocumentsComponent } from './cv/experiences/experience-documents/experience-documents.component';
+import { EditExperienceDocumentComponent } from './cv/experiences/experience-documents/edit-experience-document/edit-experience-document.component';
+import { EducationDocumentsComponent } from './cv/education/education-documents/education-documents.component';
+import { EditEducationDocumentComponent } from './cv/education/education-documents/edit-education-document/edit-education-document.component';
+import { LanguageDocumentsComponent } from './cv/languages/language-documents/language-documents.component';
+import { EditLanguageDocumentComponent } from './cv/languages/language-documents/edit-language-document/edit-language-document.component';
+import { CourseDocumentsComponent } from './cv/training-courses/courses-documents/courses-documents.component';
+import { EditCourseDocumentComponent } from './cv/training-courses/courses-documents/edit-courses-document/edit-courses-document.component';
 
 
 
@@ -45,7 +64,26 @@ import { VisitDetailsComponent } from './visits/visit-details/visit-details.comp
     UsersComponent,
     NewUserComponent,
     VisitsComponent,
-    VisitDetailsComponent
+    VisitDetailsComponent,
+    PersonalInfoComponent,
+    ContactInfoComponent,
+    CvFilesComponent,
+    EducationComponent,
+    EditEducationComponent,
+    ExperiencesComponent,
+    EditExperienceComponent,
+    LanguagesComponent,
+    EditLanguageComponent,
+    TrainingCoursesComponent,
+    EditTrainingCourseComponent,
+    ExperienceDocumentsComponent,
+    EditExperienceDocumentComponent,
+    EducationDocumentsComponent,
+    EditEducationDocumentComponent,
+    LanguageDocumentsComponent,
+    EditLanguageDocumentComponent,
+    CourseDocumentsComponent,
+    EditCourseDocumentComponent
   ],
   imports: [
     CommonModule,

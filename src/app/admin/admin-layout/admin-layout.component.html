@@ -20,7 +20,7 @@
                 <mat-menu #menu="matMenu" [overlapTrigger]="false">
                     <a mat-menu-item (click)="onLogout()">
                         <mat-icon>exit_to_app</mat-icon>
-                        <span translate>LOGOUT.LOGOUT</span>
+                        <span style="color: lightgrey;" translate>LOGOUT.LOGOUT</span>
                     </a>
                 </mat-menu>
             </div>
@@ -37,44 +37,60 @@
                     {{ 'ADMINISTRATION.DASHBOARD.DASHBOARD' | translate }}
                 </a>
 
-                <a mat-list-item [routerLink]="['/admin', 'about']">
+                <!-- <a mat-list-item [routerLink]="['/admin', 'about']">
                     <mat-icon mat-list-icon>info</mat-icon>
                     {{ 'ADMINISTRATION.ABOUT.ABOUT' | translate }}
-                </a>
+                </a> -->
 
-                <mat-list-item (click)="showSubmenuCategories = !showSubmenuCategories" class="parent">
+                <mat-list-item (click)="showSubmenuCV = !showSubmenuCV" class="parent">
                     <span class="full-width" translate>CV.CV</span>
                     <mat-icon mat-list-icon class="adminNavColor">view_quilt</mat-icon>
-                    <mat-icon class="menu-button adminNavColor" [ngClass]="{'rotated' : showSubmenuCategories}">
+                    <mat-icon class="menu-button adminNavColor" [ngClass]="{'rotated' : showSubmenuCV}">
                         expand_more
                     </mat-icon>
                 </mat-list-item>
-                <div class="submenu" [ngClass]="{'expanded' : showSubmenuCategories}">
-                    <a mat-list-item [routerLink]="['/admin', 'categories']">
-                        <mat-icon mat-list-icon>done_all</mat-icon>
-                        {{ 'COMMON.PUBLISHED' | translate }}
+                <div class="submenu" [ngClass]="{'expanded' : showSubmenuCV}">
+                    <a mat-list-item [routerLink]="['/admin', 'cv', 'personal-info']">
+                        <mat-icon mat-list-icon>info</mat-icon>
+                        {{ 'CV.PERSONAL_INFO.PERSONAL_INFO' | translate }}
                     </a>
-                    <a mat-list-item [routerLink]="['/admin', 'categories', 'trashed']">
-                        <mat-icon mat-list-icon>delete</mat-icon>
-                        {{ 'COMMON.DELETED' | translate }}
+                    <a mat-list-item [routerLink]="['/admin', 'cv', 'contact-info']">
+                        <mat-icon mat-list-icon>business</mat-icon>
+                        {{ 'CV.CONTACT_INFO.CONTACT_INFO' | translate }}
+                    </a>
+                    <a mat-list-item [routerLink]="['/admin', 'cv', 'experiences']">
+                        <mat-icon mat-list-icon>work</mat-icon>
+                        {{ 'CV.EXPERIENCES.EXPERIENCES' | translate }}
+                    </a>
+                    <a mat-list-item [routerLink]="['/admin', 'cv', 'education']">
+                        <mat-icon mat-list-icon>school</mat-icon>
+                        {{ 'CV.EDUCATION.EDUCATION' | translate }}
+                    </a>
+                    <a mat-list-item [routerLink]="['/admin', 'cv', 'languages']">
+                        <mat-icon mat-list-icon>language</mat-icon>
+                        {{ 'CV.LANGUAGES.LANGUAGES' | translate }}
+                    </a>
+                    <a mat-list-item [routerLink]="['/admin', 'cv', 'training-courses']">
+                        <mat-icon mat-list-icon>airplay</mat-icon>
+                        {{ 'CV.COURSES.COURSES' | translate }}
+                    </a>
+                    <a mat-list-item [routerLink]="['/admin', 'cv', 'cv-files']">
+                        <mat-icon mat-list-icon>assignment_ind</mat-icon>
+                        {{ 'CV.CV_FILES.CV_FILES' | translate }}
                     </a>
                 </div>
 
-                <mat-list-item (click)="showSubmenuCourses = !showSubmenuCourses" class="parent">
+                <mat-list-item (click)="showSubmenuPortfolio = !showSubmenuPortfolio" class="parent">
                     <span class="full-width" translate>PORTFOLIO.PORTFOLIO</span>
                     <mat-icon mat-list-icon class="adminNavColor">airplay</mat-icon>
-                    <mat-icon class="menu-button adminNavColor" [ngClass]="{'rotated' : showSubmenuCourses}">
+                    <mat-icon class="menu-button adminNavColor" [ngClass]="{'rotated' : showSubmenuPortfolio}">
                         expand_more
                     </mat-icon>
                 </mat-list-item>
-                <div class="submenu" [ngClass]="{'expanded' : showSubmenuCourses}">
+                <div class="submenu" [ngClass]="{'expanded' : showSubmenuPortfolio}">
                     <a mat-list-item [routerLink]="['/admin', 'courses']">
-                        <mat-icon mat-list-icon>done_all</mat-icon>
-                        {{ 'COMMON.PUBLISHED' | translate }}
-                    </a>
-                    <a mat-list-item [routerLink]="['/admin', 'courses', 'trashed']">
-                        <mat-icon mat-list-icon>delete</mat-icon>
-                        {{ 'COMMON.DELETED' | translate }}
+                        <mat-icon mat-list-icon>assignment_turned_in</mat-icon>
+                        {{ 'PORTFOLIO.PROJECTS.PROJECTS' | translate }}
                     </a>
                 </div>
 

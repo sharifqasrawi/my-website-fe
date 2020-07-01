@@ -1,3 +1,10 @@
+import { TrainingCoursesEffects } from './admin/cv/training-courses/store/courses.effects';
+import { LanguagesEffects } from './admin/cv/languages/store/languages.effects';
+import { ExperiencesEffects } from './admin/cv/experiences/store/experiences.effects';
+import { EducationEffects } from './admin/cv/education/store/education.effects';
+import { CVFilesEffects } from './admin/cv/cv-files/store/cvfiles.effects';
+import { ContactInfoffects } from './admin/cv/contact-info/store/contactInfo.effects';
+import { PersonalInfoffects } from './admin/cv/personal-info/store/personalInfo.effects';
 import { VisitsEffects } from './admin/visits/store/visits.effects';
 import { UsersEffects } from './admin/users/store/users.effects';
 import { MessagingEffects } from './admin/messaging/store/messaging.effects';
@@ -53,7 +60,14 @@ export function HttpLoaderFactory(http: HttpClient) {
       FilesEffects,
       MessagingEffects,
       UsersEffects,
-      VisitsEffects
+      VisitsEffects,
+      PersonalInfoffects,
+      ContactInfoffects,
+      CVFilesEffects,
+      EducationEffects,
+      ExperiencesEffects,
+      LanguagesEffects,
+      TrainingCoursesEffects
     ]),
     MaterialModule,
     CountUpModule,

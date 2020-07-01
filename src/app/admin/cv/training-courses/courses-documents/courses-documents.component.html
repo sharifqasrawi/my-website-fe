@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-md-8">
+        <h2>
+            <fa-icon [icon]="faFileAlt"></fa-icon>
+            {{ 'COMMON.DOCUMENTS' | translate }}
+        </h2>
+    </div>
+    <div class="col-md-4">
+        <button mat-mini-fab color="warn" class="float-right ml-2" (click)="onClose()">
+            <fa-icon [icon]="faTimes"></fa-icon>
+        </button>
+        <button mat-mini-fab color="primary" class="float-right" (click)="onAdd()">
+            <fa-icon [icon]="faPlus"></fa-icon>
+        </button>
+    </div>
+</div>
+
+<hr>
+
+<div *ngIf="documents">
+    <div class="docBox mat-elevation-z8" *ngFor="let doc of documents">
+        <p *ngIf="currentLang === 'en'">
+            <b>{{ 'CV.DOCUMENTS.NAME' | translate }}: </b> {{ doc.name_EN }}
+            <span style="color: lawngreen;">({{ doc.type }})</span>
+        </p>
+        <p *ngIf="currentLang === 'fr'">
+            <b>{{ 'CV.DOCUMENTS.NAME' | translate }}: </b> {{ doc.name_FR }}
+            <span style="color: lawngreen;">({{ doc.type }})</span>
+        </p>
+        <hr>
+        <p class="text-center" style="display: flex; justify-content: space-around;">
+            <span style="cursor: pointer; color: blue;" (click)="onEdit(doc.id)">
+                <fa-icon [icon]="faEdit"></fa-icon>
+            </span>
+            <a [href]="doc.path" target="_blank" style="color: greenyellow;">
+                <fa-icon [icon]="faDownload"></fa-icon>
+            </a>
+            <span style="cursor: pointer; color: red;" (click)="onDelete(doc.id)">
+                <fa-icon [icon]="faTrash"></fa-icon>
+            </span>
+        </p>
+    </div>
+</div>
+
+<div *ngIf="!documents || documents.length === 0">
+    <div class="docBox">
+        <h3 class="text-center">{{ 'CV.DOCUMENTS.NO_DOCUMENTS' | translate }}</h3>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+
+
+a {
+    text-decoration: none;
+}
+
+.courseBox{
+    padding: 12px;
+    width: 100%;
+    background-color: #424242;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.courseBox p,
+.courseBox p span {
+    font-size: 14px;
+    padding: 10px;
+}

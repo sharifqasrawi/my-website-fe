@@ -1,0 +1,23 @@
+hr {
+    border-color: lightgrey ;
+}
+
+.cvFile {
+    width: 225px;
+    height: 260px;
+    float: left;
+    margin: 3px 20px 17px 0;
+    /* position: relative; */
+}
+
+.cvFile img{
+    width: 100%;
+    height: 100px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.cvFile .actions{
+    position: absolute;
+    bottom: 5px;
+}

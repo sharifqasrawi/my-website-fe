@@ -1,0 +1,20 @@
+.notFoundPg {
+    background-color: #424242;
+    width: 100vw;
+    height: 100vh;
+    color: lightgrey;
+}
+
+.notFoundPg .errorHeader{
+    padding-top: 150px;
+}
+
+.notFoundPg .errorHeader h1{
+    font-size: 300%;
+}
+
+.notFoundPg .errorHeader p{
+    font-size: 150%;
+    padding-left: 60px;
+    margin-top: 50px;
+}

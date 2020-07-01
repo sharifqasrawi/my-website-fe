@@ -1,0 +1,93 @@
+<div class="adminPageTop">
+    <div class="row">
+        <div class="col-md-8">
+            <h1>
+                <fa-icon [icon]="faListAlt"></fa-icon>
+                {{ 'CV.COURSES.COURSES' | translate }}
+            </h1>
+        </div>
+        <div class="col-md-2">
+            <button mat-raised-button color="accent" class="btn-block mt-1" (click)="onRefresh()">
+                <mat-icon>autorenew</mat-icon>
+            </button>
+        </div>
+        <div class="col-md-2">
+            <button mat-raised-button color="primary" (click)="onAdd()" class="btn-block mt-1">
+                {{ 'COMMON.CREATE' | translate }}
+            </button>
+        </div>
+    </div>
+
+    <hr>
+</div>
+
+<div class="adminPageBottom">
+    <div *ngIf="errors">
+        <div class="alert alert-danger" *ngFor="let error of errors">{{ error }}</div>
+    </div>
+    <mat-spinner style="margin: 0 auto;" *ngIf="loading"></mat-spinner>
+
+    <div *ngIf="loaded">
+        <div class="courseBox mat-elevation-z12" *ngFor="let course of courses">
+            <div class="row">
+                <div class="col-md-10">
+                    <h2> {{ course.name }} </h2>
+                    <a [href]="course.courseUrl" target="_blank" style="color:greenyellow;">
+                        <fa-icon [icon]="faLink"> </fa-icon> {{ 'CV.COURSES.URL' | translate}}
+                    </a>
+                </div>
+                <div class="col-md-2" style="text-align: right;">
+                    <button mat-mini-fab color="primary" class="btn-block mt-1 mr-3" (click)="onOpenDocuments(course.id)">
+                        <fa-icon [icon]="faFileAlt"></fa-icon>
+                    </button>
+                    <button mat-mini-fab color="warn" class="btn-block mt-1 mr-3" (click)="onDelete(course.id)">
+                        <fa-icon [icon]="faTrash"></fa-icon>
+                    </button>
+                    <button mat-mini-fab color="accent" class="btn-block mt-1" (click)="onEdit(course.id)">
+                        <fa-icon [icon]="faEdit"></fa-icon>
+                    </button>
+                </div>
+            </div>
+            <hr>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div>
+                        <p> <b>{{ 'CV.COURSES.TYPE' | translate }}: </b> {{ course.type }} </p>
+                    </div>
+                    <div>
+                        <p>
+                            <b>{{ 'CV.COURSES.ESTABLISHMENT' | translate }}: </b>
+                            {{ course.establishment }}
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div>
+                        <p> <b>{{ 'CV.COURSES.DURATION' | translate }}: </b> {{course.duration }} </p>
+                    </div>
+
+                    <div>
+                        <p> <b>{{ 'CV.COURSES.DATETIME' | translate }}: </b> {{course.dateTime | date:'longDate' }}
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div>
+                        <p *ngIf="currentLang === 'en' && course.country_EN">
+                            <b>{{ 'CV.COURSES.COUNTRY' | translate }}: </b>
+                            {{ course.country_EN }}
+                        </p>
+                        <p *ngIf="currentLang === 'en' && course.city_EN"><b>{{ 'CV.COURSES.CITY' | translate }}: </b>
+                            {{ course.city_EN }}</p>
+                        <p *ngIf="currentLang === 'fr' && course.country_FR"><b>{{ 'CV.COURSES.COUNTRY' | translate }}:
+                            </b>
+                            {{ course.country_FR }}</p>
+                        <p *ngIf="currentLang === 'fr' && course.city_FR"><b>{{ 'CV.COURSES.CITY' | translate }}: </b>
+                            {{ course.city_FR }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

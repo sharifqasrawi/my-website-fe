@@ -15,10 +15,42 @@
     <hr>
 </div>
 
-
-<hr style="border-color: lightgrey;">
-
 <div class="adminPageBottom">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card-counter purple">
+                <mat-icon class="icon">school</mat-icon>
+                <span [countUp]="educationsCount" class="count-numbers">0</span>
+                <span class="count-name" translate>CV.EDUCATION.EDUCATION</span>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card-counter darksalmon">
+                <mat-icon class="icon">work</mat-icon>
+                <span [countUp]="experiencesCount" class="count-numbers">0</span>
+                <span class="count-name" translate>CV.EXPERIENCES.EXPERIENCES</span>
+            </div>
+        </div>
+
+
+        <div class="col-md-3">
+            <div class="card-counter deepskyblue">
+                <mat-icon class="icon">language</mat-icon>
+                <span [countUp]="languagesCount" class="count-numbers">0</span>
+                <span class="count-name" translate>CV.LANGUAGES.LANGUAGES</span>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card-counter coral">
+                <mat-icon class="icon">airplay</mat-icon>
+                <span [countUp]="coursesCount" class="count-numbers">0</span>
+                <span class="count-name" translate>CV.COURSES.COURSES</span>
+            </div>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-md-3">
             <div class="card-counter success">
@@ -55,6 +87,14 @@
     </div>
 
     <div class="row">
+        <div class="col-md-3">
+            <div class="card-counter tomato">
+                <mat-icon class="icon">assignment_ind</mat-icon>
+                <span [countUp]="cvFileCount" class="count-numbers">0</span>
+                <span class="count-name" translate>CV.CV_FILES.CV_FILES</span>
+            </div>
+        </div>
+
         <div class="col-md-3">
             <div class="card-counter darkcyan">
                 <mat-icon class="icon">file_copy</mat-icon>

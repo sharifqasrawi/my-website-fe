@@ -1,0 +1,21 @@
+hr {
+    border-color: lightgrey;
+}
+
+a {
+    text-decoration: none;
+}
+
+.eduBox{
+    padding: 12px;
+    width: 100%;
+    background-color: #424242;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.eduBox p,
+.eduBox p span {
+    font-size: 14px;
+    padding: 10px;
+}

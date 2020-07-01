@@ -24,13 +24,10 @@ export class AdminLayoutComponent implements OnInit {
   @ViewChild('sidenav') sidenav: MatSidenav;
   isExpanded = true;
   isShowing = false;
-  showSubmenuCategories = false;
-  showSubmenuCourses = false;
-  showSubmenuQuizzes = false;
-  showSubmenuUsers = false;
+  showSubmenuCV = false;
+  showSubmenuPortfolio = false;
   showSubmenuDirs = false;
   showSubmenuMessages = false;
-  showSubmenuTags = false;
   showSubmenuLanguages = false;
 
   navOpened = true;

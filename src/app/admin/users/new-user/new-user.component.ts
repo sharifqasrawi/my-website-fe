@@ -74,7 +74,7 @@ export class NewUserComponent implements OnInit {
         this.updating = usersState.updating;
         this.updated = usersState.updated;
 
-        if (this.created) {
+        if (this.created || this.updated) {
           this.regForm.reset();
 
           this.router.navigate(['/admin', 'users']);

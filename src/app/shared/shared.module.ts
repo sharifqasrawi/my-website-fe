@@ -10,10 +10,12 @@ import { MaterialModule } from '../material-module';
 import { DiscardChangesComponent } from './discard-changes/discard-changes.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { ImgViewerComponent } from './img-viewer/img-viewer.component';
+import { ImagePickerComponent } from './image-picker/image-picker.component';
+import { FilePickerComponent } from './file-picker/file-picker.component';
 
 
 @NgModule({
-  declarations: [DiscardChangesComponent, ConfirmDialogComponent, ImgViewerComponent],
+  declarations: [DiscardChangesComponent, ConfirmDialogComponent, ImgViewerComponent, ImagePickerComponent, FilePickerComponent],
   imports: [
     CommonModule,
     MaterialModule,

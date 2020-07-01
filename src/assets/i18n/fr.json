@@ -105,7 +105,9 @@
         "AUTHENTICATION": "Authentification",
         "EMAIL_CONFIRMATION": "Confirmation de l'émail",
         "VISITS": "Visites",
-        "UNAVAILABLE": "Indisponible"
+        "UNAVAILABLE": "Indisponible",
+        "SAVED_SUCCESSFULLY": "Enregistré",
+        "DOCUMENTS": "Documents"
     },
     "CONTACT_ME": {
         "CONTACT_ME": "Contactez moi",
@@ -203,10 +205,100 @@
         "LOGOUT": "Se déconnecter"
     },
     "CV": {
-        "CV": "CV"
+        "CV": "CV",
+        "PERSONAL_INFO": {
+            "PERSONAL_INFO": "Info personnelles",
+            "MARITAL_STATUS": "État civil",
+            "DATE_OF_BIRTH": "Date de naissance",
+            "ABOUT": "A propos de moi",
+            "SINGLE": "Célibataire",
+            "IN_A_RELATIONSHIP": "En couple",
+            "ENGAGED": "Fiancé",
+            "MARRIED": "Marié",
+            "DRIVERS_LICENSE": "Permis de conduire"
+        },
+        "CONTACT_INFO": {
+            "CONTACT_INFO": "Info de contact",
+            "PHONE": "Numéro de téléphone",
+            "EMAILS": "Emails",
+            "EMAIL": "Email",
+            "COUNTRY": "Pays",
+            "CITY": "Ville",
+            "STREET": "Rue",
+            "STREET_NUMBER": "Voie",
+            "ZIP_CODE": "Code Postale",
+            "LINKEDIN_URL": "URL LinkedIn",
+            "GITHUB_URL": "URL GitHub",
+            "FACEBOOK_URL": "URL Facebook"
+        },
+        "CV_FILES": {
+            "CV_FILES": "Fichiers CV",
+            "FILE_NAME": "Nom de fichier",
+            "FILE_PATH": "Chemin du fichier",
+            "LANGUAGE": "Langue",
+            "LAST_UPDATE": "Dernière mise à jour",
+            "ADD_NEW_FILE": "Ajouter un nouveau fichier"
+        },
+        "EDUCATION": {
+            "EDUCATION": "Éducation",
+            "TITLE": "Titre",
+            "SPECIALIZATION": "Spécialisation",
+            "ESTABLISHMENT": "Établissement",
+            "COUNTRY": "Pays d'émission",
+            "CITY": "Ville d'émission",
+            "MENTION": "Mention",
+            "YEARS_COUNT": "Durée d'étude",
+            "NOTE": "La Note",
+            "START_DATE": "Date de début",
+            "GRADUATE_DATE": "Date de fin d'études"
+        },
+        "EXPERIENCES": {
+            "EXPERIENCES": "Expériences",
+            "TITLE": "Poste",
+            "COMPANY": "Entreprise",
+            "COUNTRY": "Pays",
+            "CITY": "Ville",
+            "ACCOMPLISHMENTS": "Réalisations",
+            "RESPONISBILITES": "Responsabilités",
+            "START_DATE": "Date de début",
+            "END_DATE": "Date de fin",
+            "CURRENTLY_WORKING": "Travail actuellement"
+        },
+        "LANGUAGES": {
+            "LANGUAGES": "Langues",
+            "NAME": "Nom",
+            "LEVEL_READ": "Niveau de lecture",
+            "LEVEL_SPEAK": "Niveau de parler",
+            "LEVEL_WRITE": "Niveau d'écrire",
+            "READ": "lu",
+            "SPEAK": "parlé",
+            "WRITE": "écrit"
+        },
+        "COURSES": {
+            "COURSES": "Cours de formation",
+            "NAME": "Nom du cours",
+            "TYPE": "Type de cours",
+            "URL": "URL du cours",
+            "DURATION": "Durée du cours",
+            "DATETIME": "Date",
+            "ESTABLISHMENT": "Établissement",
+            "COUNTRY": "Pays",
+            "CITY": "Ville"
+        },
+        "DOCUMENTS": {
+            "DOCUMENTS": "Documents",
+            "NAME": "Nom du document",
+            "DESCRIPTION": "Description du document",
+            "PATH": "Chemin d'accès au document",
+            "NO_DOCUMENTS": "Aucun document disponible",
+            "DISPLAYED": "Affiché"
+        }
     },
     "PORTFOLIO": {
-        "PORTFOLIO": "Portefeuille"
+        "PORTFOLIO": "Portefeuille",
+        "PROJECTS": {
+            "PROJECTS": "Projets"
+        }
     },
     "AUTH": {
         "LOGIN": "Se connecter",
@@ -219,7 +311,7 @@
         "ENTER_USERNAME_PASSWORD": "Saisissez votre nom d'utilisateur et votre mot de passe"
     },
     "VALIDATION": {
-        "REQUIRED": "Ce champ est requis",
+        "REQUIRED": "Ce champ est obligatoire",
         "INVALID_EMAIL": "Veuillez saisir une adresse email valide.",
         "PASSWORD_LENGTH": "La longueur du mot de passe doit être d'au moins 8 caractèress.",
         "PASSWORDS_MATCH": "Les mots de passe ne correspondent pas."

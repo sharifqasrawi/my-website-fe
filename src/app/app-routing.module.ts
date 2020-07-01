@@ -14,11 +14,7 @@ const routes: Routes = [
     ,
     // canActivate: [AuthGuard]
   },
-  {
-    path: '**', component: CoreLayoutComponent, children: [
-      { path: '', component: NotFoundComponent, pathMatch: 'full' }
-    ]
-  }
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({

@@ -1,0 +1,160 @@
+<div class="adminPageTop">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>
+                <fa-icon [icon]="faPlusCircle"></fa-icon>
+                {{ 'CV.EXPERIENCES.EXPERIENCES' | translate }}
+            </h1>
+        </div>
+        <div class="col-lg-2">
+            <mat-form-field appearance="legacy">
+                <mat-label translate>COMMON.LANGUAGE</mat-label>
+                <mat-select [(ngModel)]="editLang">
+                    <mat-option *ngFor="let lang of languages" [value]="lang">
+                        {{lang}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-md-2">
+            <button type="button" mat-raised-button color="accent" class="btn-block mt-1" (click)="onCancel();">
+                {{ 'COMMON.CANCEL' | translate }}
+            </button>
+        </div>
+        <div class="col-md-2">
+            <button mat-raised-button color="primary" class="btn-block mt-1" *ngIf="!loading && !creating && !updating"
+                [disabled]="!form.valid || loading || creating || updating" (click)="f.onSubmit(undefined)">
+                {{ 'COMMON.SAVE' | translate }}
+            </button>
+
+            <mat-spinner diameter="40" *ngIf="loading || creating || updating"></mat-spinner>
+        </div>
+    </div>
+
+    <hr>
+</div>
+
+<div class="adminPageBottom mb-4">
+    <div *ngIf="errors">
+        <div class="alert alert-danger" *ngFor="let error of errors">{{error}}</div>
+    </div>
+    <form [formGroup]="form" #f="ngForm" (ngSubmit)="onSubmit()">
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <mat-form-field class="full-width" appearance="legacy" *ngIf="editLang === 'en'">
+                    <mat-label>{{ 'CV.EXPERIENCES.TITLE' | translate }} (en)*</mat-label>
+                    <input [readonly]="loading" type="text" matInput formControlName="title_EN">
+                    <mat-error *ngIf="!form.controls.title_EN.valid && form.controls.title_EN.touched" translate>
+                        VALIDATION.REQUIRED
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="full-width" appearance="legacy" *ngIf="editLang === 'fr'">
+                    <mat-label>{{ 'CV.EXPERIENCES.TITLE' | translate }} (fr)</mat-label>
+                    <input [readonly]="loading" type="text" matInput formControlName="title_FR">
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-6">
+                <mat-form-field class="full-width" appearance="legacy">
+                    <mat-label>{{ 'CV.EXPERIENCES.COMPANY' | translate }} *</mat-label>
+                    <input [readonly]="loading" type="text" matInput formControlName="company">
+                    <mat-error *ngIf="!form.controls.company.valid && form.controls.company.touched" translate>
+                        VALIDATION.REQUIRED
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <mat-form-field class="full-width" appearance="legacy" *ngIf="editLang === 'en'">
+                    <mat-label>{{ 'CV.EXPERIENCES.COUNTRY' | translate }} (en)*</mat-label>
+                    <input [readonly]="loading" type="text" matInput formControlName="country_EN">
+                    <mat-error *ngIf="!form.controls.country_EN.valid && form.controls.country_EN.touched" translate>
+                        VALIDATION.REQUIRED
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="full-width" appearance="legacy" *ngIf="editLang === 'fr'">
+                    <mat-label>{{ 'CV.EXPERIENCES.COUNTRY' | translate }} (fr)</mat-label>
+                    <input [readonly]="loading" type="text" matInput formControlName="country_FR">
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-6">
+                <mat-form-field class="full-width" appearance="legacy" *ngIf="editLang === 'en'">
+                    <mat-label>{{ 'CV.EXPERIENCES.CITY' | translate }} (en)*</mat-label>
+                    <input [readonly]="loading" type="text" matInput formControlName="city_EN">
+                    <mat-error *ngIf="!form.controls.city_EN.valid && form.controls.city_EN.touched" translate>
+                        VALIDATION.REQUIRED
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="full-width" appearance="legacy" *ngIf="editLang === 'fr'">
+                    <mat-label>{{ 'CV.EXPERIENCES.CITY' | translate }} (fr)</mat-label>
+                    <input [readonly]="loading" type="text" matInput formControlName="city_FR">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-4">
+                <mat-form-field class="full-width" appearance="legacy">
+                    <mat-label>{{ 'CV.EXPERIENCES.START_DATE' | translate }} (en)*</mat-label>
+                    <input [readonly]="loading" type="date" matInput formControlName="startDate">
+                    <mat-error *ngIf="!form.controls.startDate.valid && form.controls.startDate.touched" translate>
+                        VALIDATION.REQUIRED
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-4">
+                <mat-form-field class="full-width" appearance="legacy">
+                    <mat-label>{{ 'CV.EXPERIENCES.END_DATE' | translate }} (en)*</mat-label>
+                    <input [readonly]="loading || isCurrentlyWorking" type="date" matInput formControlName="endDate">
+                    <mat-error *ngIf="!form.controls.endDate.valid && form.controls.endDate.touched" translate>
+                        VALIDATION.REQUIRED
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-4">
+                <mat-slide-toggle [color]="colorPrimary" [checked]="checked" id="isCurrentlyWorking" name="isCurrentlyWorking"
+                    formControlName="isCurrentlyWorking" (change)="onSelectCurrentlyWorking()">
+                    {{ 'CV.EXPERIENCES.CURRENTLY_WORKING' | translate }}
+                </mat-slide-toggle>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-lg-6">
+                <div *ngIf="editLang === 'en'">
+                    <label>{{ 'CV.EXPERIENCES.RESPONISBILITES' | translate }} (en)</label>
+                    <ckeditor tagName="textarea" [editor]="Editor" formControlName="responisbilites_EN">
+                    </ckeditor>
+                </div>
+
+                <div *ngIf="editLang === 'fr'">
+                    <label>{{ 'CV.EXPERIENCES.RESPONISBILITES' | translate }} (fr)</label>
+                    <ckeditor tagName="textarea" [editor]="Editor" formControlName="responisbilites_FR">
+                    </ckeditor>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div *ngIf="editLang === 'en'">
+                    <label>{{ 'CV.EXPERIENCES.ACCOMPLISHMENTS' | translate }} (en)</label>
+                    <ckeditor tagName="textarea" [editor]="Editor" formControlName="accomplishments_EN">
+                    </ckeditor>
+                </div>
+
+                <div *ngIf="editLang === 'fr'">
+                    <label>{{ 'CV.EXPERIENCES.ACCOMPLISHMENTS' | translate }} (fr)</label>
+                    <ckeditor tagName="textarea" [editor]="Editor" formControlName="accomplishments_FR">
+                    </ckeditor>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

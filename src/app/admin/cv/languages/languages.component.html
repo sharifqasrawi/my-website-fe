@@ -1,0 +1,72 @@
+<div class="adminPageTop">
+    <div class="row">
+        <div class="col-md-8">
+            <h1>
+                <fa-icon [icon]="faGlobe"></fa-icon>
+                {{ 'CV.LANGUAGES.LANGUAGES' | translate }}
+            </h1>
+        </div>
+        <div class="col-md-2">
+            <button mat-raised-button color="accent" class="btn-block mt-1" (click)="onRefresh()">
+                <mat-icon>autorenew</mat-icon>
+            </button>
+        </div>
+        <div class="col-md-2">
+            <button mat-raised-button color="primary" class="btn-block mt-1" (click)="onAdd()">
+                {{ 'COMMON.CREATE' | translate }}
+            </button>
+        </div>
+    </div>
+
+    <hr>
+</div>
+
+<div class="adminPageBottom">
+    <div *ngIf="errors">
+        <div class="alert alert-danger" *ngFor="let error of errors">{{error}}</div>
+    </div>
+    <mat-spinner style="margin: 0 auto;" *ngIf="loading"></mat-spinner>
+
+    <div *ngIf="loaded">
+        <div class="langBox mat-elevation-z12" *ngFor="let lang of languages">
+            <div class="langHead">
+                <h2 class="text-center" *ngIf="currentLang === 'en'"> {{ lang.name_EN }}</h2>
+                <h2 class="text-center" *ngIf="currentLang === 'fr'"> {{ lang.name_FR }}</h2>
+            </div>
+            <div class="langBody mt-3">
+                <div class="progress" style=" height: 25px;">
+                    <div class="progress-bar bg-success progress-bar-striped progress-bar-animated"
+                        [ngStyle]="{'width': lang.levelRead + '%'}" style="text-transform: uppercase; height: 25px;">
+                        {{ 'CV.LANGUAGES.READ' | translate }} ({{lang.levelRead}} %)
+                    </div>
+                </div>
+                <br>
+                <div class="progress" style=" height: 25px;">
+                    <div class="progress-bar bg-info progress-bar-striped progress-bar-animated"
+                        [ngStyle]="{'width': lang.levelSpeak + '%'}" style="text-transform: uppercase; height: 25px;">
+                        {{ 'CV.LANGUAGES.SPEAK' | translate }} ({{lang.levelSpeak}} %)
+                    </div>
+                </div>
+                <br>
+                <div class="progress" style=" height: 25px;">
+                    <div class="progress-bar bg-primary progress-bar-striped progress-bar-animated"
+                        [ngStyle]="{'width': lang.levelWrite + '%'}" style="text-transform: uppercase; height: 25px;">
+                        {{ 'CV.LANGUAGES.WRITE' | translate }} ({{lang.levelWrite}} %)
+                    </div>
+                </div>
+            </div>
+            <div class="langActions">
+                <span style="color:lawngreen;" (click)="onOpenDocuments(lang.id)">
+                    <fa-icon [icon]="faFileAlt"></fa-icon>
+                </span>
+                <span style="color:blue;"
+                    (click)="onEdit(lang.id, lang.name_EN, lang.name_FR, lang.levelRead, lang.levelSpeak, lang.levelWrite)">
+                    <fa-icon [icon]="faEdit"></fa-icon>
+                </span>
+                <span style="color: red;" (click)="onDelete(lang.id)">
+                    <fa-icon [icon]="faTrash"></fa-icon>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

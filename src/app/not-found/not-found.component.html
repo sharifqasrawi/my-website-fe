@@ -1,1 +1,18 @@
-<p>not-found works!</p>
+<div class="notFoundPg">
+
+    <div class="container errorHeader">
+        <!-- <h1>
+            <fa-icon [icon]="faExclamationTriangle"></fa-icon>
+            {{ 'ERRORS.ERROR404' | translate }}
+        </h1> -->
+        <h1>
+            <fa-icon [icon]="faExclamationTriangle"></fa-icon>
+            Error 404. Not found.
+        </h1>
+        <p>
+            The resource you are trying to reach is not available. Return 
+            <a [routerLink]="['/']">Home</a>
+        </p>
+    </div>
+   
+</div>

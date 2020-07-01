@@ -4,10 +4,10 @@
     "reportVersion": 2,
     "event": "Allocation failed - JavaScript heap out of memory",
     "trigger": "FatalError",
-    "filename": "report.20200628.172637.24944.0.001.json",
-    "dumpEventTime": "2020-06-28T17:26:37Z",
-    "dumpEventTimeStamp": "1593357997802",
-    "processId": 24944,
+    "filename": "report.20200702.005720.10100.0.001.json",
+    "dumpEventTime": "2020-07-02T00:57:20Z",
+    "dumpEventTimeStamp": "1593644240907",
+    "processId": 10100,
     "threadId": null,
     "cwd": "D:\\dev\\angular+dotnetcore\\my website\\My-Website-FE",
     "commandLine": [
@@ -52,74 +52,74 @@
       {
         "model": "Intel(R) Core(TM) i7-8550U CPU @ 1.80GHz",
         "speed": 1992,
-        "user": 5659437,
+        "user": 15965250,
         "nice": 0,
-        "sys": 6867343,
-        "idle": 41453250,
-        "irq": 2783187
+        "sys": 17886203,
+        "idle": 108140078,
+        "irq": 6897000
       },
       {
         "model": "Intel(R) Core(TM) i7-8550U CPU @ 1.80GHz",
         "speed": 1992,
-        "user": 4447609,
+        "user": 13253359,
         "nice": 0,
-        "sys": 3084750,
-        "idle": 46447312,
-        "irq": 468562
+        "sys": 8182375,
+        "idle": 120555437,
+        "irq": 1213500
       },
       {
         "model": "Intel(R) Core(TM) i7-8550U CPU @ 1.80GHz",
         "speed": 1992,
-        "user": 9488187,
+        "user": 27034421,
         "nice": 0,
-        "sys": 4209125,
-        "idle": 40282359,
-        "irq": 63500
+        "sys": 11125921,
+        "idle": 103830828,
+        "irq": 187234
       },
       {
         "model": "Intel(R) Core(TM) i7-8550U CPU @ 1.80GHz",
         "speed": 1992,
-        "user": 6097906,
+        "user": 17745812,
         "nice": 0,
-        "sys": 2821625,
-        "idle": 45060140,
-        "irq": 43390
+        "sys": 7724593,
+        "idle": 116520765,
+        "irq": 136968
       },
       {
         "model": "Intel(R) Core(TM) i7-8550U CPU @ 1.80GHz",
         "speed": 1992,
-        "user": 7684671,
+        "user": 21997015,
         "nice": 0,
-        "sys": 3575531,
-        "idle": 42719453,
-        "irq": 62875
+        "sys": 9839125,
+        "idle": 110155015,
+        "irq": 191500
       },
       {
         "model": "Intel(R) Core(TM) i7-8550U CPU @ 1.80GHz",
         "speed": 1992,
-        "user": 5785640,
+        "user": 16547250,
         "nice": 0,
-        "sys": 2813015,
-        "idle": 45381000,
-        "irq": 48906
+        "sys": 7510375,
+        "idle": 117933531,
+        "irq": 153890
       },
       {
         "model": "Intel(R) Core(TM) i7-8550U CPU @ 1.80GHz",
         "speed": 1992,
-        "user": 8189218,
+        "user": 23233406,
         "nice": 0,
-        "sys": 3457687,
-        "idle": 42332750,
-        "irq": 53125
+        "sys": 9236906,
+        "idle": 109520843,
+        "irq": 162843
       },
       {
         "model": "Intel(R) Core(TM) i7-8550U CPU @ 1.80GHz",
         "speed": 1992,
-        "user": 6632250,
+        "user": 19023437,
         "nice": 0,
-        "sys": 2758562,
-        "idle": 44588843,
-        "irq": 37781
+        "sys": 7234140,
+        "idle": 115733578,
+        "irq": 115734
       }
     ],
     "networkInterfaces": [
@@ -246,51 +246,35 @@
       "symbol": "v8::internal::Heap::AddRetainedMap+2452"
     },
     {
-      "pc": "0x00007ff64232afbd",
-      "symbol": "v8::internal::Factory::NewFillerObject+61"
+      "pc": "0x00007ff6423318fb",
+      "symbol": "v8::internal::Factory::NewRawOneByteString+91"
     },
     {
-      "pc": "0x00007ff642091871",
-      "symbol": "v8::internal::interpreter::JumpTableTargetOffsets::iterator::operator=+1665"
+      "pc": "0x00007ff64215390a",
+      "symbol": "v8::internal::String::SlowFlatten+442"
+    },
+    {
+      "pc": "0x00007ff64201be5f",
+      "symbol": "unibrow::Utf8::EncodeOneByte+687"
+    },
+    {
+      "pc": "0x00007ff642055e7f",
+      "symbol": "v8::internal::StubCache::value_reference+7471"
     },
     {
       "pc": "0x00007ff6428a6c4d",
       "symbol": "v8::internal::SetupIsolateDelegate::SetupHeap+546637"
     },
     {
-      "pc": "0x00007ff6428632ab",
-      "symbol": "v8::internal::SetupIsolateDelegate::SetupHeap+269739"
-    },
-    {
-      "pc": "0x00007ff642902fae",
-      "symbol": "v8::internal::SetupIsolateDelegate::SetupHeap+924334"
-    },
-    {
-      "pc": "0x00007ff64282bbfc",
-      "symbol": "v8::internal::SetupIsolateDelegate::SetupHeap+42748"
-    },
-    {
-      "pc": "0x00007ff64282bbfc",
-      "symbol": "v8::internal::SetupIsolateDelegate::SetupHeap+42748"
-    },
-    {
-      "pc": "0x00007ff64282bbfc",
-      "symbol": "v8::internal::SetupIsolateDelegate::SetupHeap+42748"
-    },
-    {
-      "pc": "0x00007ff64282bbfc",
-      "symbol": "v8::internal::SetupIsolateDelegate::SetupHeap+42748"
-    },
-    {
-      "pc": "0x00000114ddf84a72",
+      "pc": "0x0000017a7567a62a",
       "symbol": ""
     }
   ],
   "javascriptHeap": {
-    "totalMemory": 2154311680,
-    "totalCommittedMemory": 2154311680,
-    "usedMemory": 2123198136,
-    "availableMemory": 47978336,
+    "totalMemory": 2172620800,
+    "totalCommittedMemory": 2172620800,
+    "usedMemory": 2110732592,
+    "availableMemory": 59002768,
     "memoryLimit": 2197815296,
     "heapSpaces": {
       "read_only_space": {
@@ -301,38 +285,38 @@
         "available": 0
       },
       "new_space": {
-        "memorySize": 4194304,
-        "committedMemory": 4194304,
-        "capacity": 2094912,
-        "used": 67680,
-        "available": 2027232
+        "memorySize": 33554432,
+        "committedMemory": 33554432,
+        "capacity": 16759296,
+        "used": 77664,
+        "available": 16681632
       },
       "old_space": {
-        "memorySize": 1950232576,
-        "committedMemory": 1950232576,
-        "capacity": 1936771320,
-        "used": 1936418744,
-        "available": 352576
+        "memorySize": 1901998080,
+        "committedMemory": 1901998080,
+        "capacity": 1889651096,
+        "used": 1889283752,
+        "available": 367344
       },
       "code_space": {
-        "memorySize": 6197248,
-        "committedMemory": 6197248,
-        "capacity": 5522144,
-        "used": 5522144,
+        "memorySize": 6721536,
+        "committedMemory": 6721536,
+        "capacity": 5831808,
+        "used": 5831808,
         "available": 0
       },
       "map_space": {
-        "memorySize": 12587008,
-        "committedMemory": 12587008,
-        "capacity": 1056960,
-        "used": 1056960,
+        "memorySize": 15208448,
+        "committedMemory": 15208448,
+        "capacity": 1104960,
+        "used": 1104960,
         "available": 0
       },
       "large_object_space": {
-        "memorySize": 180789248,
-        "committedMemory": 180789248,
-        "capacity": 180097016,
-        "used": 180097016,
+        "memorySize": 214827008,
+        "committedMemory": 214827008,
+        "capacity": 214398816,
+        "used": 214398816,
         "available": 0
       },
       "code_large_object_space": {
@@ -345,24 +329,24 @@
       "new_large_object_space": {
         "memorySize": 0,
         "committedMemory": 0,
-        "capacity": 2094912,
+        "capacity": 16759296,
         "used": 0,
-        "available": 2094912
+        "available": 16759296
       }
     }
   },
   "resourceUsage": {
-    "userCpuSeconds": 545.718,
-    "kernelCpuSeconds": 24.687,
-    "cpuConsumptionPercent": 16.8063,
-    "maxRss": 2235109376,
+    "userCpuSeconds": 598.234,
+    "kernelCpuSeconds": 50.25,
+    "cpuConsumptionPercent": 25.2623,
+    "maxRss": 2212720640,
     "pageFaults": {
-      "IORequired": 1756008,
+      "IORequired": 1435985,
       "IONotRequired": 0
     },
     "fsActivity": {
-      "reads": 35281,
-      "writes": 7
+      "reads": 44359,
+      "writes": 6
     }
   },
   "libuv": [
@@ -435,14 +419,14 @@
     "C:\\WINDOWS\\System32\\WS2_32.dll",
     "C:\\WINDOWS\\System32\\RPCRT4.dll",
     "C:\\WINDOWS\\SYSTEM32\\dbghelp.dll",
-    "C:\\WINDOWS\\System32\\PSAPI.DLL",
     "C:\\WINDOWS\\System32\\ucrtbase.dll",
+    "C:\\WINDOWS\\System32\\PSAPI.DLL",
     "C:\\WINDOWS\\System32\\ADVAPI32.dll",
     "C:\\WINDOWS\\System32\\msvcrt.dll",
-    "C:\\WINDOWS\\System32\\sechost.dll",
     "C:\\WINDOWS\\SYSTEM32\\IPHLPAPI.DLL",
-    "C:\\WINDOWS\\System32\\USER32.dll",
+    "C:\\WINDOWS\\System32\\sechost.dll",
     "C:\\WINDOWS\\SYSTEM32\\USERENV.dll",
+    "C:\\WINDOWS\\System32\\USER32.dll",
     "C:\\WINDOWS\\System32\\win32u.dll",
     "C:\\WINDOWS\\System32\\GDI32.dll",
     "C:\\WINDOWS\\System32\\gdi32full.dll",

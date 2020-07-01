@@ -14,37 +14,39 @@ body {
 }
 
 .adminPageTop {
+    color: lightgrey;
     animation: animAdminPageTop 0.3s forwards ease-in-out;
 }
 
 @keyframes animAdminPageTop {
     0% {
-        transform: translateY(-100%);
+        /* transform: translateY(-100%); */
         opacity: 0;
     }
     50% {
         opacity: 0.2;
     }
     100% {
-        transform: translateY(0);
+        /* transform: translateY(0); */
         opacity: 1;
     }
 }
 
 .adminPageBottom {
+    color: lightgrey;
     animation: animAdminPageBottom 0.3s forwards ease-in-out;
 }
 
 @keyframes animAdminPageBottom {
     0% {
-        transform: translateY(50%);
+        /* transform: translateY(50%); */
         opacity: 0;
     }
     50% {
         opacity: 0.2;
     }
     100% {
-        transform: translateY(0);
+        /* transform: translateY(0); */
         opacity: 1;
     }
 }
@@ -123,4 +125,8 @@ td, th {
   
   .backdropBg {
     background-color: rgba(0, 0, 0, 0.9);
+  }
+
+  hr{
+      border-color: lightgrey;
   }

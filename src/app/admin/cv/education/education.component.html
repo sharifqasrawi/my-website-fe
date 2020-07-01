@@ -1,0 +1,94 @@
+<div class="adminPageTop">
+    <div class="row">
+        <div class="col-md-8">
+            <h1>
+                <fa-icon [icon]="faGraduationCap"></fa-icon>
+                {{ 'CV.EDUCATION.EDUCATION' | translate }}
+            </h1>
+        </div>
+        <div class="col-md-2">
+            <button mat-raised-button color="accent" class="btn-block mt-1" (click)="onRefresh()">
+                <mat-icon>autorenew</mat-icon>
+            </button>
+        </div>
+        <div class="col-md-2">
+            <a mat-raised-button [routerLink]="['/admin', 'cv', 'education', 'create']" color="primary"
+                class="btn-block mt-1">
+                {{ 'COMMON.CREATE' | translate }}
+            </a>
+        </div>
+    </div>
+
+    <hr>
+</div>
+
+<div class="adminPageBottom">
+    <mat-spinner *ngIf="loading" color="accent" style="margin: 0 auto;"></mat-spinner>
+
+    <div *ngIf="loaded">
+        <div class="eduBox mat-elevation-z12" *ngFor="let edu of educations">
+            <div class="row">
+                <div class="col-md-10">
+                    <h2 *ngIf="currentLang === 'en'"> {{ edu.title_EN }} </h2>
+                    <h2 *ngIf="currentLang === 'fr'"> {{ edu.title_FR }} </h2>
+                </div>
+                <div class="col-md-2" style="text-align: right;">
+                    <button mat-mini-fab color="primary" class="btn-block mt-1 mr-3" (click)="onOpenDocuments(edu.id)">
+                        <fa-icon [icon]="faFileAlt"></fa-icon>
+                    </button>
+                    <button mat-mini-fab color="warn" class="btn-block mt-1 mr-3" (click)="onDelete(edu.id)">
+                        <fa-icon [icon]="faTrash"></fa-icon>
+                    </button>
+                    <a mat-mini-fab color="accent" class="btn-block mt-1"
+                        [routerLink]="['/admin', 'cv', 'education', 'edit', edu.id]">
+                        <fa-icon [icon]="faEdit"></fa-icon>
+                    </a>
+                </div>
+            </div>
+            <hr>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div>
+                        <p class="badge badge-info" *ngIf="currentLang === 'en'"> {{ edu.specialization_EN }} </p>
+                        <p class="badge badge-info" *ngIf="currentLang === 'fr'"> {{ edu.specialization_FR }} </p>
+                    </div>
+                    <div>
+                        <p>
+                            <span class="badge badge-primary mr-3"> {{ edu.startDate | date:'yyyy' }}</span>
+                            <span class="badge badge-success"> {{ edu.graduateDate | date:'yyyy' }}</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div>
+                        <p *ngIf="currentLang === 'en'"> <b>{{ 'CV.EDUCATION.MENTION' | translate }}: </b>
+                            {{ edu.mention_EN }}
+
+                            <i class="badge badge-warning"> {{ edu.note }}</i>
+                        </p>
+                        <p *ngIf="currentLang === 'fr'"> <b>{{ 'CV.EDUCATION.MENTION' | translate }}: </b>
+                            {{ edu.mention_FR }}
+
+                            <i class="badge badge-warning"> {{ edu.note }}</i>
+                        </p>
+                    </div>
+
+                    <div>
+                        <p> <b>{{ 'CV.EDUCATION.YEARS_COUNT' | translate }}: </b> {{ edu.yearsCount }} </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div>
+                        <p *ngIf="currentLang === 'en'" class="badge badge-secondary"> {{ edu.establishment_EN }}</p>
+                        <p *ngIf="currentLang === 'fr'" class="badge badge-secondary">{{ edu.establishment_FR }}</p>
+                    </div>
+                    <div>
+                        <p *ngIf="currentLang === 'en'">{{ edu.city_EN }}, {{ edu.country_EN }}</p>
+                        <p *ngIf="currentLang === 'fr'">{{ edu.city_FR }}, {{ edu.country_FR }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
