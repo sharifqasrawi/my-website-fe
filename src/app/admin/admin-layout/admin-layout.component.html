@@ -139,6 +139,11 @@
                     {{ 'ADMINISTRATION.USERS.LIST_USERS' | translate }}
                 </a>
 
+                <a mat-list-item [routerLink]="['/admin', 'tags']">
+                    <mat-icon mat-list-icon>loyalty</mat-icon>
+                    {{ 'ADMINISTRATION.TAGS_MANAGEMENT.TAGS' | translate }}
+                </a>
+
 
                 <mat-list-item (click)="showSubmenuLanguages = !showSubmenuLanguages" class="parent">
                     <span class="full-width" translate>COMMON.LANGUAGE</span>

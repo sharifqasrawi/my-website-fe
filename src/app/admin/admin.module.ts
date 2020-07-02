@@ -49,6 +49,7 @@ import { ProjectsComponent } from './portfolio/projects/projects.component';
 import { SkillsComponent } from './cv/skills/skills.component';
 import { EditCategoryComponent } from './cv/skills/edit-category/edit-category.component';
 import { EditSkillComponent } from './cv/skills/edit-skill/edit-skill.component';
+import { TagsComponent } from './tags/tags.component';
 
 
 
@@ -92,7 +93,8 @@ import { EditSkillComponent } from './cv/skills/edit-skill/edit-skill.component'
     ProjectsComponent,
     SkillsComponent,
     EditCategoryComponent,
-    EditSkillComponent
+    EditSkillComponent,
+    TagsComponent
   ],
   imports: [
     CommonModule,

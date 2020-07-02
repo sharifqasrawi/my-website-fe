@@ -170,6 +170,10 @@
             "LONGITUDE": "Longitude",
             "CITY": "City",
             "DAY_VISITS_COUNT": "Visits in 24H"
+        },
+        "TAGS_MANAGEMENT": {
+            "TAGS_MANAGEMENT": "Tags management",
+            "TAGS": "Tags"
         }
     },
     "CHANGE_PASSWORD": {

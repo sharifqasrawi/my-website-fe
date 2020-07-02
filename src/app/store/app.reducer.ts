@@ -14,6 +14,7 @@ import * as fromExperiences from '../admin/cv/experiences/store/experiences.redu
 import * as fromLanguages from '../admin/cv/languages/store/languages.reducer';
 import * as fromTrainingCourses from '../admin/cv/training-courses/store/courses.reducer';
 import * as fromSkills from '../admin/cv/skills/store/skills.reducer';
+import * as fromTags from '../admin/tags/store/tags.reducer';
 
 export interface AppState {
     auth: fromAuth.State,
@@ -30,6 +31,7 @@ export interface AppState {
     languages: fromLanguages.State,
     courses: fromTrainingCourses.State,
     skills: fromSkills.State,
+    tags: fromTags.State,
 }
 
 export const appReducer: ActionReducerMap<AppState> = {
@@ -47,4 +49,5 @@ export const appReducer: ActionReducerMap<AppState> = {
     languages: fromLanguages.languageReducer,
     courses: fromTrainingCourses.courseReducer,
     skills: fromSkills.skillsReducer,
+    tags: fromTags.tagsReducer,
 }

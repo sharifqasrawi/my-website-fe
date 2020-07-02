@@ -1,3 +1,4 @@
+import { TagsComponent } from './tags/tags.component';
 import { SkillsComponent } from './cv/skills/skills.component';
 import { ProjectsComponent } from './portfolio/projects/projects.component';
 import { TrainingCoursesComponent } from './cv/training-courses/training-courses.component';
@@ -58,6 +59,10 @@ const routes: Routes = [
                 path: 'directories', children: [
                     { path: '', component: DirectoriesComponent, pathMatch: 'full' }
                 ]
+            },
+            {
+                path: 'tags',
+                component: TagsComponent
             },
             {
                 path: 'files', children: [

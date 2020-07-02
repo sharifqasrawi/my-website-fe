@@ -168,6 +168,10 @@
             "LONGITUDE": "Longitude",
             "CITY": "Ville",
             "DAY_VISITS_COUNT": "Visites pendant 24H"
+        },
+        "TAGS_MANAGEMENT": {
+            "TAGS_MANAGEMENT": "Gestion des mots clés",
+            "TAGS": "Mots clés"
         }
     },
     "CHANGE_PASSWORD": {
