@@ -1,3 +1,5 @@
+import { SkillsComponent } from './cv/skills/skills.component';
+import { ProjectsComponent } from './portfolio/projects/projects.component';
 import { TrainingCoursesComponent } from './cv/training-courses/training-courses.component';
 import { LanguagesComponent } from './cv/languages/languages.component';
 import { NgModule } from '@angular/core';
@@ -41,8 +43,15 @@ const routes: Routes = [
                     { path: 'experiences/create', component: EditExperienceComponent },
                     { path: 'experiences/edit/:id', component: EditExperienceComponent },
                     { path: 'languages', component: LanguagesComponent },
+                    { path: 'skills', component: SkillsComponent },
                     { path: 'training-courses', component: TrainingCoursesComponent },
                     { path: 'cv-files', component: CvFilesComponent },
+                ]
+            },
+            {
+                path: 'portfolio',
+                children: [
+                    { path: 'projects', component: ProjectsComponent }
                 ]
             },
             {

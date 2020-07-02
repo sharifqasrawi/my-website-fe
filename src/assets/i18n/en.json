@@ -294,6 +294,13 @@
             "PATH": "Document path",
             "NO_DOCUMENTS": "No documents available",
             "DISPLAYED": "Displayed"
+        },
+        "SKILLS": {
+            "SKILLS": "Skills",
+            "NAME": "Skill name",
+            "LEVEL": "Level",
+            "CATEGORY": "Category",
+            "CATEGORIES": "Categories"
         }
     },
     "PORTFOLIO": {

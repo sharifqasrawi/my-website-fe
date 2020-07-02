@@ -88,6 +88,12 @@
     color: #FFF;
 }
 
+.card-counter.grey {
+    background-color: grey;
+    color: #FFF;
+}
+
+
 .card-counter i {
     font-size: 5em;
     opacity: 0.2;

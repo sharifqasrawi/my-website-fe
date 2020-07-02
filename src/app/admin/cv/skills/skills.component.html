@@ -1,0 +1,81 @@
+<div class="adminPageTop">
+    <div class="row">
+        <div class="col-md-8">
+            <h1>
+                <fa-icon [icon]="faStar"></fa-icon>
+                {{ 'CV.SKILLS.SKILLS' | translate }}
+            </h1>
+        </div>
+        <div class="col-md-2">
+            <button mat-raised-button color="accent" class="btn-block mt-1" (click)="onRefresh()">
+                <mat-icon>autorenew</mat-icon>
+            </button>
+        </div>
+        <div class="col-md-2">
+            <button mat-raised-button color="primary" class="btn-block mt-1" (click)="onAddCategory()">
+                {{ 'COMMON.CREATE' | translate }}
+            </button>
+        </div>
+    </div>
+
+    <hr>
+</div>
+
+<div class="adminPageBottom">
+    <div *ngIf="errors">
+        <div class="alert alert-danger" *ngFor="let error of errors">{{error}}</div>
+    </div>
+
+    <mat-spinner style="margin: 0 auto;" *ngIf="loadingCategories"></mat-spinner>
+
+    <div *ngIf="loadedCategories">
+        <div class="catBox mat-elevation-z8" *ngFor="let category of skillCategories">
+            <div class="catHead">
+                <div class="row">
+                    <div class="col-md-9">
+                        <h2 *ngIf="currentLang === 'en'">{{ category.name_EN }}</h2>
+                        <h2 *ngIf="currentLang === 'fr'">{{ category.name_FR }}</h2>
+                    </div>
+                    <div class="col-md-3" style="text-align: right;">
+                        <button mat-mini-fab color="primary" class="btn-block mr-3" (click)="onAddSkill(category.id)">
+                            <fa-icon [icon]="faPlus"></fa-icon>
+                        </button>
+                        <button mat-mini-fab color="accent" class="btn-block  mr-3"
+                            (click)="onEditCategory(category.id)">
+                            <fa-icon [icon]="faEdit"></fa-icon>
+                        </button>
+                        <button mat-mini-fab color="warn" class="btn-block" (click)="onDeleteCategory(category.id)">
+                            <fa-icon [icon]="faTrash"></fa-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="catBody">
+                <div *ngIf="category.skills">
+                    <div class="skillBox  mat-elevation-z4" *ngFor="let skill of category.skills">
+                        <div class="skillHead">
+                            <p *ngIf="currentLang === 'en'">{{skill.name_EN}}</p>
+                            <p *ngIf="currentLang === 'fr'">{{skill.name_EN}}</p>
+                        </div>
+                        <div class="skillBody text-center full-width">
+                            <app-circle-chart [value]="skill.level" [size]="'medium'"></app-circle-chart>
+                        </div>
+                        <div class="skillActions">
+                            <div class="actions">
+                                <span style="cursor: pointer; color:greenyellow;"
+                                    (click)="onEditSkill(skill.id, category.id)">
+                                    <fa-icon [icon]="faEdit"></fa-icon>
+                                </span>
+                                <span style="cursor: pointer; color:red;" (click)="onDeleteSkill(skill.id)">
+                                    <fa-icon [icon]="faTrash"></fa-icon>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>

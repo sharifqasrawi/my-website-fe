@@ -1,0 +1,65 @@
+.catBox {
+    width: 100%;
+    background-color: #424242;
+    margin-bottom: 25px;
+}
+
+.catBox .catHead {
+    padding: 12px;
+    background-color: teal;
+}
+
+.catBox .catBody {
+    padding: 12px;
+}
+
+.skillBox {
+    width: 200px;
+    height: 220px;
+    border-radius: 10px;
+    margin: 0 20px 20px 0;
+    display: inline-block;
+    position: relative;
+    ;
+}
+
+.skillBox .skillHead {
+    padding: 5px;
+    text-align: center;
+    background-color: grey;
+    border-radius: 10px 10px 0 0;
+}
+
+.skillBox .skillBody div{
+    margin: 0 auto;
+    display: inline;
+    float: none;
+}
+
+.skillBox .skillActions {
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+    border-top: 1px solid lightgrey;
+    padding-top: 5px;
+}
+
+.skillBox .skillActions .actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.skillBox .skillActions .actions span {
+    opacity: 0.8;
+}
+
+.skillBox .skillActions .actions span:hover {
+    opacity: 1;
+}
+
+@media (max-width: 494px){
+    .skillBox{
+        width: 100%;
+    }
+}

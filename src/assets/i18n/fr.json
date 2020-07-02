@@ -292,6 +292,13 @@
             "PATH": "Chemin d'accès au document",
             "NO_DOCUMENTS": "Aucun document disponible",
             "DISPLAYED": "Affiché"
+        },
+        "SKILLS": {
+            "SKILLS": "Compétences",
+            "NAME": "Nom de la compétence",
+            "LEVEL": "Niveau",
+            "CATEGORY": "Catégorie",
+            "CATEGORIES": "Les catégories"
         }
     },
     "PORTFOLIO": {

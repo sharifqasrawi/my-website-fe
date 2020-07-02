@@ -12,10 +12,11 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
 import { ImgViewerComponent } from './img-viewer/img-viewer.component';
 import { ImagePickerComponent } from './image-picker/image-picker.component';
 import { FilePickerComponent } from './file-picker/file-picker.component';
+import { CircleChartComponent } from './circle-chart/circle-chart.component';
 
 
 @NgModule({
-  declarations: [DiscardChangesComponent, ConfirmDialogComponent, ImgViewerComponent, ImagePickerComponent, FilePickerComponent],
+  declarations: [DiscardChangesComponent, ConfirmDialogComponent, ImgViewerComponent, ImagePickerComponent, FilePickerComponent, CircleChartComponent],
   imports: [
     CommonModule,
     MaterialModule,
@@ -26,6 +27,9 @@ import { FilePickerComponent } from './file-picker/file-picker.component';
     FontAwesomeModule,
     TranslateModule,
     RouterModule
+  ],
+  exports: [
+    CircleChartComponent
   ]
 })
 export class SharedModule { }

@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TranslateModule } from '@ngx-translate/core';
@@ -44,6 +45,10 @@ import { LanguageDocumentsComponent } from './cv/languages/language-documents/la
 import { EditLanguageDocumentComponent } from './cv/languages/language-documents/edit-language-document/edit-language-document.component';
 import { CourseDocumentsComponent } from './cv/training-courses/courses-documents/courses-documents.component';
 import { EditCourseDocumentComponent } from './cv/training-courses/courses-documents/edit-courses-document/edit-courses-document.component';
+import { ProjectsComponent } from './portfolio/projects/projects.component';
+import { SkillsComponent } from './cv/skills/skills.component';
+import { EditCategoryComponent } from './cv/skills/edit-category/edit-category.component';
+import { EditSkillComponent } from './cv/skills/edit-skill/edit-skill.component';
 
 
 
@@ -83,7 +88,11 @@ import { EditCourseDocumentComponent } from './cv/training-courses/courses-docum
     LanguageDocumentsComponent,
     EditLanguageDocumentComponent,
     CourseDocumentsComponent,
-    EditCourseDocumentComponent
+    EditCourseDocumentComponent,
+    ProjectsComponent,
+    SkillsComponent,
+    EditCategoryComponent,
+    EditSkillComponent
   ],
   imports: [
     CommonModule,
@@ -94,6 +103,7 @@ import { EditCourseDocumentComponent } from './cv/training-courses/courses-docum
     MaterialModule,
     CKEditorModule,
     TranslateModule,
+    SharedModule,
     AdminRoutingModule
   ]
 })

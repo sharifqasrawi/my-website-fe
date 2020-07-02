@@ -66,6 +66,10 @@
                         <mat-icon mat-list-icon>school</mat-icon>
                         {{ 'CV.EDUCATION.EDUCATION' | translate }}
                     </a>
+                    <a mat-list-item [routerLink]="['/admin', 'cv', 'skills']">
+                        <mat-icon mat-list-icon>stars</mat-icon>
+                        {{ 'CV.SKILLS.SKILLS' | translate }}
+                    </a>
                     <a mat-list-item [routerLink]="['/admin', 'cv', 'languages']">
                         <mat-icon mat-list-icon>language</mat-icon>
                         {{ 'CV.LANGUAGES.LANGUAGES' | translate }}
@@ -88,7 +92,7 @@
                     </mat-icon>
                 </mat-list-item>
                 <div class="submenu" [ngClass]="{'expanded' : showSubmenuPortfolio}">
-                    <a mat-list-item [routerLink]="['/admin', 'courses']">
+                    <a mat-list-item [routerLink]="['/admin', 'portfolio', 'projects']">
                         <mat-icon mat-list-icon>assignment_turned_in</mat-icon>
                         {{ 'PORTFOLIO.PROJECTS.PROJECTS' | translate }}
                     </a>

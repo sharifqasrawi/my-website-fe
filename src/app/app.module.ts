@@ -1,3 +1,4 @@
+import { SkillsEffects } from './admin/cv/skills/store/skills.effects';
 import { TrainingCoursesEffects } from './admin/cv/training-courses/store/courses.effects';
 import { LanguagesEffects } from './admin/cv/languages/store/languages.effects';
 import { ExperiencesEffects } from './admin/cv/experiences/store/experiences.effects';
@@ -67,7 +68,8 @@ export function HttpLoaderFactory(http: HttpClient) {
       EducationEffects,
       ExperiencesEffects,
       LanguagesEffects,
-      TrainingCoursesEffects
+      TrainingCoursesEffects,
+      SkillsEffects
     ]),
     MaterialModule,
     CountUpModule,

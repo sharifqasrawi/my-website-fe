@@ -53,6 +53,14 @@
 
     <div class="row">
         <div class="col-md-3">
+            <div class="card-counter grey">
+                <mat-icon class="icon">stars</mat-icon>
+                <span [countUp]="skillsCount" class="count-numbers">0</span>
+                <span class="count-name" translate>CV.SKILLS.SKILLS</span>
+            </div>
+        </div>
+
+        <div class="col-md-3">
             <div class="card-counter success">
                 <mat-icon class="icon">message</mat-icon>
                 <span [countUp]="messagesCount" class="count-numbers">0</span>
@@ -68,14 +76,6 @@
             </div>
         </div>
 
-
-        <div class="col-md-3">
-            <div class="card-counter burlywood">
-                <mat-icon class="icon">supervised_user_circle</mat-icon>
-                <span [countUp]="usersCount" class="count-numbers">0</span>
-                <span class="count-name" translate>ADMINISTRATION.USERS.USERS</span>
-            </div>
-        </div>
 
         <div class="col-md-3">
             <div class="card-counter darkorange">
@@ -108,6 +108,15 @@
                 <mat-icon class="icon">explore</mat-icon>
                 <span [countUp]="visitsCount" class="count-numbers">0</span>
                 <span class="count-name" translate>ADMINISTRATION.VISITS.VISITS</span>
+            </div>
+        </div>
+
+
+        <div class="col-md-3">
+            <div class="card-counter burlywood">
+                <mat-icon class="icon">supervised_user_circle</mat-icon>
+                <span [countUp]="usersCount" class="count-numbers">0</span>
+                <span class="count-name" translate>ADMINISTRATION.USERS.USERS</span>
             </div>
         </div>
     </div>

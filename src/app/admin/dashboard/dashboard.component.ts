@@ -16,6 +16,7 @@ import * as ExperiencesActions from '../cv/experiences/store/experiences.actions
 import * as LanguagesActions from '../cv/languages/store/languages.actions';
 import * as TrainingCoursesActions from '../cv/training-courses/store/courses.actions';
 import * as CVFilesActions from '../cv/cv-files/store/cvfiles.actions';
+import * as SkillsActions from './../cv/skills/store/skills.actions';
 
 
 @Component({
@@ -36,6 +37,7 @@ export class DashboardComponent implements OnInit {
   languagesCount = 0;
   coursesCount = 0;
   cvFileCount = 0;
+  skillsCount = 0;
 
   constructor(
     private store: Store<fromApp.AppState>,
@@ -71,6 +73,8 @@ export class DashboardComponent implements OnInit {
 
     this.store.select('courses').pipe(map(state => state.courses.length)).subscribe(count => this.coursesCount = count);
 
+    this.store.select('skills').pipe(map(state => state.skills.length)).subscribe(count => this.skillsCount = count);
+
     this.store.select('cvFiles').pipe(map(state => state.cvFiles.length)).subscribe(count => this.cvFileCount = count);
 
 
@@ -97,6 +101,7 @@ export class DashboardComponent implements OnInit {
 
     this.store.dispatch(new EducationActions.FetchStart());
     this.store.dispatch(new ExperiencesActions.FetchStart());
+    this.store.dispatch(new SkillsActions.FetchSkillsStart());
     this.store.dispatch(new LanguagesActions.FetchStart());
     this.store.dispatch(new TrainingCoursesActions.FetchStart());
     this.store.dispatch(new CVFilesActions.FetchStart());
