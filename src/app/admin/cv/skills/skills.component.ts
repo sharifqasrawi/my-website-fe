@@ -58,7 +58,8 @@ export class SkillsComponent implements OnInit {
       });
     });
 
-    this.store.dispatch(new SkillsActions.FetchCategoriesStart());
+    if (!this.skillCategories)
+      this.store.dispatch(new SkillsActions.FetchCategoriesStart());
 
     this.store.select('skills').subscribe(state => {
       this.skillCategories = state.skillCategories;

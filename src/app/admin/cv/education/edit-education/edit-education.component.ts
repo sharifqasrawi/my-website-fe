@@ -81,6 +81,10 @@ export class EditEducationComponent implements OnInit, OnDestroy {
       graduateDate: new FormControl(null, [Validators.required]),
     });
 
+     if (!this.educations || this.educations.length === 0) {
+        this.store.dispatch(new EducationActions.FetchStart());
+      }
+
     this.store.select('education').subscribe(state => {
       this.educations = state.educations;
       this.loading = state.loading;
@@ -94,40 +98,42 @@ export class EditEducationComponent implements OnInit, OnDestroy {
       if (this.created || this.updated) {
         this.router.navigate(['/admin', 'cv', 'education']);
       }
-    });
 
 
-    this.route.params.subscribe((params: Params) => {
-      if (params.id) {
-        this.editMode = true;
-        this.editedEducationId = +params.id;
-        if (!this.educations || this.educations.length === 0) {
-          this.store.dispatch(new EducationActions.FetchStart());
+      // if (!this.educations || this.educations.length === 0) {
+      //   this.store.dispatch(new EducationActions.FetchStart());
+      // }
+
+      this.route.params.subscribe((params: Params) => {
+        if (params.id) {
+          this.editMode = true;
+          this.editedEducationId = +params.id;
+
+
+          if (this.educations && this.educations.length > 0) {
+            const education = this.educations.find(e => e.id === +params.id);
+
+            this.form.patchValue({
+              title_EN: education.title_EN,
+              title_FR: education.title_FR,
+              establishment_EN: education.establishment_EN,
+              establishment_FR: education.establishment_FR,
+              mention_EN: education.mention_EN,
+              mention_FR: education.mention_FR,
+              country_EN: education.country_EN,
+              country_FR: education.country_FR,
+              city_EN: education.city_EN,
+              city_FR: education.city_FR,
+              specialization_EN: education.specialization_EN,
+              specialization_FR: education.specialization_FR,
+              yearsCount: education.yearsCount,
+              note: education.note,
+              startDate: new Date(education.startDate).toISOString().substr(0, 10),
+              graduateDate: new Date(education.graduateDate).toISOString().substr(0, 10),
+            });
+          }
         }
-
-        if (this.educations && this.educations.length > 0) {
-          const education = this.educations.find(e => e.id === +params.id);
-
-          this.form.patchValue({
-            title_EN: education.title_EN,
-            title_FR: education.title_FR,
-            establishment_EN: education.establishment_EN,
-            establishment_FR: education.establishment_FR,
-            mention_EN: education.mention_EN,
-            mention_FR: education.mention_FR,
-            country_EN: education.country_EN,
-            country_FR: education.country_FR,
-            city_EN: education.city_EN,
-            city_FR: education.city_FR,
-            specialization_EN: education.specialization_EN,
-            specialization_FR: education.specialization_FR,
-            yearsCount: education.yearsCount,
-            note: education.note,
-            startDate: new Date(education.startDate).toISOString().substr(0, 10),
-            graduateDate: new Date(education.graduateDate).toISOString().substr(0, 10),
-          });
-        }
-      }
+      });
     });
   }
 

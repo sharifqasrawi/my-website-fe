@@ -60,7 +60,8 @@ export class DirectoriesComponent implements OnInit {
       });
     });
 
-    this.store.dispatch(new DirectoriesActions.FetchStart());
+    if (!this.directories)
+      this.store.dispatch(new DirectoriesActions.FetchStart());
 
     this.store.select('directories').subscribe(dirState => {
       this.directories = dirState.directories;

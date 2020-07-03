@@ -59,7 +59,8 @@ export class ExperiencesComponent implements OnInit {
       });
     });
 
-    this.store.dispatch(new ExperienceActions.FetchStart());
+    if (!this.experiences)
+      this.store.dispatch(new ExperienceActions.FetchStart());
 
     this.store.select('experiences').subscribe(state => {
       this.experiences = state.experiences;
@@ -68,8 +69,8 @@ export class ExperiencesComponent implements OnInit {
       this.deleting = state.deleting;
       this.deleted = state.deleted;
       this.errors = state.errors;
-      
-      
+
+
     });
   }
 
@@ -100,7 +101,7 @@ export class ExperiencesComponent implements OnInit {
   onOpenDocuments(experienceId: number) {
     this.bottomSheet.open(ExperienceDocumentsComponent, {
       disableClose: true,
-      data: { experienceId: experienceId}
+      data: { experienceId: experienceId }
     });
   }
 

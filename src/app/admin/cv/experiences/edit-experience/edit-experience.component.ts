@@ -90,6 +90,11 @@ export class EditExperienceComponent implements OnInit, OnDestroy {
       isCurrentlyWorking: new FormControl(null),
     });
 
+    if (!this.experiences || this.experiences.length === 0) {
+      this.store.dispatch(new ExperienceActions.FetchStart());
+    }
+
+
     this.store.select('experiences').subscribe(state => {
       this.experiences = state.experiences;
       this.loading = state.loading;
@@ -103,37 +108,35 @@ export class EditExperienceComponent implements OnInit, OnDestroy {
       if (this.created || this.updated) {
         this.router.navigate(['/admin', 'cv', 'experiences']);
       }
-    });
 
-    this.route.params.subscribe((params: Params) => {
-      if (params.id) {
-        this.editMode = true;
-        this.editedExperienceId = +params.id;
-        if (!this.experiences || this.experiences.length === 0) {
-          this.store.dispatch(new ExperienceActions.FetchStart());
+
+      this.route.params.subscribe((params: Params) => {
+        if (params.id) {
+          this.editMode = true;
+          this.editedExperienceId = +params.id;
+
+          if (this.experiences && this.experiences.length > 0) {
+            const exp = this.experiences.find(e => e.id === +params.id);
+
+            this.form.patchValue({
+              title_EN: exp.title_EN,
+              title_FR: exp.title_FR,
+              accomplishments_EN: exp.accomplishments_EN,
+              accomplishments_FR: exp.accomplishments_FR,
+              responisbilites_EN: exp.responisbilites_EN,
+              responisbilites_FR: exp.responisbilites_FR,
+              country_EN: exp.country_EN,
+              country_FR: exp.country_FR,
+              city_EN: exp.city_EN,
+              city_FR: exp.city_FR,
+              company: exp.company,
+              startDate: new Date(exp.startDate).toISOString().substr(0, 10),
+              endDate: !exp.isCurrentlyWorking ? new Date(exp.endDate).toISOString().substr(0, 10) : null,
+              isCurrentlyWorking: exp.isCurrentlyWorking
+            });
+          }
         }
-
-        if (this.experiences && this.experiences.length > 0) {
-          const exp = this.experiences.find(e => e.id === +params.id);
-
-          this.form.patchValue({
-            title_EN: exp.title_EN,
-            title_FR: exp.title_FR,
-            accomplishments_EN: exp.accomplishments_EN,
-            accomplishments_FR: exp.accomplishments_FR,
-            responisbilites_EN: exp.responisbilites_EN,
-            responisbilites_FR: exp.responisbilites_FR,
-            country_EN: exp.country_EN,
-            country_FR: exp.country_FR,
-            city_EN: exp.city_EN,
-            city_FR: exp.city_FR,
-            company: exp.company,
-            startDate: new Date(exp.startDate).toISOString().substr(0, 10),
-            endDate: !exp.isCurrentlyWorking ? new Date(exp.endDate).toISOString().substr(0, 10) : null,
-            isCurrentlyWorking: exp.isCurrentlyWorking
-          });
-        }
-      }
+      });
     });
   }
 

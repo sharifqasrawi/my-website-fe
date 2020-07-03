@@ -37,14 +37,15 @@
                     </a>
                 </div>
                 <div class="col-md-2" style="text-align: right;">
-                    <button mat-mini-fab color="primary" class="btn-block mt-1 mr-3" (click)="onOpenDocuments(course.id)">
+                    <button mat-mini-fab color="primary" class="btn-block mt-1 mr-3"
+                        (click)="onOpenDocuments(course.id)">
                         <fa-icon [icon]="faFileAlt"></fa-icon>
                     </button>
-                    <button mat-mini-fab color="warn" class="btn-block mt-1 mr-3" (click)="onDelete(course.id)">
-                        <fa-icon [icon]="faTrash"></fa-icon>
-                    </button>
-                    <button mat-mini-fab color="accent" class="btn-block mt-1" (click)="onEdit(course.id)">
+                    <button mat-mini-fab color="accent" class="btn-block mt-1  mr-3" (click)="onEdit(course.id)">
                         <fa-icon [icon]="faEdit"></fa-icon>
+                    </button>
+                    <button mat-mini-fab color="warn" class="btn-block mt-1" (click)="onDelete(course.id)">
+                        <fa-icon [icon]="faTrash"></fa-icon>
                     </button>
                 </div>
             </div>

@@ -1,0 +1,56 @@
+<h2 mat-dialog-title>
+    <fa-icon [icon]="faTags"></fa-icon>
+    {{ 'PORTFOLIO.PROJECTS.TAGS' | translate }}
+</h2>
+<hr>
+<div mat-dialog-content style="color: lightgrey;">
+    <div *ngIf="errors">
+        <div class="alert alert-danger" *ngFor="let error of errors">{{error}}</div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h3>
+                <strong>
+                    <fa-icon [icon]="faPlus"></fa-icon>
+                    {{ 'COMMON.ADD' | translate }}
+                </strong>
+            </h3>
+            <hr>
+            <div class="tagsContainer">
+                <div class="tag newTag" *ngFor="let tag of otherTags">
+                    <fa-icon [icon]="faTag"></fa-icon>
+                    {{ tag.name }}
+                    <a (click)="onAddRemoveTag(tag.id, 'add')">
+                        <fa-icon [icon]="faPlusCircle" class="ml-1"></fa-icon>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h3>
+                <strong>
+                    <fa-icon [icon]="faTrash"></fa-icon>
+                    {{ 'COMMON.DELETE' | translate }}
+                </strong>
+            </h3>
+            <hr>
+            <div class="tagsContainer">
+                <div class="tag currentTag" *ngFor="let tag of tags">
+                    <fa-icon [icon]="faTag"></fa-icon>
+                    {{ tag.name }}
+                    <a (click)="onAddRemoveTag(tag.id, 'remove')">
+                        <fa-icon [icon]="faTimesCircle" class="ml-1"></fa-icon>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div mat-dialog-actions class="float-right mt-3">
+    <mat-progress-spinner color="accent" mode="indeterminate" [diameter]="35" *ngIf="updating">
+    </mat-progress-spinner>
+    <button mat-raised-button color="primary" class="ml-2"
+        (click)="onNoClick()">{{ 'COMMON.CLOSE' | translate }}</button>
+</div>

@@ -38,13 +38,13 @@
                     <button mat-mini-fab color="primary" class="btn-block mt-1 mr-3" (click)="onOpenDocuments(exp.id)">
                         <fa-icon [icon]="faFileAlt"></fa-icon>
                     </button>
-                    <button mat-mini-fab color="warn" class="btn-block mt-1 mr-3" (click)="onDelete(exp.id)">
-                        <fa-icon [icon]="faTrash"></fa-icon>
-                    </button>
-                    <a mat-mini-fab color="accent" class="btn-block mt-1"
+                    <a mat-mini-fab color="accent" class="btn-block mt-1 mr-3"
                         [routerLink]="['/admin', 'cv', 'experiences', 'edit', exp.id]">
                         <fa-icon [icon]="faEdit"></fa-icon>
                     </a>
+                    <button mat-mini-fab color="warn" class="btn-block mt-1" (click)="onDelete(exp.id)">
+                        <fa-icon [icon]="faTrash"></fa-icon>
+                    </button>
                 </div>
             </div>
             <hr>

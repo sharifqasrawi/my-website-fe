@@ -50,6 +50,8 @@ import { SkillsComponent } from './cv/skills/skills.component';
 import { EditCategoryComponent } from './cv/skills/edit-category/edit-category.component';
 import { EditSkillComponent } from './cv/skills/edit-skill/edit-skill.component';
 import { TagsComponent } from './tags/tags.component';
+import { EditProjectComponent } from './portfolio/projects/edit-project/edit-project.component';
+import { EditProjectTagsComponent } from './portfolio/projects/edit-project-tags/edit-project-tags.component';
 
 
 
@@ -94,7 +96,9 @@ import { TagsComponent } from './tags/tags.component';
     SkillsComponent,
     EditCategoryComponent,
     EditSkillComponent,
-    TagsComponent
+    TagsComponent,
+    EditProjectComponent,
+    EditProjectTagsComponent
   ],
   imports: [
     CommonModule,

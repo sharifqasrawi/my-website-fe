@@ -24,6 +24,9 @@
 
 <div class="adminPageBottom">
     <mat-spinner *ngIf="loading" color="accent" style="margin: 0 auto;"></mat-spinner>
+    <div *ngIf="errors">
+        <div class="alert alert-danger" *ngFor="let error of errors">{{error}}</div>
+    </div>
 
     <div *ngIf="loaded">
         <div class="eduBox mat-elevation-z12" *ngFor="let edu of educations">
@@ -36,13 +39,13 @@
                     <button mat-mini-fab color="primary" class="btn-block mt-1 mr-3" (click)="onOpenDocuments(edu.id)">
                         <fa-icon [icon]="faFileAlt"></fa-icon>
                     </button>
-                    <button mat-mini-fab color="warn" class="btn-block mt-1 mr-3" (click)="onDelete(edu.id)">
-                        <fa-icon [icon]="faTrash"></fa-icon>
-                    </button>
-                    <a mat-mini-fab color="accent" class="btn-block mt-1"
+                    <a mat-mini-fab color="accent" class="btn-block mt-1 mr-3"
                         [routerLink]="['/admin', 'cv', 'education', 'edit', edu.id]">
                         <fa-icon [icon]="faEdit"></fa-icon>
                     </a>
+                    <button mat-mini-fab color="warn" class="btn-block mt-1" (click)="onDelete(edu.id)">
+                        <fa-icon [icon]="faTrash"></fa-icon>
+                    </button>
                 </div>
             </div>
             <hr>

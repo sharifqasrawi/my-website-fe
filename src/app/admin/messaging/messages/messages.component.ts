@@ -60,7 +60,9 @@ export class MessagesComponent implements OnInit {
         this.titleService.setTitle(`Admin - ${trans['ADMINISTRATION.MESSAGING.INBOX']}`);
       });
     });
-    this.store.dispatch(new MessagingActions.FetchStart());
+
+    if (!this.messages)
+      this.store.dispatch(new MessagingActions.FetchStart());
 
     this.store.select('messaging').subscribe(messagesState => {
       this.messages = messagesState.messages;

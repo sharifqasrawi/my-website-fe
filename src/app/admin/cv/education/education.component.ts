@@ -54,7 +54,8 @@ export class EducationComponent implements OnInit {
       });
     });
 
-    this.store.dispatch(new EducationActions.FetchStart());
+    if (!this.educations)
+      this.store.dispatch(new EducationActions.FetchStart());
 
     this.store.select('education').subscribe(state => {
       this.educations = state.educations;

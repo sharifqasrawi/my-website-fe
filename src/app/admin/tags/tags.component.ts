@@ -66,7 +66,8 @@ export class TagsComponent implements OnInit {
     });
 
 
-    this.store.dispatch(new TagsActions.FetchStart());
+    if (!this.tags)
+      this.store.dispatch(new TagsActions.FetchStart());
 
     this.store.select('tags').subscribe(state => {
       this.tags = state.tags;

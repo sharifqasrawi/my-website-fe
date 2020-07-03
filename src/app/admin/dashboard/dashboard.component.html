@@ -18,105 +18,127 @@
 <div class="adminPageBottom">
     <div class="row">
         <div class="col-md-3">
-            <div class="card-counter purple">
+            <div class="card-counter purple" [class.loadingAnimation]="false">
                 <mat-icon class="icon">school</mat-icon>
                 <span [countUp]="educationsCount" class="count-numbers">0</span>
                 <span class="count-name" translate>CV.EDUCATION.EDUCATION</span>
+                <mat-spinner diameter="25" color="accent" *ngIf="loadingEducations"></mat-spinner>
             </div>
         </div>
 
         <div class="col-md-3">
-            <div class="card-counter darksalmon">
+            <div class="card-counter darksalmon" [class.loadingAnimation]="false">
                 <mat-icon class="icon">work</mat-icon>
                 <span [countUp]="experiencesCount" class="count-numbers">0</span>
                 <span class="count-name" translate>CV.EXPERIENCES.EXPERIENCES</span>
+                <mat-spinner diameter="25" color="accent" *ngIf="loadingExperiences"></mat-spinner>
             </div>
         </div>
 
 
         <div class="col-md-3">
-            <div class="card-counter deepskyblue">
+            <div class="card-counter deepskyblue" [class.loadingAnimation]="false">
                 <mat-icon class="icon">language</mat-icon>
                 <span [countUp]="languagesCount" class="count-numbers">0</span>
                 <span class="count-name" translate>CV.LANGUAGES.LANGUAGES</span>
+                <mat-spinner diameter="25" color="primary" *ngIf="loadingLanguages"></mat-spinner>
             </div>
         </div>
 
         <div class="col-md-3">
-            <div class="card-counter coral">
+            <div class="card-counter coral" [class.loadingAnimation]="false">
                 <mat-icon class="icon">airplay</mat-icon>
                 <span [countUp]="coursesCount" class="count-numbers">0</span>
                 <span class="count-name" translate>CV.COURSES.COURSES</span>
+                <mat-spinner diameter="25" color="accent" *ngIf="loadingCourses"></mat-spinner>
             </div>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-3">
-            <div class="card-counter grey">
+            <div class="card-counter grey" [class.loadingAnimation]="false">
                 <mat-icon class="icon">stars</mat-icon>
                 <span [countUp]="skillsCount" class="count-numbers">0</span>
                 <span class="count-name" translate>CV.SKILLS.SKILLS</span>
+                <mat-spinner diameter="25" color="accent" *ngIf="loadingSkills"></mat-spinner>
             </div>
         </div>
 
         <div class="col-md-3">
-            <div class="card-counter success">
+            <div class="card-counter success" [class.loadingAnimation]="false">
                 <mat-icon class="icon">message</mat-icon>
                 <span [countUp]="messagesCount" class="count-numbers">0</span>
                 <span class="count-name" translate>ADMINISTRATION.MESSAGING.INBOX</span>
+                <mat-spinner diameter="25" color="accent" *ngIf="loadingMessages"></mat-spinner>
             </div>
         </div>
 
         <div class="col-md-3">
-            <div class="card-counter danger">
+            <div class="card-counter danger" [class.loadingAnimation]="false">
                 <mat-icon class="icon">mail_outline</mat-icon>
                 <span [countUp]="sentEmailsCount" class="count-numbers">0</span>
                 <span class="count-name" translate>ADMINISTRATION.MESSAGING.SENT_EMAILS</span>
+                <mat-spinner diameter="25" color="accent" *ngIf="loadingSentEmails"></mat-spinner>
             </div>
         </div>
 
 
         <div class="col-md-3">
-            <div class="card-counter darkorange">
-                <mat-icon class="icon">dynamic_feed</mat-icon>
-                <span [countUp]="directoriesCount" class="count-numbers">0</span>
-                <span class="count-name" translate>ADMINISTRATION.FILE_MANAGEMENT.DIRECTORIES</span>
+            <div class="card-counter tomato" [class.loadingAnimation]="false">
+                <mat-icon class="icon">assignment_ind</mat-icon>
+                <span [countUp]="cvFileCount" class="count-numbers">0</span>
+                <span class="count-name" translate>CV.CV_FILES.CV_FILES</span>
+                <mat-spinner diameter="25" color="accent" *ngIf="loadingCvFiles"></mat-spinner>
             </div>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-3">
-            <div class="card-counter tomato">
-                <mat-icon class="icon">assignment_ind</mat-icon>
-                <span [countUp]="cvFileCount" class="count-numbers">0</span>
-                <span class="count-name" translate>CV.CV_FILES.CV_FILES</span>
+            <div class="card-counter mediumvioletred" [class.loadingAnimation]="false">
+                <mat-icon class="icon">loyalty</mat-icon>
+                <span [countUp]="tagsCount" class="count-numbers">0</span>
+                <span class="count-name" translate>ADMINISTRATION.TAGS_MANAGEMENT.TAGS</span>
+                <mat-spinner diameter="25" color="accent" *ngIf="loadingTags"></mat-spinner>
             </div>
         </div>
 
         <div class="col-md-3">
-            <div class="card-counter darkcyan">
+            <div class="card-counter darkorange" [class.loadingAnimation]="false">
+                <mat-icon class="icon">dynamic_feed</mat-icon>
+                <span [countUp]="directoriesCount" class="count-numbers">0</span>
+                <span class="count-name" translate>ADMINISTRATION.FILE_MANAGEMENT.DIRECTORIES</span>
+                <mat-spinner diameter="25" color="accent" *ngIf="loadingDirectories"></mat-spinner>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card-counter darkcyan" [class.loadingAnimation]="false">
                 <mat-icon class="icon">file_copy</mat-icon>
                 <span [countUp]="filesCount" class="count-numbers">0</span>
                 <span class="count-name" translate>ADMINISTRATION.FILE_MANAGEMENT.FILES</span>
+                <mat-spinner diameter="25" color="accent" *ngIf="loadingFiles"></mat-spinner>
             </div>
         </div>
 
         <div class="col-md-3">
-            <div class="card-counter darksalmon">
+            <div class="card-counter darksalmon" [class.loadingAnimation]="false">
                 <mat-icon class="icon">explore</mat-icon>
                 <span [countUp]="visitsCount" class="count-numbers">0</span>
                 <span class="count-name" translate>ADMINISTRATION.VISITS.VISITS</span>
+                <mat-spinner diameter="25" color="accent" *ngIf="loadingVisits"></mat-spinner>
             </div>
         </div>
+    </div>
 
-
+    <div class="row">
         <div class="col-md-3">
-            <div class="card-counter burlywood">
+            <div class="card-counter burlywood" [class.loadingAnimation]="false">
                 <mat-icon class="icon">supervised_user_circle</mat-icon>
                 <span [countUp]="usersCount" class="count-numbers">0</span>
                 <span class="count-name" translate>ADMINISTRATION.USERS.USERS</span>
+                <mat-spinner diameter="25" color="primary" *ngIf="loadingUsers"></mat-spinner>
             </div>
         </div>
     </div>

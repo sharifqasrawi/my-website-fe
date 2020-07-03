@@ -57,7 +57,8 @@ export class TrainingCoursesComponent implements OnInit {
       });
     });
 
-    this.store.dispatch(new TrainingCoursesActions.FetchStart());
+    if (!this.courses)
+      this.store.dispatch(new TrainingCoursesActions.FetchStart());
 
     this.store.select('courses').subscribe(state => {
       this.courses = state.courses;
@@ -127,7 +128,7 @@ export class TrainingCoursesComponent implements OnInit {
   onOpenDocuments(courseId: number) {
     this.bottomSheet.open(CourseDocumentsComponent, {
       disableClose: true,
-      data: { courseId: courseId}
+      data: { courseId: courseId }
     });
   }
 }

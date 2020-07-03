@@ -66,8 +66,11 @@ export class FilesComponent implements OnInit {
       });
     });
 
-    this.store.dispatch(new DirectoriesActions.FetchStart());
-    this.store.dispatch(new FilesActions.FetchStart());
+    if (!this.listPaths)
+      this.store.dispatch(new DirectoriesActions.FetchStart());
+
+    if (!this.files)
+      this.store.dispatch(new FilesActions.FetchStart());
 
     this.store.select('directories').subscribe(dirState => {
       this.listPaths = dirState.directories;
@@ -86,6 +89,7 @@ export class FilesComponent implements OnInit {
 
 
   onRefresh() {
+    this.store.dispatch(new DirectoriesActions.FetchStart());
     this.store.dispatch(new FilesActions.FetchStart());
     this.setTable(this.files);
   }

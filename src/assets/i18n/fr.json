@@ -308,7 +308,20 @@
     "PORTFOLIO": {
         "PORTFOLIO": "Portefeuille",
         "PROJECTS": {
-            "PROJECTS": "Projets"
+            "PROJECTS": "Projets",
+            "NAME": "Nom du projet",
+            "DESCRIPTION": "Description du projet",
+            "TYPE": "Type de projet",
+            "SIZE": "Taille du projet",
+            "DISPLAYED": "Affiché",
+            "GITHUB_URL": "URL GitHub",
+            "LIVE_DEMO_URL": "URL de démonstration en direct",
+            "VIDEO_DEMO_URL": "URL de démonstration vidéo",
+            "VIDEO_DEMO_URL_EXT": "URL externe de démonstration vidéo",
+            "IMAGE_PATH": "Chemin de l'image",
+            "SMALL": "Petit",
+            "MEDIUMBIG": "Moyen - Grand",
+            "TAGS": "Mots clés"
         }
     },
     "AUTH": {

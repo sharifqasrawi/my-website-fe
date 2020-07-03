@@ -93,6 +93,10 @@
     color: #FFF;
 }
 
+.card-counter.mediumvioletred {
+    background-color: mediumvioletred;
+    color: #FFF;
+}
 
 .card-counter i {
     font-size: 5em;
@@ -116,4 +120,17 @@
     opacity: 0.5;
     display: block;
     font-size: 18px;
+}
+
+.loadingAnimation {
+    animation: animLoading 1s ease-in-out infinite;
+}
+
+@keyframes animLoading {
+    0% {}
+    100% {
+        box-shadow: 4px 4px 20px #DADADA;
+        transition: .3s linear all;
+        transform: translateY(-10px);
+    }
 }

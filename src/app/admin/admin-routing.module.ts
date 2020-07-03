@@ -1,3 +1,4 @@
+import { EditProjectComponent } from './portfolio/projects/edit-project/edit-project.component';
 import { TagsComponent } from './tags/tags.component';
 import { SkillsComponent } from './cv/skills/skills.component';
 import { ProjectsComponent } from './portfolio/projects/projects.component';
@@ -52,7 +53,14 @@ const routes: Routes = [
             {
                 path: 'portfolio',
                 children: [
-                    { path: 'projects', component: ProjectsComponent }
+                    {
+                        path: 'projects',
+                        children: [
+                            { path: 'create', component: EditProjectComponent },
+                            { path: 'edit/:id', component: EditProjectComponent },
+                            { path: '', component: ProjectsComponent },
+                        ]
+                    }
                 ]
             },
             {

@@ -72,7 +72,8 @@ export class CvFilesComponent implements OnInit {
       filePath: new FormControl(null, [Validators.required]),
     });
 
-    this.store.dispatch(new CVFilesActions.FetchStart());
+    if (!this.cvFiles)
+      this.store.dispatch(new CVFilesActions.FetchStart());
 
     this.store.select('cvFiles').subscribe(state => {
       this.cvFiles = state.cvFiles;
@@ -97,7 +98,7 @@ export class CvFilesComponent implements OnInit {
     });
   }
 
-  onRefresh(){
+  onRefresh() {
     this.store.dispatch(new CVFilesActions.FetchStart());
   }
 

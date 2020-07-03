@@ -310,7 +310,20 @@
     "PORTFOLIO": {
         "PORTFOLIO": "Portfolio",
         "PROJECTS": {
-            "PROJECTS": "Projects"
+            "PROJECTS": "Projects",
+            "NAME": "Project name",
+            "DESCRIPTION": "Project description",
+            "TYPE": "Project type",
+            "SIZE": "Project size",
+            "DISPLAYED": "Displayed",
+            "GITHUB_URL": "GitHub URL",
+            "LIVE_DEMO_URL": "Live demo URL",
+            "VIDEO_DEMO_URL": "Video demo URL",
+            "VIDEO_DEMO_URL_EXT": "Video demo external URL",
+            "IMAGE_PATH": "Image path",
+            "SMALL": "Small",
+            "MEDIUMBIG": "Medium - Big",
+            "TAGS": "Tags"
         }
     },
     "AUTH": {

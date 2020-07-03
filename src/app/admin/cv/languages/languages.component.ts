@@ -57,7 +57,8 @@ export class LanguagesComponent implements OnInit, OnDestroy {
       });
     });
 
-    this.store.dispatch(new LanguagesActions.FetchStart());
+    if (!this.languages)
+      this.store.dispatch(new LanguagesActions.FetchStart());
 
     this.store.select('languages').subscribe(state => {
       this.languages = state.languages;

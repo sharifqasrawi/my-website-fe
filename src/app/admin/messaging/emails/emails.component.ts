@@ -54,7 +54,8 @@ export class EmailsComponent implements OnInit {
       });
     });
 
-    this.store.dispatch(new MessagingActions.FetchEmailsStart());
+    if (!this.messages)
+      this.store.dispatch(new MessagingActions.FetchEmailsStart());
 
     this.store.select('messaging').subscribe(messagesState => {
       this.messages = messagesState.emailMessages;

@@ -17,6 +17,7 @@ import * as LanguagesActions from '../cv/languages/store/languages.actions';
 import * as TrainingCoursesActions from '../cv/training-courses/store/courses.actions';
 import * as CVFilesActions from '../cv/cv-files/store/cvfiles.actions';
 import * as SkillsActions from './../cv/skills/store/skills.actions';
+import * as TagsActions from './../tags/store/tags.actions';
 
 
 @Component({
@@ -27,17 +28,43 @@ import * as SkillsActions from './../cv/skills/store/skills.actions';
 export class DashboardComponent implements OnInit {
 
   usersCount = 0;
+  loadingUsers = false;
+
   messagesCount = 0;
+  loadingMessages = false;
+
   directoriesCount = 0;
+  loadingDirectories = false;
+
   filesCount = 0;
+  loadingFiles = false;
+
   sentEmailsCount = 0;
+  loadingSentEmails = false;
+
   visitsCount = 0;
+  loadingVisits = false;
+
   educationsCount = 0;
+  loadingEducations = false;
+
   experiencesCount = 0;
+  loadingExperiences = false;
+
   languagesCount = 0;
+  loadingLanguages = false;
+
   coursesCount = 0;
+  loadingCourses = false;
+
   cvFileCount = 0;
+  loadingCvFiles = false;
+
   skillsCount = 0;
+  loadingSkills = false;
+
+  tagsCount = 0;
+  loadingTags = false;
 
   constructor(
     private store: Store<fromApp.AppState>,
@@ -58,28 +85,44 @@ export class DashboardComponent implements OnInit {
     this.getData();
 
     this.store.select('users').pipe(map(state => state.users.length)).subscribe(count => this.usersCount = count);
+    this.store.select('users').pipe(map(state => state.loading)).subscribe(loading => this.loadingUsers = loading);
 
     this.store.select('directories').pipe(map(state => state.directories.length)).subscribe(count => this.directoriesCount = count);
+    this.store.select('directories').pipe(map(state => state.loading)).subscribe(loading => this.loadingDirectories = loading);
 
     this.store.select('files').pipe(map(state => state.files.length)).subscribe(count => this.filesCount = count);
+    this.store.select('files').pipe(map(state => state.loading)).subscribe(loading => this.loadingFiles = loading);
 
     this.store.select('visits').pipe(map(state => state.visits.length)).subscribe(count => this.visitsCount = count);
+    this.store.select('visits').pipe(map(state => state.loadingVisits)).subscribe(loading => this.loadingVisits = loading);
 
     this.store.select('education').pipe(map(state => state.educations.length)).subscribe(count => this.educationsCount = count);
+    this.store.select('education').pipe(map(state => state.loading)).subscribe(loading => this.loadingEducations = loading);
 
     this.store.select('experiences').pipe(map(state => state.experiences.length)).subscribe(count => this.experiencesCount = count);
+    this.store.select('experiences').pipe(map(state => state.loading)).subscribe(loading => this.loadingExperiences = loading);
 
     this.store.select('languages').pipe(map(state => state.languages.length)).subscribe(count => this.languagesCount = count);
+    this.store.select('languages').pipe(map(state => state.loading)).subscribe(loading => this.loadingLanguages = loading);
 
     this.store.select('courses').pipe(map(state => state.courses.length)).subscribe(count => this.coursesCount = count);
+    this.store.select('courses').pipe(map(state => state.loading)).subscribe(loading => this.loadingCourses = loading);
 
     this.store.select('skills').pipe(map(state => state.skills.length)).subscribe(count => this.skillsCount = count);
+    this.store.select('skills').pipe(map(state => state.loadingSkills)).subscribe(loading => this.loadingSkills = loading);
 
     this.store.select('cvFiles').pipe(map(state => state.cvFiles.length)).subscribe(count => this.cvFileCount = count);
+    this.store.select('cvFiles').pipe(map(state => state.loading)).subscribe(loading => this.loadingCvFiles = loading);
+
+    this.store.select('tags').pipe(map(state => state.tags.length)).subscribe(count => this.tagsCount = count);
+    this.store.select('tags').pipe(map(state => state.loading)).subscribe(loading => this.loadingTags = loading);
 
 
     this.store.select('messaging').subscribe(state => {
-      this.messagesCount = state.messages.length; this.sentEmailsCount = state.emailMessages.length;
+      this.messagesCount = state.messages.length;
+      this.sentEmailsCount = state.emailMessages.length;
+      this.loadingMessages = state.loading;
+      this.loadingSentEmails = state.loading;
     });
 
 
@@ -105,6 +148,7 @@ export class DashboardComponent implements OnInit {
     this.store.dispatch(new LanguagesActions.FetchStart());
     this.store.dispatch(new TrainingCoursesActions.FetchStart());
     this.store.dispatch(new CVFilesActions.FetchStart());
+    this.store.dispatch(new TagsActions.FetchStart());
 
 
   }

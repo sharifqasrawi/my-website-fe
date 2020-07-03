@@ -1,1 +1,68 @@
-<p>projects works!</p>
+<div class="adminPageTop">
+    <div class="row">
+        <div class="col-md-8">
+            <h1>
+                <fa-icon [icon]="faProjectDiagram"></fa-icon>
+                {{ 'PORTFOLIO.PROJECTS.PROJECTS' | translate }}
+            </h1>
+        </div>
+        <div class="col-md-2">
+            <button mat-raised-button color="accent" class="btn-block mt-1" (click)="onRefresh()">
+                <mat-icon>autorenew</mat-icon>
+            </button>
+        </div>
+        <div class="col-md-2">
+            <a mat-raised-button [routerLink]="['/admin', 'portfolio', 'projects', 'create']" color="primary"
+                class="btn-block mt-1">
+                {{ 'COMMON.CREATE' | translate }}
+            </a>
+        </div>
+    </div>
+
+    <hr>
+</div>
+
+<div class="adminPageBottom">
+    <mat-spinner *ngIf="loading" color="accent" style="margin: 0 auto;"></mat-spinner>
+    <div *ngIf="errors">
+        <div class="alert alert-danger" *ngFor="let error of errors">{{error}}</div>
+    </div>
+
+    <div *ngIf="loaded">
+        <div class="projectBox mat-elevation-z8" *ngFor="let project of projects">
+            <div class="projectImage">
+                <img [src]="project.imagePath" alt="image">
+            </div>
+            <div class="projectBadge" *ngIf="project.isDisplayed">
+                {{  'PORTFOLIO.PROJECTS.DISPLAYED' | translate }}
+            </div>
+            <div class="projectBody">
+                <div>
+                    <h3 *ngIf="currentLang === 'en'" class="text-center"> <b>{{ project.name_EN }}</b> </h3>
+                    <h3 *ngIf="currentLang === 'fr'" class="text-center"> <b>{{ project.name_FR }}</b> </h3>
+                </div>
+                <div>
+                    <p>
+                        <b> {{ 'PORTFOLIO.PROJECTS.TYPE' | translate }}: </b> {{ project.type }}
+                    </p>
+                    <p>
+                        <b> {{ 'PORTFOLIO.PROJECTS.SIZE' | translate }}: </b>
+                        {{ 'PORTFOLIO.PROJECTS.' + project.size.toUpperCase() | translate }}
+                    </p>
+                </div>
+            </div>
+            <div class="projectActions">
+                <span style="cursor: pointer; color:greenyellow;" (click)="onEditTags(project.id)">
+                    <fa-icon [icon]="faTags"></fa-icon>
+                </span>
+                <a [routerLink]="['/admin', 'portfolio', 'projects' ,'edit', project.id]"
+                    style="cursor: pointer; color:blue;">
+                    <fa-icon [icon]="faEdit"></fa-icon>
+                </a>
+                <span style="cursor: pointer; color:red;" (click)="onDelete(project.id)">
+                    <fa-icon [icon]="faTrash"></fa-icon>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
