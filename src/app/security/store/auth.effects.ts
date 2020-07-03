@@ -167,8 +167,8 @@ export class Authffects {
         ofType(AuthActions.LOGIN_SUCCESS),
         tap((authSuccessAction: AuthActions.LoginSuccess) => {
             if (authSuccessAction.payload.redirect) {
-                this.router.navigate(['/', 'admin']);
-                // this.router.navigateByUrl(this.route.snapshot.queryParams['returnUrl']);
+                // this.router.navigate(['/', 'admin']);
+                this.router.navigateByUrl(this.route.snapshot.queryParams['returnUrl']);
             }
         })
     );

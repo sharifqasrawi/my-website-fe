@@ -28,8 +28,15 @@ export class AdminGuard implements CanActivate {
         return this.store.select('auth').pipe(
             take(1),
             map(authState => {
-                console.log(authState);
-                const isAuth = !!authState.user;
+
+                const userData: {
+                    username: string;
+                    id: string;
+                    token: string;
+                    expiresIn: string;
+                } = JSON.parse(localStorage.getItem('userData'));
+
+                const isAuth = !!userData;
                 let isAdmin = false;
 
                 if (isAuth) {
@@ -40,9 +47,9 @@ export class AdminGuard implements CanActivate {
                         unique_name: string,
                         given_name: string,
                         family_name: string,
-                    } = jwt_decode(authState.user.token);
+                    } = jwt_decode(userData.token);
 
-                    isAdmin = authState.isAdmin && decodedToken.role === 'Admin';
+                    isAdmin = decodedToken.role === 'Admin';
                 }
 
                 if (isAuth && isAdmin) {
