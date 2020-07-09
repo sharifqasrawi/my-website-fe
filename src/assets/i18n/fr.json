@@ -210,6 +210,7 @@
     },
     "CV": {
         "CV": "CV",
+        "CV2": "Curriculum Vitae",
         "PERSONAL_INFO": {
             "PERSONAL_INFO": "Info personnelles",
             "MARITAL_STATUS": "État civil",
@@ -241,7 +242,8 @@
             "FILE_PATH": "Chemin du fichier",
             "LANGUAGE": "Langue",
             "LAST_UPDATE": "Dernière mise à jour",
-            "ADD_NEW_FILE": "Ajouter un nouveau fichier"
+            "ADD_NEW_FILE": "Ajouter un nouveau fichier",
+            "CHOOSE_LANGUAGE": "Veuillez choisir la langue du CV à télécharger"
         },
         "EDUCATION": {
             "EDUCATION": "Éducation",
@@ -254,7 +256,9 @@
             "YEARS_COUNT": "Durée d'étude",
             "NOTE": "La Note",
             "START_DATE": "Date de début",
-            "GRADUATE_DATE": "Date de fin d'études"
+            "GRADUATE_DATE": "Date de fin d'études",
+            "START_YEAR": "Année de début",
+            "GRADUATE_YEAR": "Année d'obtention du diplôme"
         },
         "EXPERIENCES": {
             "EXPERIENCES": "Expériences",
@@ -334,6 +338,19 @@
         "SENT_RESET_LINK": "Le lien de réinitialisation du mot de passe a été envoyé à votre adresse e-mail",
         "ENTER_USERNAME_PASSWORD": "Saisissez votre nom d'utilisateur et votre mot de passe"
     },
+    "FOOTER": {
+        "CREATED_BY": "Créé par",
+        "VERSION": "Version",
+        "CONTACT": "Nous contacter",
+        "CONTACT_FORM": "Formulaire de contact",
+        "REPORT_BUG": "Signaler un bug",
+        "RATE_WEBSITE": "Notez mon site Web",
+        "CHOOSE_STARS": "Choisissez 1 - 5 étoile (s)",
+        "THANK_FEEDBACK": "Merci pour votre avis",
+        "LOGIN_TO_RATE_WEBSITE": "Veuillez vous connecter pour noter ce site Web",
+        "PRIVACY_POLICY": "Politique de confidentialité",
+        "USEFUL_LINKS": "Liens utiles"
+    },
     "VALIDATION": {
         "REQUIRED": "Ce champ est obligatoire",
         "INVALID_EMAIL": "Veuillez saisir une adresse email valide.",
@@ -344,5 +361,14 @@
         "ACCESS_DENIED": "Accès refusé",
         "ERROR404": "Erreur 404 introuvable",
         "OOPS": "Oops! Une erreur est survenue"
+    },
+    "LANGUAGES": {
+        "ENGLISH": "Anglais",
+        "FRENCH": "Français"
+    },
+    "BREADCRUMBS": {
+        "HOME": "Acceuil",
+        "CV": "CV",
+        "PORTFOLIO": "Portfolio"
     }
 }

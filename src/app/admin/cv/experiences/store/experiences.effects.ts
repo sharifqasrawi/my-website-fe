@@ -25,8 +25,9 @@ export class ExperiencesEffects {
     @Effect()
     fetchExperiences = this.actions$.pipe(
         ofType(ExperiencesActions.FETCH_START),
-        switchMap(() => {
-            return this.http.get<{ experiences: Experience[] }>(environment.API_BASE_URL + 'experiences',
+        switchMap((expInfo: ExperiencesActions.FetchStart) => {
+            const fetchUrl = expInfo.payload && expInfo.payload === 'admin' ? 'experiences/admin' : 'experiences';
+            return this.http.get<{ experiences: Experience[] }>(environment.API_BASE_URL + fetchUrl,
                 {
                     headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.token)
                         .append('language', this.translate.currentLang),

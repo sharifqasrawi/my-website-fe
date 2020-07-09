@@ -1,0 +1,74 @@
+.courseBox {
+    padding: 14px;
+    background-color: rgba(46, 46, 46, 0.8);
+}
+
+
+.info {
+    animation: animInfo .4s ease-in forwards;
+}
+@keyframes animInfo {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+pre {
+    color: lightgrey;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+    width: 100%;
+    overflow-y: auto;
+    text-align: justify;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.docBox{
+    width: 100%;
+    padding: 8px;
+    border: 2px dashed grey;
+    margin-bottom: 10px;
+    margin-top: 10px;
+
+}
+
+b{
+    color: gray;
+}
+
+/* Loader */
+.loader{
+    opacity: 0.8;
+    animation: loaderAnim .9s ease-in-out infinite;
+}
+
+@keyframes loaderAnim{
+    0%{
+        opacity: 0.3;
+    }
+    25%{
+        opacity: 0.5;
+    }
+    50%{
+        opacity: 0.8;
+    }
+    75%{
+        opacity: 0.5;
+    }
+    100%{
+        opacity: 0.3;
+    }
+}
+
+.loader p {
+    width: 100%;
+    background-color: darkslategrey;
+    border-radius: 10px;
+}

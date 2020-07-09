@@ -1,0 +1,27 @@
+
+.CatTitle {
+    border-radius: .2em .2em 0 0;
+    display: inline-block;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: .3em .5em;
+    font-size: 12pt;
+    font-weight: bold;
+    /* width: 200px; */
+    color:lightgrey;
+}
+
+.CatTitleAfter {
+    display: block;
+    height: .1em;
+    padding: 0;
+    margin: 0 ;
+}
+
+.CatTitleColor {
+    background: rgb(85, 84, 84) none repeat scroll 0 0;
+}
+
+.CatTitleAfterColor {
+    border: 2px solid rgb(85, 84, 84) ;
+}

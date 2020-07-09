@@ -1,0 +1,200 @@
+<div class="info">
+    <h1>
+        <fa-icon [icon]="faGraduationCap"></fa-icon>
+        {{ 'CV.EDUCATION.EDUCATION' | translate }}
+    </h1>
+    <hr>
+
+    <div *ngIf="errors">
+        <div class="alert alert-danger" *ngFor="let error of errors">
+            {{ error }}
+        </div>
+    </div>
+
+    <div class="info" *ngIf="loaded">
+        <div class="timeline">
+            <div *ngFor="let edu of educations">
+                <div class="timeline-month">
+                    {{ edu.graduateDate | date:'yyyy' }}
+                </div>
+                <div class="timeline-section">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="timeline-box">
+                                <div class="box-title">
+                                    <fa-icon [icon]="faAsterisk" class="mr-2"></fa-icon>
+                                    <strong *ngIf="currentLang === 'en'">{{ edu.title_EN }}</strong>
+                                    <strong *ngIf="currentLang === 'fr'">{{ edu.title_FR }}</strong>
+
+                                    <span *ngIf="currentLang === 'en'"
+                                        class="badge badge-light ml-3">{{ edu.specialization_FR }}</span>
+                                    <span *ngIf="currentLang === 'fr'"
+                                        class="badge badge-light ml-3">{{ edu.specialization_FR }}</span>
+                                </div>
+                                <div class="box-content">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="box-item">
+                                                <strong>{{ 'CV.EDUCATION.START_YEAR' | translate }}</strong>:
+                                                {{ edu.startDate | date:'yyyy' }}
+                                            </div>
+                                            <div class="box-item">
+                                                <strong>{{ 'CV.EDUCATION.GRADUATE_YEAR' | translate }}</strong>:
+                                                {{ edu.graduateDate | date:'yyyy' }}
+                                            </div>
+                                            <div class="box-item">
+                                                <strong>{{ 'CV.EDUCATION.YEARS_COUNT' | translate }}</strong>:
+                                                {{ edu.yearsCount }}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="box-item">
+                                                <strong>{{ 'CV.EDUCATION.MENTION' | translate }}</strong>:
+                                                <span *ngIf="currentLang === 'en'">{{ edu.mention_EN }}</span>
+                                                <span *ngIf="currentLang === 'fr'">{{ edu.mention_FR }}</span>
+                                            </div>
+                                            <div class="box-item">
+                                                <strong>{{ 'CV.EDUCATION.NOTE' | translate }}</strong>:
+                                                {{ edu.note }}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="box-item">
+                                                <strong>{{ 'CV.EDUCATION.ESTABLISHMENT' | translate }}</strong>:
+                                                <span *ngIf="currentLang === 'en'">{{ edu.establishment_EN }}</span>
+                                                <span *ngIf="currentLang === 'fr'">{{ edu.establishment_FR }}</span>
+                                            </div>
+                                            <div class="box-item">
+                                                <strong>{{ 'CV.EDUCATION.COUNTRY' | translate }}</strong>:
+                                                <span *ngIf="currentLang === 'en'">{{ edu.country_EN }}</span>
+                                                <span *ngIf="currentLang === 'fr'">{{ edu.country_FR }}</span>
+                                            </div>
+                                            <div class="box-item">
+                                                <strong>{{ 'CV.EDUCATION.CITY' | translate }}</strong>:
+                                                <span *ngIf="currentLang === 'en'">{{ edu.city_EN }}</span>
+                                                <span *ngIf="currentLang === 'fr'">{{ edu.city_FR }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-footer">
+                                    <div *ngIf="edu.documents.length ===0 ">&nbsp;</div>
+                                    <div *ngIf="edu.documents.length > 0">
+                                        <mat-accordion>
+                                            <mat-expansion-panel style="background-color: transparent;">
+                                                <mat-expansion-panel-header>
+                                                    <mat-panel-title>
+                                                        <strong>
+                                                            <fa-icon [icon]="faFileAlt"></fa-icon>
+                                                            Documents:
+                                                        </strong>
+                                                    </mat-panel-title>
+
+                                                </mat-expansion-panel-header>
+                                                <div class="docBox" *ngFor="let doc of edu.documents">
+                                                    <p>
+                                                        <b>{{ 'CV.DOCUMENTS.NAME' | translate }}: </b>
+                                                        <span *ngIf="currentLang === 'en'">{{ doc.name_EN }}</span>
+                                                        <span *ngIf="currentLang === 'fr'">{{ doc.name_FR }}</span>
+                                                    </p>
+                                                    <b>{{ 'CV.DOCUMENTS.DESCRIPTION' | translate }}: </b>
+                                                    <pre *ngIf="currentLang === 'en'">{{ doc.description_EN }}</pre>
+                                                    <pre *ngIf="currentLang === 'fr'">{{ doc.description_FR }}</pre>
+
+                                                    <div style="display: flex; justify-content: space-around;">
+                                                        <a style="cursor:pointer; color:fuchsia"
+                                                            *ngIf="doc.type === '.pdf'" (click)="onViewPdf(doc.path)">
+                                                            <fa-icon [icon]="faEye"></fa-icon>
+                                                            {{ 'COMMON.VIEW' | translate }}
+                                                        </a>
+                                                        <a style="cursor:pointer; color:fuchsia"
+                                                            *ngIf="doc.type === '.jpg' || doc.type === '.jpeg' || doc.type === '.png'"
+                                                            (click)="onViewImage(doc.path)">
+                                                            <fa-icon [icon]="faEye"></fa-icon>
+                                                            {{ 'COMMON.VIEW' | translate }}
+                                                        </a>
+                                                        <a style="color:greenyellow" [href]="doc.path" target="_blank">
+                                                            <fa-icon [icon]="faDownload"></fa-icon>
+                                                            {{ 'COMMON.DOWNLOAD' | translate }}
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+                                            </mat-expansion-panel>
+                                        </mat-accordion>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <div class="loader" *ngIf="loading">
+        <div class="timeline">
+            <div *ngFor="let i of [].constructor(2)">
+                <div class="timeline-month">
+                    <p>&nbsp;</p>
+                </div>
+                <div class="timeline-section">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="timeline-box">
+                                <div class="box-title">
+                                    <strong>&nbsp;</strong>
+                                </div>
+                                <div class="box-content">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="box-item">
+                                                <p>&nbsp;</p>
+                                            </div>
+                                            <div class="box-item">
+                                                <p>&nbsp;</p>
+                                            </div>
+                                            <div class="box-item">
+                                                <p>&nbsp;</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="box-item">
+                                                <p>&nbsp;</p>
+                                            </div>
+                                            <div class="box-item">
+                                                <p>&nbsp;</p>
+                                            </div>
+                                            <div class="box-item">
+                                                <p>&nbsp;</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="box-item">
+                                                <p>&nbsp;</p>
+                                            </div>
+                                            <div class="box-item">
+                                                <p>&nbsp;</p>
+                                            </div>
+                                            <div class="box-item">
+                                                <p>&nbsp;</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-footer">
+                                    <div>&nbsp;</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

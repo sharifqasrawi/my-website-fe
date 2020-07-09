@@ -212,6 +212,7 @@
     },
     "CV": {
         "CV": "CV",
+        "CV2": "Curriculum Vitae",
         "PERSONAL_INFO": {
             "PERSONAL_INFO": "Personal Info",
             "MARITAL_STATUS": "Marital Status",
@@ -243,7 +244,8 @@
             "FILE_PATH": "File path",
             "LANGUAGE": "Language",
             "LAST_UPDATE": "Last update",
-            "ADD_NEW_FILE": "Add new file"
+            "ADD_NEW_FILE": "Add new file",
+            "CHOOSE_LANGUAGE": "Please choose desired CV language to download"
         },
         "EDUCATION": {
             "EDUCATION": "Education",
@@ -256,7 +258,9 @@
             "YEARS_COUNT": "Years count",
             "NOTE": "Note",
             "START_DATE": "Start date",
-            "GRADUATE_DATE": "Graduation date"
+            "GRADUATE_DATE": "Graduation date",
+            "START_YEAR": "Start year",
+            "GRADUATE_YEAR": "Graduation year"
         },
         "EXPERIENCES": {
             "EXPERIENCES": "Experiences",
@@ -336,6 +340,19 @@
         "SENT_RESET_LINK": "Password reset link was sent to your email address",
         "ENTER_USERNAME_PASSWORD": "Enter your username and password"
     },
+    "FOOTER": {
+        "CREATED_BY": "Created by",
+        "VERSION": "Version",
+        "CONTACT": "Contact",
+        "CONTACT_FORM": "Contact form",
+        "REPORT_BUG": "Report a bug",
+        "RATE_WEBSITE": "Rate my website",
+        "CHOOSE_STARS": "Choose 1 - 5 star(s)",
+        "THANK_FEEDBACK": "Thank you for your feedback",
+        "LOGIN_TO_RATE_WEBSITE": "Please login to rate this website",
+        "PRIVACY_POLICY": "Privacy Policy",
+        "USEFUL_LINKS": "Useful links"
+    },
     "VALIDATION": {
         "REQUIRED": "This field is required.",
         "INVALID_EMAIL": "Please enter a valid email address.",
@@ -346,5 +363,14 @@
         "ACCESS_DENIED": "Access Denied",
         "ERROR404": "Error 404. Not Found",
         "OOPS": "Oops! An error occured"
+    },
+    "LANGUAGES": {
+        "ENGLISH": "English",
+        "FRENCH": "French"
+    },
+    "BREADCRUMBS": {
+        "HOME": "Home",
+        "CV": "CV",
+        "PORTFOLIO": "Portfolio"
     }
 }

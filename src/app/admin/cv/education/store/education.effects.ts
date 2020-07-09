@@ -25,8 +25,10 @@ export class EducationEffects {
     @Effect()
     fetchEducations = this.actions$.pipe(
         ofType(EducationActions.FETCH_START),
-        switchMap(() => {
-            return this.http.get<{ educations: Education[] }>(environment.API_BASE_URL + 'educations',
+        switchMap((eduInfo: EducationActions.FetchStart) => {
+            const fetchUrl = eduInfo.payload && eduInfo.payload === 'admin' ? 'educations/admin' : 'educations';
+
+            return this.http.get<{ educations: Education[] }>(environment.API_BASE_URL + fetchUrl,
                 {
                     headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.token)
                         .append('language', this.translate.currentLang),

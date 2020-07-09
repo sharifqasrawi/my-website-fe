@@ -77,8 +77,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     ]),
     MaterialModule,
     CountUpModule,
-    SharedModule,
-    CoreModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -86,6 +84,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
+    SharedModule,
+    CoreModule,
     AppRoutingModule,
   ],
   providers: [],

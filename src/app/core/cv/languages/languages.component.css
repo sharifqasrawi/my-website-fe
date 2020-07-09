@@ -1,0 +1,93 @@
+.langBox{
+    width: 200px;
+    border-radius: 10px;
+    margin: 10px 20px 10px 0;
+    display: inline-block;
+    position: relative;
+}
+
+.langBox .langHead{
+    padding: 5px;
+    text-align: center;
+    border-radius: 10px 10px 0 0;
+    border-bottom: 1px solid grey;
+}
+
+.langBox .langBody{
+    margin: 0 auto;
+    display: inline;
+    float: none;
+}
+
+.info {
+    animation: animInfo .4s ease-in forwards;
+}
+@keyframes animInfo {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+pre {
+    color: lightgrey;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+    width: 100%;
+    overflow-y: auto;
+    text-align: justify;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.langDocBox{
+    width: 100%;
+    padding: 8px;
+    border: 2px dashed grey;
+    margin-bottom: 10px;
+    margin-top: 10px;
+
+}
+
+
+
+@media (max-width: 494px){
+    .langBox{
+        width: 100%;
+    }
+}
+
+/* Loader */
+.loader{
+    opacity: 0.8;
+    animation: loaderAnim .9s ease-in-out infinite;
+}
+
+@keyframes loaderAnim{
+    0%{
+        opacity: 0.3;
+    }
+    25%{
+        opacity: 0.5;
+    }
+    50%{
+        opacity: 0.8;
+    }
+    75%{
+        opacity: 0.5;
+    }
+    100%{
+        opacity: 0.3;
+    }
+}
+
+.loader .langHead span{
+    width: 100%;
+    background-color: darkslategrey;
+    border-radius: 10px;
+}

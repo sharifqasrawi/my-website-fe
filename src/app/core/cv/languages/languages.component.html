@@ -1,0 +1,130 @@
+<div class="info">
+    <h1>
+        <fa-icon [icon]="faGlobe"></fa-icon>
+        {{ 'CV.LANGUAGES.LANGUAGES' | translate }}
+    </h1>
+    <hr>
+
+    <div *ngIf="errors">
+        <div class="alert alert-danger" *ngFor="let error of errors">
+            {{ error }}
+        </div>
+    </div>
+
+    <div class="info" *ngIf="loaded">
+        <div *ngFor="let language of languages" class="mb-5">
+            <app-text-header [text]="language.name_EN" *ngIf="currentLang==='en'"></app-text-header>
+            <app-text-header [text]="language.name_FR" *ngIf="currentLang==='fr'"></app-text-header>
+            <div class="mat-elevation-z4 " style=" background-color: rgba(46, 46, 46, 0.8);">
+                <div style="display: flex; justify-content: space-around;">
+                    <div style="display: inline-block;" class="langBox mat-elevation-z4">
+                        <div class="langHead">
+                            <span style="text-transform: uppercase;"> {{ 'CV.LANGUAGES.READ' | translate }}</span>
+                        </div>
+                        <div class="langBody">
+                            <app-circle-chart [value]="language.levelRead" [size]="'small'">
+                            </app-circle-chart>
+                        </div>
+                    </div>
+                    <div style="display: inline-block;" class="langBox mat-elevation-z4">
+                        <div class="langHead">
+                            <span style="text-transform: uppercase;"> {{ 'CV.LANGUAGES.WRITE' | translate }}</span>
+                        </div>
+                        <div class="langBody">
+                            <app-circle-chart [value]="language.levelWrite" [size]="'small'">
+                            </app-circle-chart>
+                        </div>
+                    </div>
+                    <div style="display: inline-block;" class="langBox mat-elevation-z4">
+                        <div class="langHead">
+                            <span style="text-transform: uppercase;"> {{ 'CV.LANGUAGES.SPEAK' | translate }}</span>
+                        </div>
+                        <div class="langBody">
+                            <app-circle-chart [value]="language.levelSpeak" [size]="'small'">
+                            </app-circle-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-3" *ngIf="language.documents.length > 0">
+                    <mat-accordion>
+                        <mat-expansion-panel style="background-color: rgba(100, 100, 100, 0.3);">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    <strong>
+                                        <fa-icon [icon]="faFileAlt"></fa-icon>
+                                        Documents:
+                                    </strong>
+                                </mat-panel-title>
+
+                            </mat-expansion-panel-header>
+                            <div class="langDocBox" *ngFor="let doc of language.documents">
+                                <p>
+                                    <strong>{{ 'CV.DOCUMENTS.NAME' | translate }}: </strong>
+                                    <span *ngIf="currentLang === 'en'">{{ doc.name_EN }}</span>
+                                    <span *ngIf="currentLang === 'fr'">{{ doc.name_FR }}</span>
+                                </p>
+                                <strong>{{ 'CV.DOCUMENTS.DESCRIPTION' | translate }}: </strong>
+                                <pre *ngIf="currentLang === 'en'">{{ doc.description_EN }}</pre>
+                                <pre *ngIf="currentLang === 'fr'">{{ doc.description_FR }}</pre>
+
+                                <div style="display: flex; justify-content: space-around;">
+                                    <a style="cursor:pointer; color:fuchsia" *ngIf="doc.type === '.pdf'"
+                                        (click)="onViewPdf(doc.path)">
+                                        <fa-icon [icon]="faEye"></fa-icon>
+                                        {{ 'COMMON.VIEW' | translate }}
+                                    </a>
+                                    <a style="cursor:pointer; color:fuchsia"
+                                        *ngIf="doc.type === '.jpg' || doc.type === '.jpeg' || doc.type === '.png'"
+                                        (click)="onViewImage(doc.path)">
+                                        <fa-icon [icon]="faEye"></fa-icon>
+                                        {{ 'COMMON.VIEW' | translate }}
+                                    </a>
+                                    <a style="color:greenyellow" [href]="doc.path" target="_blank">
+                                        <fa-icon [icon]="faDownload"></fa-icon>
+                                        {{ 'COMMON.DOWNLOAD' | translate }}
+                                    </a>
+                                </div>
+                            </div>
+
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="loader" *ngIf="loading">
+        <div *ngFor="let i of [].constructor(2)" class="mb-5">
+            <app-text-header text="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"></app-text-header>
+
+            <div class="mat-elevation-z4 " style=" background-color: rgba(46, 46, 46, 0.8);">
+                <div style="display: flex; justify-content: space-around;">
+                    <div style="display: inline-block;" class="langBox mat-elevation-z4">
+                        <div class="langHead">
+                            <span>&nbsp;</span>
+                        </div>
+                        <div class="langBody">
+                            <app-circle-chart value="" [size]="'small'"></app-circle-chart>
+                        </div>
+                    </div>
+                    <div style="display: inline-block;" class="langBox mat-elevation-z4">
+                        <div class="langHead">
+                            <span>&nbsp;</span>
+                        </div>
+                        <div class="langBody">
+                            <app-circle-chart value="" [size]="'small'"></app-circle-chart>
+                        </div>
+                    </div>
+                    <div style="display: inline-block;" class="langBox mat-elevation-z4">
+                        <div class="langHead">
+                            <span>&nbsp;</span>
+                        </div>
+                        <div class="langBody">
+                            <app-circle-chart value="" [size]="'small'"></app-circle-chart>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

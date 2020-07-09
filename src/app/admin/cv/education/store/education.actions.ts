@@ -40,6 +40,8 @@ export const CLEAR_CREATE = '[Education] Clear Create';
 
 export class FetchStart implements Action {
     readonly type = FETCH_START;
+
+    constructor(public payload?: string) { }
 }
 
 export class FetchSuccess implements Action {

@@ -1,0 +1,143 @@
+<div class="info">
+    <h1>
+        <fa-icon [icon]="faListAlt"></fa-icon>
+        {{ 'CV.COURSES.COURSES' | translate }}
+    </h1>
+    <hr>
+    <div *ngIf="errors">
+        <div class="alert alert-danger" *ngFor="let error of errors">
+            {{ error }}
+        </div>
+    </div>
+    <div class="info" *ngIf="loaded">
+        <div *ngFor="let course of courses" class="mb-5">
+            <app-text-header [text]="course.name"></app-text-header>
+            <div class="courseBox mat-elevation-z4">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div>
+                            <p> <b>{{ 'CV.COURSES.TYPE' | translate }}: </b> {{ course.type }} </p>
+                        </div>
+                        <div>
+                            <p>
+                                <b>{{ 'CV.COURSES.ESTABLISHMENT' | translate }}: </b>
+                                {{ course.establishment }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div>
+                            <p> <b>{{ 'CV.COURSES.DURATION' | translate }}: </b> {{course.duration }} </p>
+                        </div>
+
+                        <div>
+                            <p> <b>{{ 'CV.COURSES.DATETIME' | translate }}: </b> {{course.dateTime | date:'longDate' }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div>
+                            <p *ngIf="currentLang === 'en' && course.country_EN">
+                                <b>{{ 'CV.COURSES.COUNTRY' | translate }}: </b>
+                                {{ course.country_EN }}
+                            </p>
+                            <p *ngIf="currentLang === 'en' && course.city_EN"><b>{{ 'CV.COURSES.CITY' | translate }}:
+                                </b>
+                                {{ course.city_EN }}</p>
+                            <p *ngIf="currentLang === 'fr' && course.country_FR">
+                                <b>{{ 'CV.COURSES.COUNTRY' | translate }}:
+                                </b>
+                                {{ course.country_FR }}</p>
+                            <p *ngIf="currentLang === 'fr' && course.city_FR"><b>{{ 'CV.COURSES.CITY' | translate }}:
+                                </b>
+                                {{ course.city_FR }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="p-3" *ngIf="course.documents.length > 0">
+                            <mat-accordion>
+                                <mat-expansion-panel style="background-color: rgba(100, 100, 100, 0.3);">
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            <strong>
+                                                <fa-icon [icon]="faFileAlt"></fa-icon>
+                                                Documents:
+                                            </strong>
+                                        </mat-panel-title>
+
+                                    </mat-expansion-panel-header>
+                                    <div class="docBox" *ngFor="let doc of course.documents">
+                                        <p>
+                                            <b>{{ 'CV.DOCUMENTS.NAME' | translate }}: </b>
+                                            <span *ngIf="currentLang === 'en'">{{ doc.name_EN }}</span>
+                                            <span *ngIf="currentLang === 'fr'">{{ doc.name_FR }}</span>
+                                        </p>
+                                        <b>{{ 'CV.DOCUMENTS.DESCRIPTION' | translate }}: </b>
+                                        <pre *ngIf="currentLang === 'en'">{{ doc.description_EN }}</pre>
+                                        <pre *ngIf="currentLang === 'fr'">{{ doc.description_FR }}</pre>
+
+                                        <div style="display: flex; justify-content: space-around;">
+                                            <a style="cursor:pointer; color:fuchsia" *ngIf="doc.type === '.pdf'"
+                                                (click)="onViewPdf(doc.path)">
+                                                <fa-icon [icon]="faEye"></fa-icon>
+                                                {{ 'COMMON.VIEW' | translate }}
+                                            </a>
+                                            <a style="cursor:pointer; color:fuchsia"
+                                                *ngIf="doc.type === '.jpg' || doc.type === '.jpeg' || doc.type === '.png'"
+                                                (click)="onViewImage(doc.path)">
+                                                <fa-icon [icon]="faEye"></fa-icon>
+                                                {{ 'COMMON.VIEW' | translate }}
+                                            </a>
+                                            <a style="color:greenyellow" [href]="doc.path" target="_blank">
+                                                <fa-icon [icon]="faDownload"></fa-icon>
+                                                {{ 'COMMON.DOWNLOAD' | translate }}
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="loader" *ngIf="loading">
+        <div *ngFor="let i of [].constructor(3)" class="mb-5">
+            <app-text-header text="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"></app-text-header>
+            <div class="courseBox mat-elevation-z4">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div>
+                            <p> &nbsp;</p>
+                        </div>
+                        <div>
+                            <p> &nbsp;</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div>
+                            <p> &nbsp;</p>
+                        </div>
+
+                        <div>
+                            <p> &nbsp;</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div>
+                            <p> &nbsp;</p>
+                            <p> &nbsp;</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

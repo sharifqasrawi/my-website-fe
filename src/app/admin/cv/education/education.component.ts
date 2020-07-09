@@ -55,7 +55,7 @@ export class EducationComponent implements OnInit {
     });
 
     if (!this.educations)
-      this.store.dispatch(new EducationActions.FetchStart());
+      this.store.dispatch(new EducationActions.FetchStart('admin'));
 
     this.store.select('education').subscribe(state => {
       this.educations = state.educations;
@@ -70,7 +70,7 @@ export class EducationComponent implements OnInit {
 
 
   onRefresh() {
-    this.store.dispatch(new EducationActions.FetchStart());
+    this.store.dispatch(new EducationActions.FetchStart('admin'));
   }
 
   onDelete(id: number) {

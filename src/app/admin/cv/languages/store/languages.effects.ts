@@ -25,8 +25,10 @@ export class LanguagesEffects {
     @Effect()
     fetchLanguages = this.actions$.pipe(
         ofType(LanguagesActions.FETCH_START),
-        switchMap(() => {
-            return this.http.get<{ languages: Language[] }>(environment.API_BASE_URL + 'languages',
+        switchMap((langInfo: LanguagesActions.FetchStart) => {
+            const fetchUrl = langInfo.payload && langInfo.payload === 'admin' ? 'languages/admin' : 'languages';
+
+            return this.http.get<{ languages: Language[] }>(environment.API_BASE_URL + fetchUrl,
                 {
                     headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.token)
                         .append('language', this.translate.currentLang),

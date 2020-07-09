@@ -26,8 +26,10 @@ export class TrainingCoursesEffects {
     @Effect()
     fetchTrainingCourses = this.actions$.pipe(
         ofType(TrainingCoursesActions.FETCH_START),
-        switchMap(() => {
-            return this.http.get<{ courses: TrainingCourse[] }>(environment.API_BASE_URL + 'courses',
+        switchMap((courseInfo: TrainingCoursesActions.FetchStart) => {
+            const fetchUrl = courseInfo.payload && courseInfo.payload === 'admin' ? 'courses/admin' : 'courses';
+
+            return this.http.get<{ courses: TrainingCourse[] }>(environment.API_BASE_URL + fetchUrl,
                 {
                     headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.token)
                         .append('language', this.translate.currentLang),
@@ -179,7 +181,7 @@ export class TrainingCoursesEffects {
     );
 
 
-    
+
     @Effect()
     createDoc = this.actions$.pipe(
         ofType(TrainingCoursesActions.CREATE_DOC_START),

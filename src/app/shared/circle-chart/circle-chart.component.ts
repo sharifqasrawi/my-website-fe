@@ -9,6 +9,7 @@ export class CircleChartComponent implements OnInit {
 
   @Input() value: number;
   @Input() size: string;
+  @Input() text: string;
   classValue: string;
   classColor: string;
 

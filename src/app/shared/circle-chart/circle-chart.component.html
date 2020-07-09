@@ -1,6 +1,7 @@
 <div style="width: 100%; margin-top: 10px; margin-bottom: 10px;">
     <div [ngClass]="[classValue, classColor, size]" class="c100" style="margin: 0 auto; float:none">
-        <span>{{ value }}%</span>
+        <span *ngIf="!text">{{ value }}%</span>
+        <span *ngIf="text">{{ text }}</span>
         <div class="slice">
             <div class="bar"></div>
             <div class="fill"></div>

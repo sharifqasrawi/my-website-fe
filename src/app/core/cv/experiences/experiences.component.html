@@ -1,0 +1,332 @@
+<div class="info">
+    <h1>
+        <fa-icon [icon]="faBriefcase"></fa-icon>
+        {{ 'CV.EXPERIENCES.EXPERIENCES' | translate }}
+    </h1>
+    <hr>
+
+    <div *ngIf="errors">
+        <div class="alert alert-danger" *ngFor="let error of errors">
+            {{ error }}
+        </div>
+    </div>
+
+    <div class="info" *ngIf="loaded">
+        <div class="timeline">
+            <div *ngFor="let exp of experiences">
+                <div class="timeline-month" *ngIf="!exp.isCurrentlyWorking">
+                    {{ exp.endDate | date:'yyyy' }}
+                </div>
+                <div class="timeline-month" *ngIf="exp.isCurrentlyWorking">
+                    {{ currentYear }}
+                </div>
+                <div class="timeline-section">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="timeline-box">
+                                <div class="box-title">
+                                    <fa-icon [icon]="faAsterisk" class="mr-2"></fa-icon>
+                                    <strong *ngIf="currentLang === 'en'">{{ exp.title_EN }}</strong>
+                                    <strong *ngIf="currentLang === 'fr'">{{ exp.title_FR }}</strong>
+                                </div>
+                                <div class="box-content">
+                                    <div class="row"
+                                        *ngIf="(exp.responisbilites_EN || exp.responisbilites_FR) && (exp.accomplishments_EN || exp.accomplishments_FR)">
+                                        <div class="col-md-4">
+                                            <div class="box-item">
+                                                <strong>{{ 'CV.EXPERIENCES.COMPANY' | translate }}</strong>:
+                                                {{ exp.company }}
+                                            </div>
+                                            <div class="box-item">
+                                                <strong>{{ 'CV.EXPERIENCES.START_DATE' | translate }}</strong>:
+                                                {{ exp.startDate | date:'dd/MM/yyyy' }}
+                                            </div>
+                                            <div class="box-item" *ngIf="!exp.isCurrentlyWorking">
+                                                <strong>{{ 'CV.EXPERIENCES.END_DATE' | translate }}</strong>:
+                                                {{ exp.endDate | date:'dd/MM/yyyy' }}
+                                            </div>
+                                            <div class="box-item" *ngIf="exp.isCurrentlyWorking">
+                                                <strong>{{ 'CV.EXPERIENCES.END_DATE' | translate }}</strong>:
+                                                {{ 'CV.EXPERIENCES.CURRENTLY_WORKING' | translate }}
+                                            </div>
+                                            <div class="box-item">
+                                                <strong>{{ 'CV.EXPERIENCES.COUNTRY' | translate }}</strong>:
+                                                <span *ngIf="currentLang === 'en'">{{ exp.country_EN }}</span>
+                                                <span *ngIf="currentLang === 'fr'">{{ exp.country_FR }}</span>
+                                            </div>
+                                            <div class="box-item">
+                                                <strong>{{ 'CV.EXPERIENCES.CITY' | translate }}</strong>:
+                                                <span *ngIf="currentLang === 'en'">{{ exp.city_EN }}</span>
+                                                <span *ngIf="currentLang === 'fr'">{{ exp.city_FR }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="box-item">
+                                                <strong>{{ 'CV.EXPERIENCES.RESPONISBILITES' | translate }}</strong>:
+
+                                                <pre *ngIf="currentLang === 'en'"
+                                                    [innerHTML]="getSanitizedHtml(exp.responisbilites_EN)"></pre>
+                                                <pre *ngIf="currentLang === 'fr'"
+                                                    [innerHTML]="getSanitizedHtml(exp.responisbilites_FR)"></pre>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="box-item">
+                                                <strong>{{ 'CV.EXPERIENCES.ACCOMPLISHMENTS' | translate }}</strong>:
+                                                <pre *ngIf="currentLang === 'en'"
+                                                    [innerHTML]="getSanitizedHtml(exp.accomplishments_EN)"></pre>
+                                                <pre *ngIf="currentLang === 'fr'"
+                                                    [innerHTML]="getSanitizedHtml(exp.accomplishments_FR)"></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row"
+                                        *ngIf="(exp.responisbilites_EN || exp.responisbilites_FR) && (!exp.accomplishments_EN && !exp.accomplishments_FR)">
+                                        <div class="col-md-4">
+                                            <div class="box-item">
+                                                <strong>{{ 'CV.EXPERIENCES.COMPANY' | translate }}</strong>:
+                                                {{ exp.company }}
+                                            </div>
+                                            <div class="box-item">
+                                                <strong>{{ 'CV.EXPERIENCES.START_DATE' | translate }}</strong>:
+                                                {{ exp.startDate | date:'dd/MM/yyyy' }}
+                                            </div>
+                                            <div class="box-item" *ngIf="!exp.isCurrentlyWorking">
+                                                <strong>{{ 'CV.EXPERIENCES.END_DATE' | translate }}</strong>:
+                                                {{ exp.endDate | date:'dd/MM/yyyy' }}
+                                            </div>
+                                            <div class="box-item" *ngIf="exp.isCurrentlyWorking">
+                                                <strong>{{ 'CV.EXPERIENCES.END_DATE' | translate }}</strong>:
+                                                {{ 'CV.EXPERIENCES.CURRENTLY_WORKING' | translate }}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="box-item">
+                                                <strong>{{ 'CV.EXPERIENCES.COUNTRY' | translate }}</strong>:
+                                                <span *ngIf="currentLang === 'en'">{{ exp.country_EN }}</span>
+                                                <span *ngIf="currentLang === 'fr'">{{ exp.country_FR }}</span>
+                                            </div>
+                                            <div class="box-item">
+                                                <strong>{{ 'CV.EXPERIENCES.CITY' | translate }}</strong>:
+                                                <span *ngIf="currentLang === 'en'">{{ exp.city_EN }}</span>
+                                                <span *ngIf="currentLang === 'fr'">{{ exp.city_FR }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="box-item">
+                                                <strong>{{ 'CV.EXPERIENCES.RESPONISBILITES' | translate }}</strong>:
+
+                                                <pre *ngIf="currentLang === 'en'"
+                                                    [innerHTML]="getSanitizedHtml(exp.responisbilites_EN)"></pre>
+                                                <pre *ngIf="currentLang === 'fr'"
+                                                    [innerHTML]="getSanitizedHtml(exp.responisbilites_FR)"></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row"
+                                        *ngIf="(!exp.responisbilites_EN && !exp.responisbilites_FR) && (exp.accomplishments_EN || exp.accomplishments_FR)">
+                                        <div class="col-md-4">
+                                            <div class="box-item">
+                                                <strong>{{ 'CV.EXPERIENCES.COMPANY' | translate }}</strong>:
+                                                {{ exp.company }}
+                                            </div>
+                                            <div class="box-item">
+                                                <strong>{{ 'CV.EXPERIENCES.START_DATE' | translate }}</strong>:
+                                                {{ exp.startDate | date:'dd/MM/yyyy' }}
+                                            </div>
+                                            <div class="box-item" *ngIf="!exp.isCurrentlyWorking">
+                                                <strong>{{ 'CV.EXPERIENCES.END_DATE' | translate }}</strong>:
+                                                {{ exp.endDate | date:'dd/MM/yyyy' }}
+                                            </div>
+                                            <div class="box-item" *ngIf="exp.isCurrentlyWorking">
+                                                <strong>{{ 'CV.EXPERIENCES.END_DATE' | translate }}</strong>:
+                                                {{ 'CV.EXPERIENCES.CURRENTLY_WORKING' | translate }}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="box-item">
+                                                <strong>{{ 'CV.EXPERIENCES.COUNTRY' | translate }}</strong>:
+                                                <span *ngIf="currentLang === 'en'">{{ exp.country_EN }}</span>
+                                                <span *ngIf="currentLang === 'fr'">{{ exp.country_FR }}</span>
+                                            </div>
+                                            <div class="box-item">
+                                                <strong>{{ 'CV.EXPERIENCES.CITY' | translate }}</strong>:
+                                                <span *ngIf="currentLang === 'en'">{{ exp.city_EN }}</span>
+                                                <span *ngIf="currentLang === 'fr'">{{ exp.city_FR }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="box-item">
+                                                <strong>{{ 'CV.EXPERIENCES.ACCOMPLISHMENTS' | translate }}</strong>:
+
+                                                <pre *ngIf="currentLang === 'en'"
+                                                    [innerHTML]="getSanitizedHtml(exp.accomplishments_EN)"></pre>
+                                                <pre *ngIf="currentLang === 'fr'"
+                                                    [innerHTML]="getSanitizedHtml(exp.accomplishments_FR)"></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row"
+                                    *ngIf="(!exp.responisbilites_EN && !exp.responisbilites_FR) && (!exp.accomplishments_EN && !exp.accomplishments_FR)">
+                                    <div class="col-md-4">
+                                        <div class="box-item">
+                                            <strong>{{ 'CV.EXPERIENCES.COMPANY' | translate }}</strong>:
+                                            {{ exp.company }}
+                                        </div>
+                                        <div class="box-item">
+                                            <strong>{{ 'CV.EXPERIENCES.START_DATE' | translate }}</strong>:
+                                            {{ exp.startDate | date:'dd/MM/yyyy' }}
+                                        </div>
+                                        <div class="box-item" *ngIf="!exp.isCurrentlyWorking">
+                                            <strong>{{ 'CV.EXPERIENCES.END_DATE' | translate }}</strong>:
+                                            {{ exp.endDate | date:'dd/MM/yyyy' }}
+                                        </div>
+                                        <div class="box-item" *ngIf="exp.isCurrentlyWorking">
+                                            <strong>{{ 'CV.EXPERIENCES.END_DATE' | translate }}</strong>:
+                                            {{ 'CV.EXPERIENCES.CURRENTLY_WORKING' | translate }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="box-item">
+                                            <strong>{{ 'CV.EXPERIENCES.COUNTRY' | translate }}</strong>:
+                                            <span *ngIf="currentLang === 'en'">{{ exp.country_EN }}</span>
+                                            <span *ngIf="currentLang === 'fr'">{{ exp.country_FR }}</span>
+                                        </div>
+                                        <div class="box-item">
+                                            <strong>{{ 'CV.EXPERIENCES.CITY' | translate }}</strong>:
+                                            <span *ngIf="currentLang === 'en'">{{ exp.city_EN }}</span>
+                                            <span *ngIf="currentLang === 'fr'">{{ exp.city_FR }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                      
+                                    </div>
+                                </div>
+
+                                </div>
+                                <div class="box-footer">
+                                    <div *ngIf="exp.documents.length ===0 ">&nbsp;</div>
+                                    <div *ngIf="exp.documents.length > 0">
+                                        <mat-accordion>
+                                            <mat-expansion-panel style="background-color: transparent;">
+                                                <mat-expansion-panel-header>
+                                                    <mat-panel-title>
+                                                        <strong>
+                                                            <fa-icon [icon]="faFileAlt"></fa-icon>
+                                                            Documents:
+                                                        </strong>
+                                                    </mat-panel-title>
+
+                                                </mat-expansion-panel-header>
+                                                <div class="docBox" *ngFor="let doc of exp.documents">
+                                                    <p>
+                                                        <b>{{ 'CV.DOCUMENTS.NAME' | translate }}: </b>
+                                                        <span *ngIf="currentLang === 'en'">{{ doc.name_EN }}</span>
+                                                        <span *ngIf="currentLang === 'fr'">{{ doc.name_FR }}</span>
+                                                    </p>
+                                                    <b>{{ 'CV.DOCUMENTS.DESCRIPTION' | translate }}: </b>
+                                                    <pre *ngIf="currentLang === 'en'">{{ doc.description_EN }}</pre>
+                                                    <pre *ngIf="currentLang === 'fr'">{{ doc.description_FR }}</pre>
+
+                                                    <div style="display: flex; justify-content: space-around;">
+                                                        <a style="cursor:pointer; color:fuchsia"
+                                                            *ngIf="doc.type === '.pdf'" (click)="onViewPdf(doc.path)">
+                                                            <fa-icon [icon]="faEye"></fa-icon>
+                                                            {{ 'COMMON.VIEW' | translate }}
+                                                        </a>
+                                                        <a style="cursor:pointer; color:fuchsia"
+                                                            *ngIf="doc.type === '.jpg' || doc.type === '.jpeg' || doc.type === '.png'"
+                                                            (click)="onViewImage(doc.path)">
+                                                            <fa-icon [icon]="faEye"></fa-icon>
+                                                            {{ 'COMMON.VIEW' | translate }}
+                                                        </a>
+                                                        <a style="color:greenyellow" [href]="doc.path" target="_blank">
+                                                            <fa-icon [icon]="faDownload"></fa-icon>
+                                                            {{ 'COMMON.DOWNLOAD' | translate }}
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+                                            </mat-expansion-panel>
+                                        </mat-accordion>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="loader" *ngIf="loading">
+        <div class="timeline">
+            <div *ngFor="let i of [].constructor(2)">
+                <div class="timeline-month">
+                    <p>&nbsp;</p>
+                </div>
+                <div class="timeline-section">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="timeline-box">
+                                <div class="box-title">
+                                    <strong>&nbsp;</strong>
+                                </div>
+                                <div class="box-content">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="box-item">
+                                                <p>&nbsp;</p>
+                                            </div>
+                                            <div class="box-item">
+                                                <p>&nbsp;</p>
+                                            </div>
+                                            <div class="box-item">
+                                                <p>&nbsp;</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="box-item">
+                                                <p>&nbsp;</p>
+                                            </div>
+                                            <div class="box-item">
+                                                <p>&nbsp;</p>
+                                            </div>
+                                            <div class="box-item">
+                                                <p>&nbsp;</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="box-item">
+                                                <p>&nbsp;</p>
+                                            </div>
+                                            <div class="box-item">
+                                                <p>&nbsp;</p>
+                                            </div>
+                                            <div class="box-item">
+                                                <p>&nbsp;</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-footer">
+                                    <div>&nbsp;</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+<div class="cv">
+    <div class="overlay">
+        <div class="container-fluid">
+            <div class="pt-3"></div>
+            <app-breadcrumb [links]="breadcrumbLinks"></app-breadcrumb>
+            <div class="cvContainer2">
+                <div class="cvNav info">
+                    <mat-accordion class="mat-elevation-z8" style="min-height: calc(100vh - 200px);   opacity: 0.8;">
+                        <mat-expansion-panel [expanded]="!mobileQuery.matches" style="background-color: #303030;">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    <b>CV</b>
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <a class="btn btn-secondary  navBtn" [routerLink]="['/cv' ,'personal-info']"
+                                routerLinkActive="active">
+                                {{ 'CV.PERSONAL_INFO.PERSONAL_INFO' | translate }}
+                            </a>
+
+                            <a class="btn btn-secondary  navBtn" [routerLink]="['/cv' , 'experiences']"
+                                routerLinkActive="active">
+                                {{ 'CV.EXPERIENCES.EXPERIENCES' | translate }}
+                            </a>
+
+                            <a class="btn btn-secondary  navBtn" [routerLink]="['/cv' , 'education']"
+                                routerLinkActive="active">
+                                {{ 'CV.EDUCATION.EDUCATION' | translate }}
+                            </a>
+                            <a class="btn btn-secondary  navBtn" [routerLink]="['/cv' , 'skills']"
+                                routerLinkActive="active">
+                                {{ 'CV.SKILLS.SKILLS' | translate }}
+                            </a>
+
+                            <a class="btn btn-secondary  navBtn" [routerLink]="['/cv' , 'training-courses']"
+                                routerLinkActive="active">
+                                {{ 'CV.COURSES.COURSES' | translate }}
+                            </a>
+
+                            <a class="btn btn-secondary  navBtn" [routerLink]="['/cv' , 'languages']"
+                                routerLinkActive="active">
+                                {{ 'CV.LANGUAGES.LANGUAGES' | translate }}
+                            </a>
+
+                            <a class="btn btn-secondary  navBtn" [routerLink]="['/cv' , 'download']"
+                                routerLinkActive="active">
+                                {{ 'COMMON.DOWNLOAD' | translate }} {{ 'CV.CV' | translate }}
+                            </a>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                    <div class="text-center mt-4">
+                        <img src="../../../assets/images/cvv.png" alt="image" width="200">
+                    </div>
+
+                </div>
+                <div class="cvContent info mat-elevation-z8">
+                    <router-outlet></router-outlet>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

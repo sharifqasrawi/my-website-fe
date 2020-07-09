@@ -7,7 +7,7 @@ import { CoreLayoutComponent } from './core/core-layout/core-layout.component';
 
 
 const routes: Routes = [
-  // { path: '', loadChildren: () => import('./core/core.module').then(m => m.CoreModule) },
+  { path: '', loadChildren: () => import('./core/core.module').then(m => m.CoreModule) },
   { path: 'security', loadChildren: () => import('./security/security.module').then(m => m.SecurityModule) },
   {
     path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)

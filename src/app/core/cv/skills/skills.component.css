@@ -1,0 +1,78 @@
+/* .catBox{
+
+} */
+
+.skillBox {
+    width: 200px;
+    height: 150px;
+    border-radius: 10px;
+    margin: 10px 20px 10px 0;
+    display: inline-block;
+    position: relative;
+   
+}
+
+.skillBox .skillHead {
+    padding: 5px;
+    text-align: center;
+    /* background-color: grey; */
+    border-radius: 10px 10px 0 0;
+    border-bottom: 1px solid grey;
+}
+
+.skillBox .skillBody div{
+    margin: 0 auto;
+    display: inline;
+    float: none;
+}
+
+
+@media (max-width: 494px){
+    .skillBox{
+        width: 100%;
+    }
+}
+
+.info {
+    animation: animInfo .4s ease-in forwards;
+}
+
+@keyframes animInfo {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+/* Loader */
+.loader{
+    opacity: 0.8;
+    animation: loaderAnim .9s ease-in-out infinite;
+}
+
+@keyframes loaderAnim{
+    0%{
+        opacity: 0.3;
+    }
+    25%{
+        opacity: 0.5;
+    }
+    50%{
+        opacity: 0.8;
+    }
+    75%{
+        opacity: 0.5;
+    }
+    100%{
+        opacity: 0.3;
+    }
+}
+
+.loader .skillHead p{
+    width: 100%;
+    background-color: darkslategrey;
+    border-radius: 10px;
+}

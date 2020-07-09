@@ -58,7 +58,7 @@ export class LanguagesComponent implements OnInit, OnDestroy {
     });
 
     if (!this.languages)
-      this.store.dispatch(new LanguagesActions.FetchStart());
+      this.store.dispatch(new LanguagesActions.FetchStart('admin'));
 
     this.store.select('languages').subscribe(state => {
       this.languages = state.languages;
@@ -69,7 +69,7 @@ export class LanguagesComponent implements OnInit, OnDestroy {
   }
 
   onRefresh() {
-    this.store.dispatch(new LanguagesActions.FetchStart());
+    this.store.dispatch(new LanguagesActions.FetchStart('admin'));
   }
 
   onAdd() {

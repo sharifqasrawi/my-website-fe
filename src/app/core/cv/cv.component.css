@@ -1,0 +1,86 @@
+.navBtn {
+    margin: 0 auto;
+    color: lightgrey;
+    width: 100%;
+    background-color: transparent;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+
+.cv {
+    width: 100%;
+    min-height: calc(100vh - 200px);
+    background: url(../../../assets/images/cvbg2.jpg);
+    background-position: center;
+    background-size: cover;
+    margin-bottom: -18px;
+}
+
+.overlay {
+    width: 100%;
+    min-height: calc(100vh - 200px);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.cvContainer2 {
+    display: flex;
+    color: lightgrey;
+    padding-top: 15px;
+    padding-bottom: 25px;
+}
+
+.cvContainer2 .cvNav {
+    width: 25%;
+}
+
+.cvContainer2 .cvContent {
+    width: 75%;
+    margin-left: 35px;
+    background-color: #303030;
+    padding: 15px;
+    border-radius: 10px;
+    opacity: 0.8;
+}
+
+@media (max-width: 990px) {
+    .cvContainer2 {
+        flex-direction: column;
+    }
+    .cvContainer2 .cvNav {
+        width: 100%;
+    }
+    .cvContainer2 .cvContent {
+        width: 100%;
+        margin-left: 0;
+    }
+    img {
+        display: none;
+    }
+}
+
+img {
+    animation: animImg .4s ease-in forwards;
+}
+
+@keyframes animImg {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.info {
+    animation: animInfo .4s ease-in forwards;
+}
+
+@keyframes animInfo {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

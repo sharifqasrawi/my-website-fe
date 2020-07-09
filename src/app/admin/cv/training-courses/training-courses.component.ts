@@ -58,7 +58,7 @@ export class TrainingCoursesComponent implements OnInit {
     });
 
     if (!this.courses)
-      this.store.dispatch(new TrainingCoursesActions.FetchStart());
+      this.store.dispatch(new TrainingCoursesActions.FetchStart('admin'));
 
     this.store.select('courses').subscribe(state => {
       this.courses = state.courses;
@@ -73,7 +73,7 @@ export class TrainingCoursesComponent implements OnInit {
   }
 
   onRefresh() {
-    this.store.dispatch(new TrainingCoursesActions.FetchStart());
+    this.store.dispatch(new TrainingCoursesActions.FetchStart('admin'));
   }
 
   onAdd() {

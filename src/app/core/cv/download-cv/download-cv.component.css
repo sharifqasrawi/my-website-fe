@@ -1,0 +1,62 @@
+.info {
+    animation: animInfo .4s ease-in forwards;
+}
+
+@keyframes animInfo {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.cvFile {
+    width: 225px;
+    height: 270px;
+    float: left;
+    margin: 3px 20px 17px 0;
+    /* position: relative; */
+}
+
+.cvFile img {
+    width: 100%;
+    height: 100px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* Loader */
+.loader{
+    opacity: 0.8;
+    animation: loaderAnim .9s ease-in-out infinite;
+}
+
+@keyframes loaderAnim{
+    0%{
+        opacity: 0.3;
+    }
+    25%{
+        opacity: 0.5;
+    }
+    50%{
+        opacity: 0.8;
+    }
+    75%{
+        opacity: 0.5;
+    }
+    100%{
+        opacity: 0.3;
+    }
+}
+
+.loader p{
+    width: 100%;
+    background-color: darkslategrey;
+    border-radius: 10px;
+}

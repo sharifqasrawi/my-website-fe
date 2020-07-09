@@ -1,0 +1,59 @@
+<div class="info">
+    <h1>
+        <fa-icon [icon]="faDownload"></fa-icon>
+        {{ 'COMMON.DOWNLOAD' | translate }} - {{ 'CV.CV' | translate }}
+    </h1>
+    <hr>
+
+    <div *ngIf="errors">
+        <div class="alert alert-danger" *ngFor="let error of errors">
+            {{ error }}
+        </div>
+    </div>
+
+    <h2>
+        <fa-icon [icon]="faAsterisk"></fa-icon>
+        {{ 'CV.CV_FILES.CHOOSE_LANGUAGE' | translate }}:
+    </h2>
+
+    <div class="info" *ngIf="loaded">
+        <div *ngFor="let cvFile of files">
+            <mat-card class="cvFile mat-elevation-z12">
+                <img mat-card-image src="../../../../assets/images/cv.png" alt="cv">
+                <mat-card-content>
+                    <p class="mt-3">
+                        <fa-icon [icon]="faFile"></fa-icon>
+                        {{ cvFile.fileName }}
+                    </p>
+                    <p class="mt-3">
+                        <fa-icon [icon]="faGlobe"></fa-icon>
+                        {{ cvFile.language }}
+                    </p>
+                </mat-card-content>
+                <mat-card-actions class="actions">
+                    <a mat-raised-button color="accent" class="btn-block" [href]="cvFile.filePath" target="_blank">
+                        {{ 'COMMON.DOWNLOAD' | translate }}
+                    </a>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+
+    <div class="loader" *ngIf="loading">
+        <div *ngFor="let i of [].constructor(4)">
+            <mat-card class="cvFile mat-elevation-z12">
+                <img mat-card-image src="../../../../assets/images/cv.png" alt="cv">
+                <mat-card-content>
+                    <p class="mt-3"> &nbsp;</p>
+                    <p class="mt-3"> &nbsp;</p>
+                </mat-card-content>
+                <mat-card-actions class="actions">
+                    <a mat-raised-button color="accent" class="btn-block" disabled>
+                        &nbsp;
+                    </a>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+
+</div>

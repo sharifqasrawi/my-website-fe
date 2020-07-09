@@ -110,7 +110,7 @@ export class EditLanguageDocumentComponent implements OnInit, OnDestroy {
         description_FR: this.form.value.description_FR,
         path: this.form.value.path,
         fileId: this.selectedFileId,
-        isDisplayed: this.form.value.isDisplayed
+        isDisplayed: this.form.value.isDisplayed ?  this.form.value.isDisplayed : false
       }));
     }
     else {
@@ -122,7 +122,7 @@ export class EditLanguageDocumentComponent implements OnInit, OnDestroy {
         description_FR: this.form.value.description_FR,
         path: this.form.value.path,
         fileId: this.selectedFileId,
-        isDisplayed: this.form.value.isDisplayed
+        isDisplayed: this.form.value.isDisplayed ?  this.form.value.isDisplayed : false
       }));
     }
   }
