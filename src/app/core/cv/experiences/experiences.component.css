@@ -84,7 +84,7 @@
     position: absolute;
     width: 30px;
     height: 1px;
-    background-color: #444950;
+    background-color: #313335;
     top: 12px;
     left: 20px;
 }
@@ -107,7 +107,7 @@
 
 .timeline-box {
     position: relative;
-    background-color: #444950;
+    background-color: #313335;
     border-radius: 15px;
     border-top-left-radius: 0px;
     border-bottom-right-radius: 0px;
@@ -150,7 +150,7 @@
 .box-footer {
     padding: 5px 15px;
     border-top: 1px solid #17191B;
-    background-color: #444950;
+    background-color: #313335;
     /* text-align: right; */
     font-style: italic;
 }

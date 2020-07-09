@@ -22,19 +22,23 @@
                     {{ 'COMMON.LANGUAGE' | translate }}:
                 </p>
                 <hr>
-                <p [class.active]="translate.currentLang === 'fr'" alt="flag" (click)="onChangeLanguage('fr')"
-                    class="langBtn">
-                    <img src="../../assets/images/frFlag.png">
-                    Français
-                    <fa-icon [icon]="faCheckCircle" class="ml-1" style="color: greenyellow;"
-                        *ngIf="translate.currentLang === 'fr'"></fa-icon>
+                <p>
+                    <a [class.active]="translate.currentLang === 'fr'" alt="flag" (click)="onChangeLanguage('fr')"
+                        class="langBtn">
+                        <img src="../../assets/images/frFlag.png">
+                        Français
+                        <fa-icon [icon]="faCheckCircle" class="ml-1" style="color: greenyellow;"
+                            *ngIf="translate.currentLang === 'fr'"></fa-icon>
+                    </a>
                 </p>
-                <p [class.active]="translate.currentLang === 'en'" alt="flag" (click)="onChangeLanguage('en')"
-                    class="langBtn">
-                    <img src="../../assets/images/engflag2.png">
-                    English
-                    <fa-icon [icon]="faCheckCircle" class="ml-1" style="color: greenyellow;"
-                        *ngIf="translate.currentLang === 'en'"></fa-icon>
+                <p>
+                    <a [class.active]="translate.currentLang === 'en'" alt="flag" (click)="onChangeLanguage('en')"
+                        class="langBtn">
+                        <img src="../../assets/images/engflag2.png">
+                        English
+                        <fa-icon [icon]="faCheckCircle" class="ml-1" style="color: greenyellow;"
+                            *ngIf="translate.currentLang === 'en'"></fa-icon>
+                    </a>
                 </p>
             </div>
             <div class="col-md-4">

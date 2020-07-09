@@ -19,9 +19,9 @@
 }
 
 .CatTitleColor {
-    background: rgb(85, 84, 84) none repeat scroll 0 0;
+    background: #383b3d none repeat scroll 0 0;
 }
 
 .CatTitleAfterColor {
-    border: 2px solid rgb(85, 84, 84) ;
+    border: 2px solid #383b3d ;
 }
