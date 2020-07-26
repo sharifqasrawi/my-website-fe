@@ -1,10 +1,32 @@
 <mat-toolbar color="primary" class="mat-elevation-z8">
-    <span>Sharif Qasrawi</span>
-    <span class="spacer"></span>
-    <a mat-icon-button [routerLink]="['/']">
-        <mat-icon>home</mat-icon>
-    </a>
-    <button mat-icon-button >
-        <mat-icon>message</mat-icon>
+  <span class="spacer">
+    <!-- <button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger"
+      (mouseover)="menuTrigger.openMenu()">
+      <mat-icon>menu</mat-icon>
+    </button> -->
+    <button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger" (click)="menuTrigger.openMenu()">
+      <mat-icon>menu</mat-icon>
     </button>
+    <mat-menu #menu="matMenu" [overlapTrigger]="false">
+      <span (mouseleave)="menuTrigger.closeMenu()">
+        <a mat-menu-item [routerLink]="['/']">
+          <mat-icon>home</mat-icon>
+          <span>{{ 'COMMON.HOME' | translate }}</span>
+        </a>
+        <a mat-menu-item [routerLink]="['/cv']">
+          <mat-icon>person</mat-icon>
+          <span>{{ 'CV.CV' | translate }}</span>
+        </a>
+        <a mat-menu-item [routerLink]="['/portfolio']">
+          <mat-icon>work</mat-icon>
+          <span>{{ 'PORTFOLIO.PORTFOLIO' | translate }}</span>
+        </a>
+        <a mat-menu-item [routerLink]="['/contact']">
+          <mat-icon>chat</mat-icon>
+          <span>{{ 'CONTACT_ME.CONTACT_ME' | translate }}</span>
+        </a>
+      </span>
+    </mat-menu>
+  </span>
+  <span class="spacer"><a [routerLink]="['/']" style="color: lightgrey;">Sharif Qasrawi</a></span>
 </mat-toolbar>

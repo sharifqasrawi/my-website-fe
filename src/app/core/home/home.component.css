@@ -1,14 +1,131 @@
+.home {
+    padding-top: 15px;
+    padding-bottom: 20px;
+}
+
 .homeBox {
-    margin-top: 20px;
+    /* margin-top: 20px; */
     background: url(../../../assets/images/homebg.jpg);
     background-position: center;
     background-size: cover;
-    height: 500px;
+    min-height: calc(100vh - 200px);
     animation: homeAnim 0.4s forwards ease-in-out;
 }
 
 .homeBoxOverlay {
     width: 100%;
-    height: 500px;
-    background-color: rgba(0, 0, 0, .5);
+    min-height: calc(100vh - 200px);
+    background-color: rgba(0, 0, 0, .7);
+}
+
+.bg {
+    background: url(../../../assets/images/cvbg2.jpg);
+    width: 100%;
+    min-height: calc(100vh - 200px);
+    background-position: center;
+    background-size: cover;
+    margin-bottom: -18px;
+}
+
+.info {
+    animation: animInfo .4s ease-in forwards;
+}
+
+@keyframes animInfo {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.container {
+    color: lightgrey;
+    padding: 50px 20px;
+}
+
+.pImage {
+    width: 250px;
+    height: 250px;
+    opacity: 0.8;
+    border: 2px solid grey;
+}
+
+h1 {
+    font-size: 300%;
+    font-style: italic;
+}
+
+a {
+    color: lightgrey;
+}
+
+a:hover {
+    color: grey;
+    text-decoration: none;
+}
+
+.socialBtn {
+    width: 20px;
+    height: 20px;
+    opacity: 0.8;
+}
+
+.socialBtn:hover {
+    opacity: 1;
+}
+
+strong {
+    color: grey;
+}
+
+.lang {
+    padding: 8px;
+    display: inline-block;
+    margin: 10px 10px 10px 0;
+    background-color: #353535;
+    border-radius: 10px 0 10px 0;
+    opacity: 0.8;
+}
+
+/* Loader */
+
+.loader {
+    opacity: 0.8;
+    animation: loaderAnim .9s ease-in-out infinite;
+}
+
+@keyframes loaderAnim {
+    0% {
+        opacity: 0.3;
+    }
+    25% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    75% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0.3;
+    }
+}
+
+.loader p, .loader h1, .loader h2 {
+    width: 100%;
+    background-color: darkslategrey;
+    border-radius: 10px;
+}
+
+@media(min-width: 993px) {
+    .homeBoxContent {
+        position: absolute;
+        width: 70%;
+        top: 50%;
+        -ms-transform: translateY(-60%);
+        transform: translateY(-60%);
+    }
 }

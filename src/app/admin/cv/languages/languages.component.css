@@ -39,3 +39,9 @@ hr{
     flex-direction: row;
     justify-content: space-around;
 }
+
+@media (max-width: 768px){
+    .langBox{
+        width: 100%;
+    }
+}

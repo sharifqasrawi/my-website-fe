@@ -52,6 +52,10 @@ import { EditSkillComponent } from './cv/skills/edit-skill/edit-skill.component'
 import { TagsComponent } from './tags/tags.component';
 import { EditProjectComponent } from './portfolio/projects/edit-project/edit-project.component';
 import { EditProjectTagsComponent } from './portfolio/projects/edit-project-tags/edit-project-tags.component';
+import { ProjectImagesComponent } from './portfolio/projects/project-images/project-images.component';
+import { EditProjectImageComponent } from './portfolio/projects/project-images/edit-project-image/edit-project-image.component';
+import { ResetPasswordComponent } from './users/reset-password/reset-password.component';
+import { ToDoListComponent } from './to-do-list/to-do-list.component';
 
 
 
@@ -98,7 +102,11 @@ import { EditProjectTagsComponent } from './portfolio/projects/edit-project-tags
     EditSkillComponent,
     TagsComponent,
     EditProjectComponent,
-    EditProjectTagsComponent
+    EditProjectTagsComponent,
+    ProjectImagesComponent,
+    EditProjectImageComponent,
+    ResetPasswordComponent,
+    ToDoListComponent
   ],
   imports: [
     CommonModule,

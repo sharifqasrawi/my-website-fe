@@ -27,8 +27,10 @@
     </div>
 
     <mat-spinner style="margin: 0 auto;" *ngIf="loadingCategories"></mat-spinner>
-
-    <div *ngIf="loadedCategories">
+    <div class="alert alert-info text-center" *ngIf="loadedCategories && skillCategories.length === 0">
+        <h2>{{ 'COMMON.NO_DATA' | translate }}</h2>
+    </div>
+    <div *ngIf="loadedCategories && skillCategories.length > 0">
         <div class="catBox mat-elevation-z8" *ngFor="let category of skillCategories">
             <div class="catHead">
                 <div class="row">

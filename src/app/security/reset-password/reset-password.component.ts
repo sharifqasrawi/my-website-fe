@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment';
 import { Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
@@ -63,7 +64,7 @@ export class ResetPasswordComponent implements OnInit {
       return;
 
     this.loading = true;
-    this.http.post('https://localhost:44383/account/reset-password',
+    this.http.post(environment.API_BASE_URL + '/account/reset-password',
       {
         Email: this.email,
         Password: this.resetPwdForm.value.passwordGroup.password,

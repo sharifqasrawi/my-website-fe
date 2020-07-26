@@ -8,6 +8,8 @@ export interface State {
     loaded: boolean,
     creating: boolean,
     created: boolean,
+    resetting: boolean,
+    resetted: boolean,
     updating: boolean,
     updated: boolean,
     deleting: boolean
@@ -22,6 +24,8 @@ const initialState: State = {
     loaded: false,
     creating: false,
     created: false,
+    resetting: false,
+    resetted: false,
     updating: false,
     updated: false,
     deleting: false,
@@ -202,8 +206,8 @@ export function usersReducer(
         case UsersActions.CHANGE_PASSWORD_START:
             return {
                 ...state,
-                updating: true,
-                updated: false,
+                resetting: true,
+                resetted: false,
                 errors: null,
             };
 
@@ -211,14 +215,14 @@ export function usersReducer(
         case UsersActions.CHANGE_PASSWORD_SUCCESS:
             return {
                 ...state,
-                updating: false,
-                updated: true,
+                resetting: false,
+                resetted: true,
             };
 
         case UsersActions.CHANGE_PASSWORD_FAIL:
             return {
                 ...state,
-                updating: false,
+                resetting: false,
                 errors: [...action.payload]
             };
 
@@ -290,6 +294,8 @@ export function usersReducer(
                 loaded: false,
                 creating: false,
                 created: false,
+                resetted: false,
+                resetting: false,
                 updating: false,
                 updated: false,
                 deleting: false,

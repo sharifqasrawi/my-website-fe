@@ -1,3 +1,4 @@
+import { FilePickerComponent } from './../../../../shared/file-picker/file-picker.component';
 import { ImagePickerComponent } from './../../../../shared/image-picker/image-picker.component';
 import { ThemePalette } from '@angular/material/core';
 import { Title } from '@angular/platform-browser';
@@ -150,7 +151,7 @@ export class EditProjectComponent implements OnInit, OnDestroy {
         description_FR: this.form.value.description_FR,
         type: this.form.value.type,
         size: this.form.value.size,
-        isDisplayed: this.form.value.isDisplayed,
+        isDisplayed: this.form.value.isDisplayed ? this.form.value.isDisplayed : false,
         gitHubUrl: this.form.value.gitHubUrl,
         liveDemoUrl: this.form.value.liveDemoUrl,
         videoDemoUrl: this.form.value.videoDemoUrl,
@@ -166,7 +167,7 @@ export class EditProjectComponent implements OnInit, OnDestroy {
         description_FR: this.form.value.description_FR,
         type: this.form.value.type,
         size: this.form.value.size,
-        isDisplayed: this.form.value.isDisplayed,
+        isDisplayed: this.form.value.isDisplayed ? this.form.value.isDisplayed : false,
         gitHubUrl: this.form.value.gitHubUrl,
         liveDemoUrl: this.form.value.liveDemoUrl,
         videoDemoUrl: this.form.value.videoDemoUrl,
@@ -214,6 +215,23 @@ export class EditProjectComponent implements OnInit, OnDestroy {
       }
     });
 
+  }
+
+  selectFile(){
+    var dialogRef = this.dialog.open(FilePickerComponent,
+      {
+        width: '650px',
+        height: '500px',
+        disableClose: true
+      });
+
+    dialogRef.afterClosed().subscribe((data: { filePath: string }) => {
+      if (data) {
+        this.form.patchValue({
+          videoDemoUrl: data.filePath
+        });
+      }
+    });
   }
 
 

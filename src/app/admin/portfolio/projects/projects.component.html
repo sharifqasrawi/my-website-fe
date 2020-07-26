@@ -52,7 +52,11 @@
                 </div>
             </div>
             <div class="projectActions">
-                <span style="cursor: pointer; color:greenyellow;" (click)="onEditTags(project.id)">
+                <a [routerLink]="['/admin', 'portfolio', 'projects' ,'images', project.id]"
+                    style="cursor: pointer; color:greenyellow;">
+                    <fa-icon [icon]="faImages"></fa-icon>
+                </a>
+                <span style="cursor: pointer; color:forestgreen;" (click)="onEditTags(project.id)">
                     <fa-icon [icon]="faTags"></fa-icon>
                 </span>
                 <a [routerLink]="['/admin', 'portfolio', 'projects' ,'edit', project.id]"

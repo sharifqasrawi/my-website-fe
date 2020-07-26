@@ -16,6 +16,7 @@
         "HIDE": "Masquer",
         "DELETE_CONFIRMATION": "Suppression",
         "RESOURCE_NOT_FOUND": "Ressource introuvable",
+        "NO_DATA": "Aucunes données disponibles",
         "NO_CONTENT": "Aucun contenu disponible",
         "RESOURCES": "Resources",
         "EMAIL": "Email",
@@ -110,7 +111,7 @@
         "DOCUMENTS": "Documents"
     },
     "CONTACT_ME": {
-        "CONTACT_ME": "Contactez moi",
+        "CONTACT_ME": "Contactez-moi",
         "SEND_ME_MESSAGE": "Envoyez-moi un message",
         "MESSAGE_SENT": "Votre message a bien été envoyé",
         "YOUR_NAME": "Votre nom",
@@ -286,6 +287,8 @@
             "COURSES": "Cours de formation",
             "NAME": "Nom du cours",
             "TYPE": "Type de cours",
+            "ONLINE":"En Ligne",
+            "CLASSIC": "Classique",
             "URL": "URL du cours",
             "DURATION": "Durée du cours",
             "DATETIME": "Date",
@@ -299,7 +302,8 @@
             "DESCRIPTION": "Description du document",
             "PATH": "Chemin d'accès au document",
             "NO_DOCUMENTS": "Aucun document disponible",
-            "DISPLAYED": "Affiché"
+            "DISPLAYED": "Affiché",
+            "LAST_UPDATE":"Dernière mise à jour"
         },
         "SKILLS": {
             "SKILLS": "Compétences",
@@ -325,7 +329,16 @@
             "IMAGE_PATH": "Chemin de l'image",
             "SMALL": "Petit",
             "MEDIUMBIG": "Moyen - Grand",
-            "TAGS": "Mots clés"
+            "TAGS": "Mots clés",
+            "PREVIEW_ANOTHER_PROJECT": "Prévisualiser un autre projet",
+            "IMAGES": {
+                "PROJECT_IMAGES": "Project images",
+                "CAPTION": "Légende",
+                "PATH": "Chemin de l'image",
+                "DISPLAYED": "Affiché"
+            },
+            "ALL": "Tout",
+            "NO_PROJECTS": "Désolé. Aucun projet n'a été trouvé"
         }
     },
     "AUTH": {
@@ -333,7 +346,7 @@
         "EMAIL": "Email",
         "PASSWORD": "Mot de passe",
         "FORGOT_PASSWORD": "J'ai oublié mon mot de passe",
-        "RESET_PASSWORD": "Réinitialiser mon mot de passe",
+        "RESET_PASSWORD": "Réinitialiser le mot de passe",
         "RESET_PASSWORD_MESSAGE": "Votre nouveau mot de passe a été défini avec succès. Vous pouvez maintenant vous connecter à votre compte",
         "SENT_RESET_LINK": "Le lien de réinitialisation du mot de passe a été envoyé à votre adresse e-mail",
         "ENTER_USERNAME_PASSWORD": "Saisissez votre nom d'utilisateur et votre mot de passe"
@@ -341,7 +354,7 @@
     "FOOTER": {
         "CREATED_BY": "Créé par",
         "VERSION": "Version",
-        "CONTACT": "Nous contacter",
+        "CONTACT": "Me contacter",
         "CONTACT_FORM": "Formulaire de contact",
         "REPORT_BUG": "Signaler un bug",
         "RATE_WEBSITE": "Notez mon site Web",
@@ -349,7 +362,8 @@
         "THANK_FEEDBACK": "Merci pour votre avis",
         "LOGIN_TO_RATE_WEBSITE": "Veuillez vous connecter pour noter ce site Web",
         "PRIVACY_POLICY": "Politique de confidentialité",
-        "USEFUL_LINKS": "Liens utiles"
+        "USEFUL_LINKS": "Liens utiles",
+        "OLD_WEBSITE": "Ancien Site Web"
     },
     "VALIDATION": {
         "REQUIRED": "Ce champ est obligatoire",
@@ -360,7 +374,8 @@
     "ERRORS": {
         "ACCESS_DENIED": "Accès refusé",
         "ERROR404": "Erreur 404 introuvable",
-        "OOPS": "Oops! Une erreur est survenue"
+        "OOPS": "Oops! Une erreur est survenue",
+        "RESOURSCE_NOT_FOUND": "La ressource que vous essayez d'atteindre n'est pas disponible"
     },
     "LANGUAGES": {
         "ENGLISH": "Anglais",
@@ -369,6 +384,13 @@
     "BREADCRUMBS": {
         "HOME": "Acceuil",
         "CV": "Curriculum Vitae",
-        "PORTFOLIO": "Portfolio"
+        "PORTFOLIO": "Portfolio",
+        "CONTACT_ME": "Contactez-moi"
+    },
+    "HOME": {
+        "SPOKEN_LANGUAGES": "Langues parlées",
+        "CONTACT_FORM": "Formulaire de contact",
+        "INFO1": "Pour toutes les solutions d'informatique.",
+        "INFO2": "N'hésitez pas à consulter mon"
     }
 }

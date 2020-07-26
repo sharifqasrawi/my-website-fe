@@ -10,8 +10,10 @@
             {{ error }}
         </div>
     </div>
-
-    <div class="info" *ngIf="loaded">
+    <div class="alert alert-info text-center" *ngIf="loaded && experiences.length === 0">
+        <h2>{{ 'COMMON.NO_DATA' | translate }}</h2>
+    </div>
+    <div class="info" *ngIf="loaded && experiences.length > 0">
         <div class="timeline">
             <div *ngFor="let exp of experiences">
                 <div class="timeline-month" *ngIf="!exp.isCurrentlyWorking">
@@ -231,6 +233,11 @@
                                                     <pre *ngIf="currentLang === 'en'">{{ doc.description_EN }}</pre>
                                                     <pre *ngIf="currentLang === 'fr'">{{ doc.description_FR }}</pre>
 
+                                                    <p class="small">
+                                                        <b>{{ 'CV.DOCUMENTS.LAST_UPDATE' | translate }}: </b>
+                                                        {{ doc.lastUpdatedDate | date:'medium' }}
+                                                    </p>
+                                                    
                                                     <div style="display: flex; justify-content: space-around;">
                                                         <a style="cursor:pointer; color:fuchsia"
                                                             *ngIf="doc.type === '.pdf'" (click)="onViewPdf(doc.path)">

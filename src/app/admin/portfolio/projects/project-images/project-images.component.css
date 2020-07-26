@@ -1,0 +1,47 @@
+.projectImage{
+    width: 320px;
+    height: 240px;
+    background-color: #424242;
+    position: relative;
+    border-radius: 10px;
+    margin: 0 20px 20px 0;
+    display: inline-block;
+}
+
+.projectImage img {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px 10px 0 0;
+    cursor: pointer;
+}
+
+.projectImage img:hover{
+    opacity: 0.9;
+}
+
+.projectImage .imageBadge {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    padding: 10px;
+    background-color: rgba(182, 108, 108, 0.7);
+    border-radius: 0 10px 10px 0;
+    color: greenyellow;
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+.projectImage .actions {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
+}
+
+.projectImage .actions span, .projectImage .actions a {
+    opacity: 0.8;
+}
+
+.projectImage .actions span:hover, .projectImage .actions a:hover {
+    opacity: 1;
+}

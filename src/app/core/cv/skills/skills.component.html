@@ -1,69 +1,67 @@
-<div class="info">
-    <div class="row">
-        <div class="col-md-8">
-            <h1>
-                <fa-icon [icon]="faStar"></fa-icon>
-                {{ 'CV.SKILLS.SKILLS' | translate }}
-            </h1>
-        </div>
-        <div class="col-md-4">
-            <!-- <mat-label translate>CV.SKILLS.CATEGORY</mat-label> -->
-            <mat-form-field>
-                <mat-select (selectionChange)="onSelectCategory($event)">
-                    <mat-option value="all">{{ 'COMMON.ALL' | translate }}</mat-option>
-                    <mat-option *ngFor="let c of skillCategories"
-                        [value]="currentLang === 'en' ? c.name_EN : c.name_FR">
-                        <span *ngIf="currentLang === 'en'"> {{c.name_EN}}</span>
-                        <span *ngIf="currentLang === 'fr'"> {{c.name_FR}}</span>
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
+<div class="row">
+    <div class="col-md-8">
+        <h1>
+            <fa-icon [icon]="faStar"></fa-icon>
+            {{ 'CV.SKILLS.SKILLS' | translate }}
+        </h1>
     </div>
-    <hr>
-
-    <div *ngIf="errors">
-        <div class="alert alert-danger" *ngFor="let error of errors">
-            {{ error }}
-        </div>
+    <div class="col-md-4">
+        <mat-form-field>
+            <mat-select (selectionChange)="onSelectCategory($event)">
+                <mat-option value="all">{{ 'COMMON.ALL' | translate }}</mat-option>
+                <mat-option *ngFor="let c of skillCategories" [value]="currentLang === 'en' ? c.name_EN : c.name_FR">
+                    <span *ngIf="currentLang === 'en'"> {{c.name_EN}}</span>
+                    <span *ngIf="currentLang === 'fr'"> {{c.name_FR}}</span>
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
     </div>
-    
-    <div class="info" *ngIf="loaded">
-        <div *ngFor="let c of filteredSkillCategories" class="mb-3 ">
-            <app-text-header [text]="c.name_EN" *ngIf="currentLang === 'en'"></app-text-header>
-            <app-text-header [text]="c.name_FR" *ngIf="currentLang === 'fr'"></app-text-header>
+</div>
+<hr>
 
-            <div *ngIf="c.skills" class="mat-elevation-z4 p-2" style=" background-color: rgba(46, 46, 46, 0.8);">
-                <div class="skillBox mat-elevation-z4 " *ngFor="let skill of c.skills">
-                    <div class="skillHead">
-                        <p *ngIf="currentLang === 'en'">{{skill.name_EN}}</p>
-                        <p *ngIf="currentLang === 'fr'">{{skill.name_EN}}</p>
-                    </div>
-                    <div class="skillBody text-center full-width">
-                        <app-circle-chart [value]="skill.level" [size]="'small'"></app-circle-chart>
-                    </div>
+<div *ngIf="errors">
+    <div class="alert alert-danger" *ngFor="let error of errors">
+        {{ error }}
+    </div>
+</div>
+
+<div class="alert alert-info text-center" *ngIf="loaded && filteredSkillCategories.length === 0">
+    <h2>{{ 'COMMON.NO_DATA' | translate }}</h2>
+</div>
+<div class="info" *ngIf="loaded && filteredSkillCategories.length > 0">
+    <div *ngFor="let c of filteredSkillCategories" class="mb-3 ">
+        <app-text-header [text]="c.name_EN" *ngIf="currentLang === 'en'"></app-text-header>
+        <app-text-header [text]="c.name_FR" *ngIf="currentLang === 'fr'"></app-text-header>
+
+        <div *ngIf="c.skills" class="mat-elevation-z4 p-2" style=" background-color: rgba(46, 46, 46, 0.8);">
+            <div class="skillBox mat-elevation-z4 " *ngFor="let skill of c.skills">
+                <div class="skillHead">
+                    <p *ngIf="currentLang === 'en'">{{skill.name_EN}}</p>
+                    <p *ngIf="currentLang === 'fr'">{{skill.name_EN}}</p>
                 </div>
-                <div class="clearfix"></div>
+                <div class="skillBody text-center ">
+                    <app-circle-chart [value]="skill.level" [size]="'small'"></app-circle-chart>
+                </div>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="loader" *ngIf="loading">
-        <div *ngFor="let c of [].constructor(2)" class="mb-3 ">
-            <app-text-header text="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;">
-            </app-text-header>
+<div class="loader" *ngIf="loading">
+    <div *ngFor="let c of [].constructor(2)" class="mb-3 ">
+        <app-text-header text="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;">
+        </app-text-header>
 
-            <div  class="mat-elevation-z4 p-2" style=" background-color: rgba(46, 46, 46, 0.8);">
-                <div class="skillBox mat-elevation-z4 " *ngFor="let s of [].constructor(4)">
-                    <div class="skillHead">
-                        <p>&nbsp;</p>
-                    </div>
-                    <div class="skillBody text-center full-width">
-                        <app-circle-chart value="" text="" [size]="'small'"></app-circle-chart>
-                    </div>
+        <div class="mat-elevation-z4 p-2" style=" background-color: rgba(46, 46, 46, 0.8);">
+            <div class="skillBox mat-elevation-z4 " *ngFor="let s of [].constructor(4)">
+                <div class="skillHead">
+                    <p>&nbsp;</p>
                 </div>
-                <div class="clearfix"></div>
+                <div class="skillBody text-center ">
+                    <app-circle-chart value="" text="" [size]="'small'"></app-circle-chart>
+                </div>
             </div>
+
         </div>
     </div>
 </div>

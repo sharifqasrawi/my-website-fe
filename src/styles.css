@@ -120,25 +120,91 @@ td, th {
     margin: 0 auto;
 }
 
-
 .no-padding .mat-dialog-container {
     padding: 0 !important;
     background-color: transparent;
-  }
-  
-  .no-scrolls .mat-dialog-container {
+}
+
+.no-scrolls .mat-dialog-container {
     overflow: hidden !important;
-  }
-  
-  .backdropBg {
+}
+
+.backdropBg {
     background-color: rgba(0, 0, 0, 0.9);
-  }
+}
 
-  hr{
-      border-color: lightgrey;
-  }
+hr {
+    border-color: lightgrey;
+}
 
+.accent {
+    background-color: #e91e63;
+}
 
-  .accent{
-      background-color: #e91e63;
-  }
+blockquote {
+    border-left: 3px solid #e91e63;
+    padding: 7px 12px 1px 12px;
+    background-color: #202020;
+    display: inline-block;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+/* Loader */
+
+.app-loading {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.app-loading .spinner {
+    height: 200px;
+    width: 200px;
+    animation: rotate 2s linear infinite;
+    transform-origin: center center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.app-loading .spinner .path {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+    animation: dash 1.5s ease-in-out infinite;
+    stroke-linecap: round;
+    stroke: #ddd;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes dash {
+    0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -35px;
+    }
+    100% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -124px;
+    }
+}
+
+.logo {
+    /* background: url(./favicon.ico); */
+    width: 50px;
+    height: 50px;
+}

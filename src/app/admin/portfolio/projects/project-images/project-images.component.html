@@ -1,0 +1,54 @@
+<div class="adminPageTop">
+    <div class="row">
+        <div class="col-md-8">
+            <h1 *ngIf="loaded">
+                <fa-icon [icon]="faImages"></fa-icon>
+                <span *ngIf="currentLang === 'en'"> {{ project.name_EN }} </span>
+                <span *ngIf="currentLang === 'fr'"> {{ project.name_FR }} </span>
+            </h1>
+        </div>
+        <div class="col-md-1">
+            <a mat-raised-button color="warn" class="btn-block mt-1" [routerLink]="['/admin', 'portfolio', 'projects']">
+                <mat-icon>clear</mat-icon>
+            </a>
+        </div>
+        <div class="col-md-1">
+            <button mat-raised-button color="accent" class="btn-block mt-1" (click)="onRefresh()">
+                <mat-icon>autorenew</mat-icon>
+            </button>
+        </div>
+        <div class="col-md-2">
+            <button mat-raised-button color="primary" class="btn-block mt-1" (click)="onAddImage()">
+                {{ 'COMMON.CREATE' | translate }}
+            </button>
+        </div>
+    </div>
+
+    <hr>
+</div>
+
+<div class="adminPageBottom">
+    <mat-spinner *ngIf="loading" color="accent" style="margin: 0 auto;"></mat-spinner>
+    <div *ngIf="errors">
+        <div class="alert alert-danger" *ngFor="let error of errors">{{error}}</div>
+    </div>
+
+    <div *ngIf="loaded">
+        <div class="projectImage" *ngFor="let img of project.projectImages">
+            <img [src]="img.path" [alt]="img.caption_EN" (click)="onViewImage(img.path)">
+            <div class="imageBadge" *ngIf="img.isDisplayed">
+                {{  'PORTFOLIO.PROJECTS.IMAGES.DISPLAYED' | translate }}
+            </div>
+            <div class="actions">
+                <span style="cursor: pointer; color:greenyellow;" (click)="onEditImage(img.id)">
+                    <fa-icon [icon]="faEdit"></fa-icon>
+                </span>
+                <span *ngIf="currentLang === 'en'"> {{ img.caption_EN }} </span>
+                <span *ngIf="currentLang === 'fr'"> {{ img.caption_FR }} </span>
+                <span style="cursor: pointer; color:red;" (click)="onDelete(img.id)">
+                    <fa-icon [icon]="faTrash"></fa-icon>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

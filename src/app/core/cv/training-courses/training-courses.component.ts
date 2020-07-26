@@ -3,10 +3,11 @@ import { Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
-import { faListAlt, faFileAlt, faDownload, faEye } from '@fortawesome/free-solid-svg-icons';
+import { faListAlt, faFileAlt, faDownload, faEye, faTimes, faLink } from '@fortawesome/free-solid-svg-icons';
 
-import { PdfViewerComponent } from './../../../shared/pdf-viewer/pdf-viewer.component';
-import { ImgViewerComponent } from './../../../shared/img-viewer/img-viewer.component';
+// import { PdfViewerComponent } from './../../../shared/pdf-viewer/pdf-viewer.component';
+import { PdfViewer2Component } from './../../../shared/pdf-viewer2/pdf-viewer2.component';
+import { ImgsViewerComponent } from './../../../shared/imgs-viewer/imgs-viewer.component';
 import * as fromApp from '../../../store/app.reducer';
 import * as TrainingCoursesActions from '../../../admin/cv/training-courses/store/courses.actions';
 import { TrainingCourse } from './../../../models/trainingCourse.model';
@@ -23,6 +24,8 @@ export class TrainingCoursesComponent implements OnInit {
   faFileAlt = faFileAlt;
   faDownload = faDownload;
   faEye = faEye;
+  faTimes = faTimes;
+  faLink = faLink;
 
 
   courses: TrainingCourse[] = null;
@@ -63,18 +66,26 @@ export class TrainingCoursesComponent implements OnInit {
     });
   }
 
-  
+
   onViewPdf(path: string) {
-    const dialogRef = this.dialog.open(PdfViewerComponent, {
-      width: '750px',
+    // const dialogRef = this.dialog.open(PdfViewerComponent, {
+    //   width: '750px',
+    //   data: { filePath: path }
+    // });
+
+    const dialogRef = this.dialog.open(PdfViewer2Component, {
+      width: '100%',
+      panelClass: ['no-padding', 'no-scrolls', 'no-margin'],
+      backdropClass: 'backdropBg',
       data: { filePath: path }
     });
   }
 
   onViewImage(path: string) {
-    const dialogRef = this.dialog.open(ImgViewerComponent, {
-      width: '750px',
-      data: { filePath: path }
+    const dialogRef = this.dialog.open(ImgsViewerComponent, {
+      data: { images: [path], index: 0 },
+      panelClass: ['no-padding', 'no-scrolls'],
+      backdropClass: 'backdropBg',
     });
   }
 }

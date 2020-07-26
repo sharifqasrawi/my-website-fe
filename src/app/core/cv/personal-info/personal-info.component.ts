@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ImgsViewerComponent } from './../../../shared/imgs-viewer/imgs-viewer.component';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Title, DomSanitizer } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { Store } from '@ngrx/store';
@@ -9,6 +11,7 @@ import * as PersonalInfoActions from '../../../admin/cv/personal-info/store/pers
 import * as ContactInfoActions from '../../../admin/cv/contact-info/store/contactInfo.actions';
 import { PersonalInfo } from './../../../models/personalInfo.model';
 import { ContactInfo } from './../../../models/contactInfo.model';
+import { MediaMatcher } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-personal-info',
@@ -21,6 +24,8 @@ export class PersonalInfoComponent implements OnInit {
   faAt = faAt;
   faMapMarked = faMapMarked;
   faInfo = faInfoCircle;
+
+  mobileQuery: MediaQueryList;
 
   pInfo: PersonalInfo = null;
   loadingPInfo = false;
@@ -40,8 +45,17 @@ export class PersonalInfoComponent implements OnInit {
     private store: Store<fromApp.AppState>,
     private translate: TranslateService,
     private titleService: Title,
-    private sanitizer: DomSanitizer
-  ) { }
+    private sanitizer: DomSanitizer,
+    changeDetectorRef: ChangeDetectorRef,
+    media: MediaMatcher,
+    private dialog: MatDialog
+  ) {
+    this.mobileQuery = media.matchMedia('(max-width: 768px)');
+    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+    this.mobileQuery.addListener(this._mobileQueryListener);
+  }
+
+  private _mobileQueryListener: () => void;
 
   ngOnInit(): void {
     this.currentLang = this.translate.currentLang;
@@ -88,6 +102,16 @@ export class PersonalInfoComponent implements OnInit {
 
       if (state.contactInfo)
         this.emails = state.contactInfo.emails.split('|');
+    });
+  }
+
+  onViewImage(imagePath: string) {
+    const images = [imagePath];
+
+    const dialogRef = this.dialog.open(ImgsViewerComponent, {
+      data: { images: images, index: 0 },
+      panelClass: ['no-padding', 'no-scrolls'],
+      backdropClass: 'backdropBg',
     });
   }
 

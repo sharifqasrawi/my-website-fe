@@ -16,6 +16,7 @@
         "HIDE": "Hide",
         "DELETE_CONFIRMATION": "Delete confirmation",
         "RESOURCE_NOT_FOUND": "Resource not found",
+        "NO_DATA": "No data available yet",
         "NO_CONTENT": "No content yet",
         "RESOURCES": "Resources",
         "EMAIL": "Email",
@@ -112,7 +113,7 @@
     },
     "CONTACT_ME": {
         "CONTACT_ME": "Contact me",
-        "SEND_ME_MESSAGE": "Send us a message",
+        "SEND_ME_MESSAGE": "Send me a message",
         "MESSAGE_SENT": "Your message was sent successfully",
         "YOUR_NAME": "Your name",
         "FILL_OUT_MESSAGE_SUBJECT": "Fill out message subject",
@@ -288,6 +289,8 @@
             "COURSES": "Training courses",
             "NAME": "Course name",
             "TYPE": "Course type",
+            "ONLINE":"Online",
+            "CLASSIC": "Classic",
             "URL": "Course URL",
             "DURATION": "Course duration",
             "DATETIME": "Date",
@@ -301,7 +304,8 @@
             "DESCRIPTION": "Document description",
             "PATH": "Document path",
             "NO_DOCUMENTS": "No documents available",
-            "DISPLAYED": "Displayed"
+            "DISPLAYED": "Displayed",
+            "LAST_UPDATE":"Last update"
         },
         "SKILLS": {
             "SKILLS": "Skills",
@@ -327,7 +331,16 @@
             "IMAGE_PATH": "Image path",
             "SMALL": "Small",
             "MEDIUMBIG": "Medium - Big",
-            "TAGS": "Tags"
+            "TAGS": "Tags",
+            "PREVIEW_ANOTHER_PROJECT": "Preview another project",
+            "IMAGES": {
+                "PROJECT_IMAGES": "Project images",
+                "CAPTION": "Caption",
+                "PATH": "Image path",
+                "DISPLAYED": "Displayed"
+            },
+            "ALL": "All",
+            "NO_PROJECTS": "Sorry. No projects were found"
         }
     },
     "AUTH": {
@@ -351,7 +364,8 @@
         "THANK_FEEDBACK": "Thank you for your feedback",
         "LOGIN_TO_RATE_WEBSITE": "Please login to rate this website",
         "PRIVACY_POLICY": "Privacy Policy",
-        "USEFUL_LINKS": "Useful links"
+        "USEFUL_LINKS": "Useful links",
+        "OLD_WEBSITE": "Old Website"
     },
     "VALIDATION": {
         "REQUIRED": "This field is required.",
@@ -362,7 +376,8 @@
     "ERRORS": {
         "ACCESS_DENIED": "Access Denied",
         "ERROR404": "Error 404. Not Found",
-        "OOPS": "Oops! An error occured"
+        "OOPS": "Oops! An error occured",
+        "RESOURSCE_NOT_FOUND": "The resource you are trying to reach is not available"
     },
     "LANGUAGES": {
         "ENGLISH": "English",
@@ -371,6 +386,13 @@
     "BREADCRUMBS": {
         "HOME": "Home",
         "CV": "Curriculum Vitae",
-        "PORTFOLIO": "Portfolio"
+        "PORTFOLIO": "Portfolio",
+        "CONTACT_ME":"Contact me"
+    },
+    "HOME": {
+        "SPOKEN_LANGUAGES": "Spoken languages",
+        "CONTACT_FORM": "Contact form",
+        "INFO1": "For all Information Technology solutions.",
+        "INFO2": "Please feel free to check out my: "
     }
 }

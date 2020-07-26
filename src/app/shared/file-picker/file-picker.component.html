@@ -31,6 +31,10 @@
                 style="cursor: pointer;" (click)="onSelectFile(file.downloadPath, file.id)"
                 [class.selected]="selectedFile === file.downloadPath">
 
+            <img *ngIf="isVideo(file.fileType)" src="../../../assets/images/vid.jpg" alt="no preview"
+                style="cursor: pointer;" (click)="onSelectFile(file.downloadPath, file.id)"
+                [class.selected]="selectedFile === file.downloadPath">
+
             <p class="small text-muted text-center">{{file.originalFileName}}</p>
         </div>
     </div>

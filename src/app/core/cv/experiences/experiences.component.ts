@@ -5,7 +5,8 @@ import { Title, DomSanitizer } from '@angular/platform-browser';
 import { MatDialog } from '@angular/material/dialog';
 import { faBriefcase, faFileAlt, faAsterisk, faDownload, faEye } from '@fortawesome/free-solid-svg-icons';
 
-import { PdfViewerComponent } from './../../../shared/pdf-viewer/pdf-viewer.component';
+// import { PdfViewerComponent } from './../../../shared/pdf-viewer/pdf-viewer.component';
+import { PdfViewer2Component } from './../../../shared/pdf-viewer2/pdf-viewer2.component';
 import { ImgViewerComponent } from './../../../shared/img-viewer/img-viewer.component';
 
 import * as fromApp from '../../../store/app.reducer';
@@ -68,8 +69,15 @@ export class ExperiencesComponent implements OnInit {
   }
 
   onViewPdf(path: string) {
-    const dialogRef = this.dialog.open(PdfViewerComponent, {
-      width: '750px',
+    // const dialogRef = this.dialog.open(PdfViewerComponent, {
+    //   width: '750px',
+    //   data: { filePath: path }
+    // });
+
+    const dialogRef = this.dialog.open(PdfViewer2Component, {
+      width: '100%',
+      panelClass: ['no-padding', 'no-scrolls', 'no-margin'],
+      backdropClass: 'backdropBg',
       data: { filePath: path }
     });
   }

@@ -1,1 +1,113 @@
-<p>projects works!</p>
+<div class="info">
+    <app-breadcrumb [links]="breadcrumbLinks"></app-breadcrumb>
+    <h1>
+        <fa-icon [icon]="faProjectDiagram"></fa-icon>
+        {{ 'PORTFOLIO.PORTFOLIO' | translate }}
+    </h1>
+    <hr>
+
+    <div class="row mb-3">
+        <div class="col-md-5">
+            <form [formGroup]="searchForm">
+                <mat-form-field class="full-width" appearance="legacy">
+                    <mat-label>
+                        <fa-icon [icon]="faSearch"></fa-icon> {{ 'COMMON.SEARCH' | translate }}
+                    </mat-label>
+                    <input type="text" #searchKey matInput formControlName="name" (input)="onSearch()">
+                    <button mat-button *ngIf="searchKey.value" matSuffix mat-icon-button aria-label="Clear"
+                        (click)="onClearSearch()">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
+            </form>
+        </div>
+        <div class="col-md-3">
+            <mat-form-field class="full-width" appearance="legacy">
+                <mat-label>{{ 'PORTFOLIO.PROJECTS.TYPE' | translate }}</mat-label>
+                <mat-select [(ngModel)]="type" (ngModelChange)="onFilterByType()">
+                    <mat-option *ngFor="let type of types" [value]="type">
+                        {{  type.toUpperCase()  }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-md-3">
+            <mat-form-field class="full-width" appearance="legacy">
+                <mat-label>{{ 'PORTFOLIO.PROJECTS.SIZE' | translate }}</mat-label>
+                <mat-select [(ngModel)]="size" (ngModelChange)="onFilterBySize()">
+                    <mat-option *ngFor="let size of sizes" [value]="size" style="text-transform: capitalize;">
+                        {{ 'PORTFOLIO.PROJECTS.' + size.toUpperCase() | translate }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-md-1">
+            <button mat-raised-button color="primary" class="btn-block" (click)="onRefresh()">
+                <mat-icon>autorenew</mat-icon>
+            </button>
+        </div>
+    </div>
+
+    <div *ngIf="errors">
+        <div class="alert alert-danger" *ngFor="let error of errors">{{error}}</div>
+    </div>
+
+    <div *ngIf="loaded">
+        <div class="alert alert-secondary text-center" *ngIf="!filteredProjects || filteredProjects.length === 0">
+            {{ 'PORTFOLIO.PROJECTS.NO_PROJECTS' | translate }}
+        </div>
+
+        <div class="projectBox mat-elevation-z8" *ngFor="let project of filteredProjects">
+            <div class="projectImage">
+                <img [src]="project.imagePath" alt="image">
+            </div>
+            <div class="projectBadge" style="text-transform: uppercase;">
+                {{ project.type }}
+            </div>
+            <div class="projectBody">
+                <div>
+                    <h3 *ngIf="currentLang === 'en'" class="text-center"> <b>{{ project.name_EN }}</b> </h3>
+                    <h3 *ngIf="currentLang === 'fr'" class="text-center"> <b>{{ project.name_FR }}</b> </h3>
+                </div>
+                <div>
+                    <p>
+                        <b> {{ 'PORTFOLIO.PROJECTS.SIZE' | translate }}: </b>
+                        {{ 'PORTFOLIO.PROJECTS.' + project.size.toUpperCase() | translate }}
+                    </p>
+                </div>
+            </div>
+            <div class="projectActions">
+                <a mat-raised-button color="primary" class="btn-block" *ngIf="currentLang === 'en'"
+                    [routerLink]="['/portfolio', 'projects', project.id, project.slug_EN]">
+                    {{ 'COMMON.VIEW' | translate }}
+                </a>
+                <a mat-raised-button color="primary" class="btn-block" *ngIf="currentLang === 'fr'"
+                    [routerLink]="['/portfolio', 'projects', project.id, project.slug_FR]">
+                    {{ 'COMMON.VIEW' | translate }}
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="loader" *ngIf="loading">
+        <div class="projectBox mat-elevation-z8" *ngFor="let i of [].constructor(6)">
+            <div class="projectImage">
+                <img src="../../../../assets/images/placeholder.png" alt="image">
+            </div>
+            <div class="projectBadge" style="text-transform: uppercase;">
+                &nbsp;
+            </div>
+            <div class="projectBody">
+                <div>
+                    <h3>&nbsp;</h3>
+                </div>
+                <div>
+                    <p> &nbsp; </p>
+                </div>
+            </div>
+            <div class="projectActions">
+                <p> &nbsp; </p>
+            </div>
+        </div>
+    </div>
+</div>

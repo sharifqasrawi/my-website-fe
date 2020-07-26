@@ -6,43 +6,43 @@
             <div class="cvContainer2">
                 <div class="cvNav info">
                     <mat-accordion class="mat-elevation-z8" style="min-height: calc(100vh - 200px);   opacity: 0.8;">
-                        <mat-expansion-panel [expanded]="!mobileQuery.matches" style="background-color: #303030;">
+                        <mat-expansion-panel [expanded]="!mobileQuery.matches" style="background-color: #303030;" #navPanel>
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
                                     <b>CV</b>
                                 </mat-panel-title>
                             </mat-expansion-panel-header>
                             <a class="btn btn-secondary  navBtn" [routerLink]="['/cv' ,'personal-info']"
-                                routerLinkActive="active">
+                                routerLinkActive="active" (click)="onSelectNav()">
                                 {{ 'CV.PERSONAL_INFO.PERSONAL_INFO' | translate }}
                             </a>
 
                             <a class="btn btn-secondary  navBtn" [routerLink]="['/cv' , 'experiences']"
-                                routerLinkActive="active">
+                                routerLinkActive="active" (click)="onSelectNav()">
                                 {{ 'CV.EXPERIENCES.EXPERIENCES' | translate }}
                             </a>
 
                             <a class="btn btn-secondary  navBtn" [routerLink]="['/cv' , 'education']"
-                                routerLinkActive="active">
+                                routerLinkActive="active" (click)="onSelectNav()">
                                 {{ 'CV.EDUCATION.EDUCATION' | translate }}
                             </a>
                             <a class="btn btn-secondary  navBtn" [routerLink]="['/cv' , 'skills']"
-                                routerLinkActive="active">
+                                routerLinkActive="active"  (click)="onSelectNav()">
                                 {{ 'CV.SKILLS.SKILLS' | translate }}
                             </a>
 
                             <a class="btn btn-secondary  navBtn" [routerLink]="['/cv' , 'training-courses']"
-                                routerLinkActive="active">
+                                routerLinkActive="active" (click)="onSelectNav()">
                                 {{ 'CV.COURSES.COURSES' | translate }}
                             </a>
 
                             <a class="btn btn-secondary  navBtn" [routerLink]="['/cv' , 'languages']"
-                                routerLinkActive="active">
+                                routerLinkActive="active" (click)="onSelectNav()">
                                 {{ 'CV.LANGUAGES.LANGUAGES' | translate }}
                             </a>
 
                             <a class="btn btn-secondary  navBtn" [routerLink]="['/cv' , 'download']"
-                                routerLinkActive="active">
+                                routerLinkActive="active" (click)="onSelectNav()">
                                 {{ 'COMMON.DOWNLOAD' | translate }} {{ 'CV.CV' | translate }}
                             </a>
                         </mat-expansion-panel>

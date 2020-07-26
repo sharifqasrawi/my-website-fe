@@ -1,3 +1,4 @@
+import { ProjectImage } from './../../../../models/projectImage.model';
 import { TranslateService } from '@ngx-translate/core';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
@@ -24,8 +25,9 @@ export class ProjectsEffects {
     @Effect()
     fetchProjects = this.actions$.pipe(
         ofType(ProjectsActions.FETCH_START),
-        switchMap(() => {
-            return this.http.get<{ projects: Project[] }>(environment.API_BASE_URL + 'projects',
+        switchMap((prjInfo: ProjectsActions.FetchStart) => {
+            const fetchUrl = prjInfo.payload && prjInfo.payload === 'admin' ? 'projects/admin' : 'projects';
+            return this.http.get<{ projects: Project[] }>(environment.API_BASE_URL + fetchUrl,
                 {
                     headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.token)
                         .append('language', this.translate.currentLang),
@@ -218,6 +220,120 @@ export class ProjectsEffects {
                 )
         })
     );
+
+    @Effect()
+    createProjectImage = this.actions$.pipe(
+        ofType(ProjectsActions.CREATE_IMAGE_START),
+        switchMap((imgInfo: ProjectsActions.CreateImageStart) => {
+            return this.http.post<{ createdProjectImage: ProjectImage }>(environment.API_BASE_URL + 'projects/create-image',
+                {
+                    projectId: imgInfo.payload.projectId,
+                    caption_EN: imgInfo.payload.caption_EN,
+                    path: imgInfo.payload.path,
+                    isDisplayed: imgInfo.payload.isDisplayed,
+                    caption_FR: imgInfo.payload.caption_FR,
+
+                },
+                {
+                    headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.token)
+                        .append('language', this.translate.currentLang),
+                    withCredentials: true
+                })
+                .pipe(
+                    map(resData => {
+                        return new ProjectsActions.CreateImageSuccess(resData.createdProjectImage);
+                    }),
+                    catchError(errorRes => {
+                        this.getErrorsTranslations();
+                        switch (errorRes.status) {
+                            case 403:
+                            case 401:
+                                return of(new ProjectsActions.CreateImageFail([this.errorAccessDenied]));
+                            case 404:
+                                return of(new ProjectsActions.CreateImageFail([this.error404]));
+                            case 400:
+                                return of(new ProjectsActions.CreateImageFail(errorRes.error.errors));
+                            default:
+                                return of(new ProjectsActions.CreateImageFail([this.errorOccured]));
+                        }
+                    })
+                )
+        })
+    );
+
+
+    @Effect()
+    updateProjectImage = this.actions$.pipe(
+        ofType(ProjectsActions.UPDATE_IMAGE_START),
+        switchMap((imgInfo: ProjectsActions.UpdateImageStart) => {
+            return this.http.put<{ updatedProjectImage: ProjectImage }>(environment.API_BASE_URL + 'projects/update-image',
+                {
+                    id: imgInfo.payload.id,
+                    caption_EN: imgInfo.payload.caption_EN,
+                    path: imgInfo.payload.path,
+                    isDisplayed: imgInfo.payload.isDisplayed,
+                    caption_FR: imgInfo.payload.caption_FR,
+                },
+                {
+                    headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.token)
+                        .append('language', this.translate.currentLang),
+                    withCredentials: true
+                })
+                .pipe(
+                    map(resData => {
+                        return new ProjectsActions.UpdateImageSuccess(resData.updatedProjectImage);
+                    }),
+                    catchError(errorRes => {
+                        this.getErrorsTranslations();
+                        switch (errorRes.status) {
+                            case 403:
+                            case 401:
+                                return of(new ProjectsActions.UpdateImageFail([this.errorAccessDenied]));
+                            case 404:
+                                return of(new ProjectsActions.UpdateImageFail([this.error404]));
+                            case 400:
+                                return of(new ProjectsActions.UpdateImageFail(errorRes.error.errors));
+                            default:
+                                return of(new ProjectsActions.UpdateImageFail([this.errorOccured]));
+                        }
+                    })
+                )
+        })
+    );
+
+    @Effect()
+    deleteProjectImage = this.actions$.pipe(
+        ofType(ProjectsActions.DELETE_IMAGE_START),
+        switchMap((imgInfo: ProjectsActions.DeleteImageStart) => {
+            return this.http.delete<{ deletedProjectImageId: number, projectId: number }>(environment.API_BASE_URL + 'projects/delete-image',
+                {
+                    headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.token)
+                        .append('language', this.translate.currentLang),
+                    params: new HttpParams().set('id', imgInfo.payload.toString()),
+                    withCredentials: true
+                })
+                .pipe(
+                    map(resData => {
+                        return new ProjectsActions.DeleteImageSuccess(resData);
+                    }),
+                    catchError(errorRes => {
+                        this.getErrorsTranslations();
+                        switch (errorRes.status) {
+                            case 403:
+                            case 401:
+                                return of(new ProjectsActions.DeleteImageFail([this.errorAccessDenied]));
+                            case 404:
+                                return of(new ProjectsActions.DeleteImageFail([this.error404]));
+                            case 400:
+                                return of(new ProjectsActions.DeleteImageFail(errorRes.error.errors));
+                            default:
+                                return of(new ProjectsActions.DeleteImageFail([this.errorOccured]));
+                        }
+                    })
+                )
+        })
+    );
+
 
     constructor(
         private actions$: Actions,

@@ -10,8 +10,10 @@
             {{ error }}
         </div>
     </div>
-
-    <div class="info" *ngIf="loaded">
+    <div class="alert alert-info text-center" *ngIf="loaded && languages.length === 0">
+        <h2>{{ 'COMMON.NO_DATA' | translate }}</h2>
+    </div>
+    <div class="info" *ngIf="loaded && languages.length > 0">
         <div *ngFor="let language of languages" class="mb-5">
             <app-text-header [text]="language.name_EN" *ngIf="currentLang==='en'"></app-text-header>
             <app-text-header [text]="language.name_FR" *ngIf="currentLang==='fr'"></app-text-header>
@@ -46,7 +48,7 @@
                     </div>
                 </div>
 
-                <div class="p-3" *ngIf="language.documents.length > 0">
+                <div  *ngIf="language.documents.length > 0">
                     <mat-accordion>
                         <mat-expansion-panel style="background-color: rgba(100, 100, 100, 0.3);">
                             <mat-expansion-panel-header>
@@ -67,6 +69,11 @@
                                 <strong>{{ 'CV.DOCUMENTS.DESCRIPTION' | translate }}: </strong>
                                 <pre *ngIf="currentLang === 'en'">{{ doc.description_EN }}</pre>
                                 <pre *ngIf="currentLang === 'fr'">{{ doc.description_FR }}</pre>
+
+                                <p class="small">
+                                    <b>{{ 'CV.DOCUMENTS.LAST_UPDATE' | translate }}: </b>
+                                    {{ doc.lastUpdatedDate | date:'medium' }}
+                                </p>
 
                                 <div style="display: flex; justify-content: space-around;">
                                     <a style="cursor:pointer; color:fuchsia" *ngIf="doc.type === '.pdf'"

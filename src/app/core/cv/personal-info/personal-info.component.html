@@ -11,11 +11,24 @@
         </div>
     </div>
 
-    <div class="info" *ngIf="loadedPInfo && loadedCInfo">
+    <div class="alert alert-info text-center" *ngIf="loadedPInfo && loadedCInfo && (!pInfo || !cInfo)">
+        <h2>{{ 'COMMON.NO_DATA' | translate }}</h2>
+    </div>
+    <div class="info" *ngIf="loadedPInfo && loadedCInfo && pInfo && cInfo">
         <div class="row">
             <div class="col-md-4">
                 <div>
-                    <img [src]="getSanitizedImage(pInfo.imagePath)" alt="image" class="mat-elevation-z4">
+                    <div *ngIf="mobileQuery.matches" class="text-center">
+                        <h1 class="name">
+                            {{ pInfo.name }}
+                        </h1>
+                        <p class="title text-muted" *ngIf="currentLang === 'en'"> {{ pInfo.title_EN }} </p>
+                        <p class="title text-muted" *ngIf="currentLang === 'fr'"> {{ pInfo.title_FR }} </p>
+                    </div>
+                    <div class="text-center">
+                        <img [src]="getSanitizedImage(pInfo.imagePath)" alt="image" class="mat-elevation-z4"
+                            (click)="onViewImage(pInfo.imagePath)">
+                    </div>
                     <div class="mt-3 text-center" style="display: flex; justify-content: space-around;">
                         <a [href]="cInfo.linkedInUrl" target="_blank">
                             <img src="../../../../assets/images/linkedin.png" alt="linkedin" class="socialBtn">
@@ -52,15 +65,17 @@
                             <span *ngIf="currentLang === 'fr'">{{ cInfo.city_FR }}, {{ cInfo.country_FR }}</span>
                         </span>
                     </p>
+                    <hr *ngIf="mobileQuery.matches">
                 </div>
             </div>
             <div class="col-md-8">
-                <h1 class="name">
-                    {{ pInfo.name }}
-                </h1>
-                <p class="title text-muted" *ngIf="currentLang === 'en'"> {{ pInfo.title_EN }} </p>
-                <p class="title text-muted" *ngIf="currentLang === 'fr'"> {{ pInfo.title_FR }} </p>
-
+                <div *ngIf="!mobileQuery.matches">
+                    <h1 class="name">
+                        {{ pInfo.name }}
+                    </h1>
+                    <p class="title text-muted" *ngIf="currentLang === 'en'"> {{ pInfo.title_EN }} </p>
+                    <p class="title text-muted" *ngIf="currentLang === 'fr'"> {{ pInfo.title_FR }} </p>
+                </div>
                 <p>
                     <b style="color: gray;"> {{ 'CV.PERSONAL_INFO.MARITAL_STATUS' | translate }}:</b>
                     {{ 'CV.PERSONAL_INFO.' + pInfo.maritalStatus.toUpperCase() | translate }}

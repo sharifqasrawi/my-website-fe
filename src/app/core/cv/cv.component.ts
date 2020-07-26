@@ -1,6 +1,6 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { TranslateService } from '@ngx-translate/core';
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-cv',
@@ -9,6 +9,8 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 })
 export class CvComponent implements OnInit {
 
+  @ViewChild('navPanel') navPanel;
+
   mobileQuery: MediaQueryList;
   expanded = true;
 
@@ -16,7 +18,8 @@ export class CvComponent implements OnInit {
 
   constructor(private translate: TranslateService,
     changeDetectorRef: ChangeDetectorRef,
-    media: MediaMatcher,) {
+    media: MediaMatcher,
+  ) {
     this.mobileQuery = media.matchMedia('(max-width: 990px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -32,4 +35,8 @@ export class CvComponent implements OnInit {
     ];
   }
 
+  onSelectNav() {
+    if (this.mobileQuery.matches)
+      this.navPanel.toggle()
+  }
 }

@@ -1,3 +1,4 @@
+import { PdfViewer2Component } from './../../../../shared/pdf-viewer2/pdf-viewer2.component';
 import { ConfirmDialogComponent } from './../../../../shared/confirm-dialog/confirm-dialog.component';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
@@ -5,7 +6,7 @@ import { EditEducationDocumentComponent } from './edit-education-document/edit-e
 import { MatDialog } from '@angular/material/dialog';
 import { MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
 import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
-import { faFileAlt, faPlus, faTimes, faDownload, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faFileAlt, faPlus, faTimes, faDownload, faEdit, faTrash, faEye } from '@fortawesome/free-solid-svg-icons';
 
 import { Document } from './../../../../models/document.model';
 import * as fromApp from '../../../../store/app.reducer';
@@ -29,6 +30,7 @@ export class EducationDocumentsComponent implements OnInit, OnDestroy {
   faEdit = faEdit;
   faTrash = faTrash;
   faDownload = faDownload;
+  faEye = faEye;
 
   documents: Document[];
 
@@ -92,6 +94,16 @@ export class EducationDocumentsComponent implements OnInit, OnDestroy {
     });
 
   }
+
+  onViewPdf(path: string) {
+    const dialogRef = this.dialog.open(PdfViewer2Component, {
+      width: '100%',
+      panelClass: ['no-padding', 'no-scrolls', 'no-margin'],
+      backdropClass: 'backdropBg',
+      data: { filePath: path }
+    });
+  }
+
 
   ngOnDestroy() {
     this.store.dispatch(new EducationActions.ClearCreate());

@@ -81,9 +81,9 @@ export class EditEducationComponent implements OnInit, OnDestroy {
       graduateDate: new FormControl(null, [Validators.required]),
     });
 
-     if (!this.educations || this.educations.length === 0) {
-        this.store.dispatch(new EducationActions.FetchStart());
-      }
+    if (!this.educations || this.educations.length === 0) {
+      this.store.dispatch(new EducationActions.FetchStart());
+    }
 
     this.store.select('education').subscribe(state => {
       this.educations = state.educations;
@@ -128,8 +128,8 @@ export class EditEducationComponent implements OnInit, OnDestroy {
               specialization_FR: education.specialization_FR,
               yearsCount: education.yearsCount,
               note: education.note,
-              startDate: new Date(education.startDate).toISOString().substr(0, 10),
-              graduateDate: new Date(education.graduateDate).toISOString().substr(0, 10),
+              startDate: new Date(new Date(education.startDate).getTime() - (new Date().getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+              graduateDate: new Date(new Date(education.graduateDate).getTime() - (new Date().getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
             });
           }
         }

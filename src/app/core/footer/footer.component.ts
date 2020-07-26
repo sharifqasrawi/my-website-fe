@@ -1,4 +1,6 @@
-import { faCheckCircle, faLink } from '@fortawesome/free-solid-svg-icons';
+import { PrivacyPolicyComponent } from './../privacy-policy/privacy-policy.component';
+import { MatDialog } from '@angular/material/dialog';
+import { faCheckCircle, faLink, faAt } from '@fortawesome/free-solid-svg-icons';
 import { TranslateService } from '@ngx-translate/core';
 import { Component, OnInit } from '@angular/core';
 
@@ -11,8 +13,11 @@ export class FooterComponent implements OnInit {
 
   faCheckCircle = faCheckCircle;
   faLink = faLink;
+  faAt = faAt;
 
-  constructor(public translate: TranslateService) {
+  currentYear: number;
+
+  constructor(public translate: TranslateService, private dialog: MatDialog) {
     translate.addLangs(['en', 'fr']);
     translate.setDefaultLang('en');
 
@@ -25,9 +30,16 @@ export class FooterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.currentYear = new Date().getFullYear();
   }
 
 
+  onOpenPrivacyPolicy() {
+    const dialogRef = this.dialog.open(PrivacyPolicyComponent, {
+      width: '650px',
+      disableClose: true
+    });
+  }
 
   onChangeLanguage(lang: string) {
     this.translate.use(lang);

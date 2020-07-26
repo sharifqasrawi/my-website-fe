@@ -64,9 +64,9 @@ export class PersonalInfoComponent implements OnInit, OnDestroy {
     this.form = new FormGroup({
       name: new FormControl(null, [Validators.required]),
       title_EN: new FormControl(null, [Validators.required]),
-      title_FR: new FormControl(null, [Validators.required]),
+      title_FR: new FormControl(null),
       about_EN: new FormControl(null, [Validators.required]),
-      about_FR: new FormControl(null, [Validators.required]),
+      about_FR: new FormControl(null),
       maritalStatus: new FormControl(null, [Validators.required]),
       imagePath: new FormControl(null, [Validators.required]),
       dateOfBirth: new FormControl(null, [Validators.required]),
@@ -93,7 +93,7 @@ export class PersonalInfoComponent implements OnInit, OnDestroy {
           maritalStatus: this.personalInfo.maritalStatus,
           imagePath: this.personalInfo.imagePath,
           driversLicense: this.personalInfo.driversLicense,
-          dateOfBirth: new Date(this.personalInfo.dateOfBirth).toISOString().substr(0, 10),
+          dateOfBirth: new Date(new Date(this.personalInfo.dateOfBirth).getTime() - (new Date().getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
         });
       }
     });

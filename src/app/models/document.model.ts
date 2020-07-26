@@ -8,6 +8,7 @@ export class Document {
         public fileId: number,
         public isDisplayed: boolean,
         public description_FR?: string,
+        public lastUpdatedDate?: Date,
         public name_FR?: string,
         public experienceId?: number,
         public educationId?: number,

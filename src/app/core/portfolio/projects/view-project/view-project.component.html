@@ -1,0 +1,214 @@
+<div class="info mb-3">
+    <app-breadcrumb [links]="breadcrumbLinks"></app-breadcrumb>
+
+    <div class=" mt-3" *ngIf="loaded">
+        <div *ngIf="!mobileQuery.matches">
+            <h1>
+                <span *ngIf="currentLang === 'en'">{{ project.name_EN }}</span>
+                <span *ngIf="currentLang === 'fr'">{{ project.name_FR }}</span>
+            </h1>
+            <hr>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div *ngIf="mobileQuery.matches">
+                    <h1>
+                        <span *ngIf="currentLang === 'en'">{{ project.name_EN }}</span>
+                        <span *ngIf="currentLang === 'fr'">{{ project.name_FR }}</span>
+                    </h1>
+                    <hr>
+                </div>
+                <img [src]="getSanitizedImage(project.imagePath)" alt="image" class="projectImg mat-elevation-z4"
+                    (click)="onViewImage(project.imagePath)">
+                <div class="mt-3">
+                    <p>
+                        <strong>{{ 'PORTFOLIO.PROJECTS.TYPE' | translate }}:</strong>
+                        <span style="text-transform: capitalize;">
+                            {{ project.type }}
+                        </span>
+                    </p>
+                    <p>
+                        <strong>{{ 'PORTFOLIO.PROJECTS.SIZE' | translate }}:</strong>
+                        {{ 'PORTFOLIO.PROJECTS.' + project.size.toUpperCase() | translate }}
+                    </p>
+                    <p *ngIf="project.liveDemoUrl">
+                        <strong>{{ 'PORTFOLIO.PROJECTS.LIVE_DEMO_URL' | translate }}: </strong>
+                        <a [href]="project.liveDemoUrl" target="_blank">{{project.liveDemoUrl}}</a>
+                    </p>
+                    <p *ngIf="project.gitHubUrl">
+                        <strong>{{ 'PORTFOLIO.PROJECTS.GITHUB_URL' | translate }}: </strong>
+                        <a [href]="project.gitHubUrl" target="_blank">
+                            <img src="../../../../../assets/images/github.png" alt="github" width="20">
+                        </a>
+                    </p>
+
+                    <div *ngIf="project.tags">
+                        <div class="tag mat-elevation-z4" *ngFor="let tag of project.tags">
+                            <fa-icon [icon]="faTags"></fa-icon> {{ tag.name }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+
+                <p>
+                    <strong>{{ 'PORTFOLIO.PROJECTS.DESCRIPTION' | translate }}:</strong>
+                </p>
+                <div *ngIf="currentLang === 'en'" [innerHTML]="getSanitizedHtml(project.description_EN)"></div>
+                <div *ngIf="currentLang === 'fr'" [innerHTML]="getSanitizedHtml(project.description_FR)"></div>
+            </div>
+        </div>
+
+        <div class="mt-3"></div>
+        <mat-accordion>
+            <mat-expansion-panel *ngIf="project.videoDemoUrl || project.videoDemoUrlExt">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <strong>
+                            <fa-icon [icon]="faVideo"></fa-icon>
+                            Video Demo:
+                        </strong>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- <div class="mat-elevation-z4" style="width: 100%; height: 350px; background-color: #323232;"></div> -->
+
+                        <div *ngIf="project.videoDemoUrl" class="text-center">
+                            <video [src]="project.videoDemoUrl" controls class="mat-elevation-z4"></video>
+                            <!-- <mat-video  [autoplay]="false" [preload]="true" [fullscreen]="true"
+                                color="accent" showFrameByFrame="true">
+                                <source matVideoSource [src]="project.videoDemoUrl" type="video/mp4">
+                            </mat-video> -->
+                        </div>
+
+                        <div *ngIf="project.videoDemoUrlExt" class="text-center mt-3">
+                            <!-- <video [src]="project.videoDemoUrlExt" controls width="600" height="400" class="mat-elevation-z4"></video> -->
+                            <!-- <video [src]="project.videoDemoUrlExt" width="400" controls>
+                                Your browser does not support HTML video.
+                            </video> -->
+                            <iframe  [src]="getSanitizedImage(project.videoDemoUrlExt)"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen style="margin: 0 auto;"></iframe>
+
+                            <!-- <mat-video [src]="project.videoDemoUrlExt" [autoplay]="false" [preload]="true" [fullscreen]="true"
+                                color="accent" spinner="spin" showFrameByFrame="true">
+                            </mat-video> -->
+
+                            <!-- <video [src]="project.videoDemoUrlExt" controls="controls" class="video-stream"
+                                x-webkit-airplay="allow" class="mat-elevation-z4"></video> -->
+                        </div>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel expanded *ngIf="project.projectImages.length > 0">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <strong>
+                            <fa-icon [icon]="faImages"></fa-icon>
+                            Images:
+                        </strong>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <div class="row mt-3">
+                    <div class="col-md-12">
+
+                        <div class="projectImage mat-elevation-z4" *ngFor="let img of project.projectImages">
+                            <img [src]="img.path" [alt]="img.caption_EN" (click)="onViewImage(img.path)">
+                            <div class="imageBadge" *ngIf="currentLang === 'en'"> {{ img.caption_EN }} </div>
+                            <div class="imageBadge" *ngIf="currentLang === 'fr'"> {{ img.caption_FR }} </div>
+                        </div>
+                    </div>
+                </div>
+
+            </mat-expansion-panel>
+        </mat-accordion>
+
+        <hr>
+        <div class="row mt-2">
+            <div class="col-md-2">
+                <a [routerLink]="['/portfolio']" mat-raised-button class="btn-block">
+                    <fa-icon [icon]="faBackward"></fa-icon>
+                    {{ 'COMMON.BACK' | translate }}
+                </a>
+            </div>
+            <div class="col-md-10">
+                <mat-form-field appearance="legacy">
+                    <mat-label>{{ 'PORTFOLIO.PROJECTS.PREVIEW_ANOTHER_PROJECT' | translate }}</mat-label>
+                    <mat-select>
+                        <mat-option *ngFor="let prj of projects" [value]="prj.id" (click)="onSelectProject(prj.id)">
+                            <span *ngIf="currentLang === 'en'">
+                                ({{ prj.type.toUpperCase() }}) {{ prj.name_EN }}
+                            </span>
+                            <span *ngIf="currentLang === 'fr'">
+                                ({{ prj.type.toUpperCase() }}) {{ prj.name_FR }}
+                            </span>
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="loader mt-3" *ngIf="loading">
+        <div class="row">
+            <div class="col-md-4">
+                <h1 *ngIf="mobileQuery.matches"> &nbsp; </h1>
+                <img src="../../../../../assets/images/placeholder.png" alt="image" class="projectImg mat-elevation-z4">
+                <div class="mt-3">
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+
+                    <div>
+                        <div class="tag mat-elevation-z4" *ngFor="let i of [].constructor(8)">
+                            &nbsp;
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <h1 *ngIf="!mobileQuery.matches">&nbsp;</h1>
+                <hr>
+                <p>&nbsp;</p>
+                <div class="desc"> &nbsp; </div>
+            </div>
+        </div>
+
+        <div class="mt-3"></div>
+        <mat-accordion>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <p>&nbsp;</p>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="vidDemo"></div>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel expanded>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <p>&nbsp;</p>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <div class="projectImage mat-elevation-z4" *ngFor="let i of [].constructor(5)">
+                            <img src="../../../../../assets/images/placeholder.png" alt="image">
+                            <div class="imageBadge"> &nbsp; </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+</div>

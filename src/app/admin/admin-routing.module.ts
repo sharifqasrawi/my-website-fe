@@ -1,3 +1,5 @@
+import { ToDoListComponent } from './to-do-list/to-do-list.component';
+import { ProjectImagesComponent } from './portfolio/projects/project-images/project-images.component';
 import { EditProjectComponent } from './portfolio/projects/edit-project/edit-project.component';
 import { TagsComponent } from './tags/tags.component';
 import { SkillsComponent } from './cv/skills/skills.component';
@@ -58,6 +60,7 @@ const routes: Routes = [
                         children: [
                             { path: 'create', component: EditProjectComponent },
                             { path: 'edit/:id', component: EditProjectComponent },
+                            { path: 'images/:id', component: ProjectImagesComponent },
                             { path: '', component: ProjectsComponent },
                         ]
                     }
@@ -92,6 +95,10 @@ const routes: Routes = [
                     { path: 'edit-user', component: NewUserComponent },
                     { path: '', component: UsersComponent, pathMatch: 'full' },
                 ]
+            },
+            {
+                path: 'to-do-list',
+                component: ToDoListComponent
             },
         ],
 

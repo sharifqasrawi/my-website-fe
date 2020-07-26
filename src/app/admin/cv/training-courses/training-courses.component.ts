@@ -7,7 +7,7 @@ import { TrainingCourse } from './../../../models/trainingCourse.model';
 import { EditTrainingCourseComponent } from './edit-training-course/edit-training-course.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
-import { faListAlt, faEdit, faTrash, faLink, faFileAlt } from '@fortawesome/free-solid-svg-icons';
+import { faListAlt, faEdit, faTrash, faLink, faFileAlt, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import { CourseDocumentsComponent } from './courses-documents/courses-documents.component';
 import * as fromApp from '../../../store/app.reducer';
@@ -25,6 +25,7 @@ export class TrainingCoursesComponent implements OnInit {
   faTrash = faTrash;
   faLink = faLink;
   faFileAlt = faFileAlt;
+  faTimes = faTimes;
 
 
   courses: TrainingCourse[] = null;

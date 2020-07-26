@@ -82,6 +82,7 @@ export class FilePickerComponent implements OnInit {
   isPdf = (type: string) => type === '.pdf';
   isRar = (type: string) => type === '.rar';
   isZip = (type: string) => type === '.zip';
+  isVideo = (type: string) => type === '.mp4';
 
   isOther = (type: string) => !this.isImage(type) && !this.isPdf(type) && !this.isRar(type) && !this.isZip(type);
 

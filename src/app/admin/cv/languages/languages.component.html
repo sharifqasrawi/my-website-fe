@@ -26,8 +26,10 @@
         <div class="alert alert-danger" *ngFor="let error of errors">{{error}}</div>
     </div>
     <mat-spinner style="margin: 0 auto;" *ngIf="loading"></mat-spinner>
-
-    <div *ngIf="loaded">
+    <div class="alert alert-info text-center" *ngIf="loaded && languages.length === 0">
+        <h2>{{ 'COMMON.NO_DATA' | translate }}</h2>
+    </div>
+    <div *ngIf="loaded && languages">
         <div class="langBox mat-elevation-z12" *ngFor="let lang of languages">
             <div class="langHead">
                 <h2 class="text-center" *ngIf="currentLang === 'en'"> {{ lang.name_EN }}</h2>

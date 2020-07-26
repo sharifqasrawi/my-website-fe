@@ -44,9 +44,13 @@
 
         <div class="row mt-3">
             <div class="col-md-6">
-                <mat-form-field class="full-width" appearance="legacy">
+                <mat-form-field>
                     <mat-label>{{ 'CV.COURSES.TYPE' | translate }} *</mat-label>
-                    <input type="text" matInput formControlName="type">
+                    <mat-select formControlName="type" >
+                        <mat-option *ngFor="let tp of types" [value]="tp">
+                            {{ 'CV.COURSES.' + tp.toUpperCase() | translate }}
+                        </mat-option>
+                    </mat-select>
                     <mat-error *ngIf="!form.controls.type.valid && form.controls.type.touched" translate>
                         VALIDATION.REQUIRED
                     </mat-error>
@@ -76,7 +80,7 @@
             </div>
             <div class="col-md-6">
                 <mat-form-field class="full-width" appearance="legacy">
-                    <mat-label>{{ 'CV.COURSES.DATETIME' | translate }} *</mat-label>
+                    <mat-label>{{ 'CV.COURSES.DATETIME' | translate }} </mat-label>
                     <input type="date" matInput formControlName="dateTime">
                     <mat-error *ngIf="!form.controls.dateTime.valid && form.controls.dateTime.touched" translate>
                         VALIDATION.REQUIRED

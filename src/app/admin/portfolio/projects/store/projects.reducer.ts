@@ -1,3 +1,4 @@
+import { ProjectImage } from './../../../../models/projectImage.model';
 import { Project } from './../../../../models/project.model';
 
 import * as ProjectsActions from './projects.actions';
@@ -15,6 +16,14 @@ export interface State {
     deleting: boolean,
     deleted: boolean,
     errors: string[],
+
+    creatingImage: boolean,
+    createdImage: boolean,
+    updatingImage: boolean,
+    updatedImage: boolean,
+    deletingImage: boolean,
+    deletedImage: boolean,
+    errorsImages: string[],
 }
 
 const initialState: State = {
@@ -30,6 +39,14 @@ const initialState: State = {
     deleting: false,
     deleted: false,
     errors: null,
+
+    creatingImage: false,
+    createdImage: false,
+    updatingImage: false,
+    updatedImage: false,
+    deletingImage: false,
+    deletedImage: false,
+    errorsImages: null,
 };
 
 export function projectsReducer(state: State = initialState, action: ProjectsActions.ProjectsActions) {
@@ -97,6 +114,7 @@ export function projectsReducer(state: State = initialState, action: ProjectsAct
             const projectAfterUpdate: Project = {
                 ...projectToUpdate,
                 name_EN: action.payload.name_EN,
+                slug_EN: action.payload.slug_EN,
                 description_EN: action.payload.description_EN,
                 type: action.payload.type,
                 size: action.payload.size,
@@ -107,6 +125,7 @@ export function projectsReducer(state: State = initialState, action: ProjectsAct
                 videoDemoUrlExt: action.payload.videoDemoUrlExt,
                 imagePath: action.payload.imagePath,
                 name_FR: action.payload.name_FR,
+                slug_FR: action.payload.slug_FR,
                 description_FR: action.payload.description_FR
             };
 
@@ -192,11 +211,133 @@ export function projectsReducer(state: State = initialState, action: ProjectsAct
 
         ///////////
 
+        case ProjectsActions.CREATE_IMAGE_START:
+            return {
+                ...state,
+                creatingImage: true,
+                createdImage: false,
+                errorsImages: null
+            };
+        case ProjectsActions.CREATE_IMAGE_SUCCESS:
+            const projectToAddImageIndex = state.projects.findIndex(p => p.id === action.payload.projectId);
+            const projectToAddImage = state.projects.find(p => p.id === action.payload.projectId);
+            const projectsAfterAddImage = [...state.projects];
+
+            const projectAfterAddImage: Project = {
+                ...projectToAddImage,
+                projectImages: [...projectToAddImage.projectImages, action.payload]
+            };
+
+            projectsAfterAddImage[projectToAddImageIndex] = projectAfterAddImage;
+
+            return {
+                ...state,
+                creatingImage: false,
+                createdImage: true,
+                projects: [...projectsAfterAddImage]
+            };
+        case ProjectsActions.CREATE_IMAGE_FAIL:
+            return {
+                ...state,
+                creatingImage: false,
+                errorsImages: [...action.payload]
+            };
+
+        ///////////
+
+        case ProjectsActions.UPDATE_IMAGE_START:
+            return {
+                ...state,
+                updatingImage: true,
+                updatedImage: false,
+                errorsImages: null
+            };
+        case ProjectsActions.UPDATE_IMAGE_SUCCESS:
+            const projectToUpdateImageIndex = state.projects.findIndex(p => p.id === action.payload.projectId);
+            const projectToUpdateImage = state.projects.find(p => p.id === action.payload.projectId);
+            const projectsAfterUpdateImage = [...state.projects];
+
+            const projectToUpdateImageImages = [...projectToUpdateImage.projectImages];
+            const projectImageToUpdate = projectToUpdateImageImages.find(i => i.id === action.payload.id);
+            const projectImageToUpdateIndex = projectToUpdateImageImages.findIndex(i => i.id === action.payload.id);
+
+            const projectImageAfterUpdate: ProjectImage = {
+                ...projectImageToUpdate,
+                caption_EN: action.payload.caption_EN,
+                caption_FR: action.payload.caption_FR,
+                path: action.payload.path,
+                isDisplayed: action.payload.isDisplayed
+            };
+
+            projectToUpdateImageImages[projectImageToUpdateIndex] = projectImageAfterUpdate;
+
+            const projectAfterUpdateImage: Project = {
+                ...projectToUpdateImage,
+                projectImages: [...projectToUpdateImageImages]
+            };
+
+            projectsAfterUpdateImage[projectToUpdateImageIndex] = projectAfterUpdateImage;
+
+            return {
+                ...state,
+                updatingImage: false,
+                updatedImage: true,
+                projects: [...projectsAfterUpdateImage]
+            };
+        case ProjectsActions.UPDATE_IMAGE_FAIL:
+            return {
+                ...state,
+                updatingImage: false,
+                errorsImages: [...action.payload]
+            };
+
+        ///////////
+
+        case ProjectsActions.DELETE_IMAGE_START:
+            return {
+                ...state,
+                deletingImage: true,
+                deletedImage: false,
+                errorsImages: null
+            };
+        case ProjectsActions.DELETE_IMAGE_SUCCESS:
+            const projectToDeleteImageIndex = state.projects.findIndex(p => p.id === action.payload.projectId);
+            const projectToDeleteImage = state.projects.find(p => p.id === action.payload.projectId);
+            const projectsAfterDeleteImage = [...state.projects];
+
+            const projectToDeleteImageImages = [...projectToDeleteImage.projectImages];
+            const projectImageToDeleteIndex = projectToDeleteImageImages.findIndex(i => i.id === action.payload.deletedProjectImageId);
+
+            projectToDeleteImageImages.splice(projectImageToDeleteIndex, 1);
+
+            const projectAfterDeleteImage: Project = {
+                ...projectToDeleteImage,
+                projectImages: [...projectToDeleteImageImages]
+            };
+
+            projectsAfterDeleteImage[projectToDeleteImageIndex] = projectAfterDeleteImage;
+
+            return {
+                ...state,
+                deletingImage: false,
+                deletedImage: true,
+                projects: [...projectsAfterDeleteImage]
+            };
+        case ProjectsActions.DELETE_IMAGE_FAIL:
+            return {
+                ...state,
+                deletingImage: false,
+                errorsImages: [...action.payload]
+            };
+
+        ///////////
+
 
         case ProjectsActions.CLEAR_ERRORS:
             return {
                 ...state,
-                errors: null
+                errors: null,
+                errorsImages: null
             };
         case ProjectsActions.CLEAR_STATUS:
             return {
@@ -209,6 +350,12 @@ export function projectsReducer(state: State = initialState, action: ProjectsAct
                 updated: false,
                 deleting: false,
                 deleted: false,
+                creatingImage: false,
+                createdImage: false,
+                updatingImage: false,
+                updatedImage: false,
+                deletingImage: false,
+                deletedImage: false,
             };
         case ProjectsActions.CLEAR_CREATE:
             return {
@@ -217,6 +364,10 @@ export function projectsReducer(state: State = initialState, action: ProjectsAct
                 created: false,
                 updating: false,
                 updated: false,
+                creatingImage: false,
+                createdImage: false,
+                updatingImage: false,
+                updatedImage: false,
             };
 
         default:

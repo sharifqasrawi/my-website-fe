@@ -1,5 +1,7 @@
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Component, OnInit, Inject } from '@angular/core';
+import { PDFProgressData } from 'ng2-pdf-viewer'
+
 
 export interface DialogData {
   filePath: string,
@@ -12,6 +14,8 @@ export interface DialogData {
 })
 export class PdfViewerComponent implements OnInit {
 
+  loaded = false;
+
   constructor(
     public dialogRef: MatDialogRef<PdfViewerComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
@@ -21,6 +25,10 @@ export class PdfViewerComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loaded = false;
   }
 
+  onProgress(progressData: PDFProgressData) {
+    this.loaded = progressData.loaded >= progressData.total;
+  }
 }

@@ -1,3 +1,4 @@
+import { ProjectImage } from './../../../../models/projectImage.model';
 
 
 import { Action } from '@ngrx/store';
@@ -25,6 +26,19 @@ export const ADD_REMOVE_TAG_START = '[Projects] Add Remove Tag Start';
 export const ADD_REMOVE_TAG_SUCCESS = '[Projects] Remove Tag Success';
 export const ADD_REMOVE_TAG_FAIL = '[Projects] Remove Tag Restore Fail';
 
+
+export const CREATE_IMAGE_START = '[Projects] Create Image Start';
+export const CREATE_IMAGE_SUCCESS = '[Projects] Create Image Success';
+export const CREATE_IMAGE_FAIL = '[Projects] Create Image Fail';
+
+export const UPDATE_IMAGE_START = '[Projects] Update Image Start';
+export const UPDATE_IMAGE_SUCCESS = '[Projects] Update Image Success';
+export const UPDATE_IMAGE_FAIL = '[Projects] Update Image Fail';
+
+export const DELETE_IMAGE_START = '[Projects] Delete Image Start';
+export const DELETE_IMAGE_SUCCESS = '[Projects] Delete Image Success';
+export const DELETE_IMAGE_FAIL = '[Projects] Delete Image Fail';
+
 export const CLEAR_ERRORS = '[Projects] Clear Errors';
 export const CLEAR_STATUS = '[Projects] Clear Status';
 export const CLEAR_CREATE = '[Projects] Clear Create';
@@ -33,6 +47,8 @@ export const CLEAR_CREATE = '[Projects] Clear Create';
 
 export class FetchStart implements Action {
     readonly type = FETCH_START;
+
+    constructor(public payload?: string) { }
 }
 
 export class FetchSuccess implements Action {
@@ -166,6 +182,85 @@ export class AddRemoveTagFail implements Action {
 
 ///////////
 
+export class CreateImageStart implements Action {
+    readonly type = CREATE_IMAGE_START;
+
+    constructor(public payload: {
+        projectId: number,
+        caption_EN: string,
+        path: string,
+        isDisplayed: boolean,
+        caption_FR?: string
+    }) { }
+}
+
+export class CreateImageSuccess implements Action {
+    readonly type = CREATE_IMAGE_SUCCESS;
+
+    constructor(public payload: ProjectImage) { }
+}
+
+
+export class CreateImageFail implements Action {
+    readonly type = CREATE_IMAGE_FAIL;
+
+    constructor(public payload: string[]) { }
+}
+
+///////////
+
+export class UpdateImageStart implements Action {
+    readonly type = UPDATE_IMAGE_START;
+
+    constructor(public payload: {
+        id: number,
+        caption_EN: string,
+        path: string,
+        isDisplayed: boolean,
+        caption_FR?: string
+    }) { }
+}
+
+export class UpdateImageSuccess implements Action {
+    readonly type = UPDATE_IMAGE_SUCCESS;
+
+    constructor(public payload: ProjectImage) { }
+}
+
+
+export class UpdateImageFail implements Action {
+    readonly type = UPDATE_IMAGE_FAIL;
+
+    constructor(public payload: string[]) { }
+}
+
+///////////
+
+export class DeleteImageStart implements Action {
+    readonly type = DELETE_IMAGE_START;
+
+    constructor(public payload: number) { }
+}
+
+export class DeleteImageSuccess implements Action {
+    readonly type = DELETE_IMAGE_SUCCESS;
+
+    constructor(public payload: { deletedProjectImageId: number, projectId: number }) { }
+}
+
+
+export class DeleteImageFail implements Action {
+    readonly type = DELETE_IMAGE_FAIL;
+
+    constructor(public payload: string[]) { }
+}
+
+
+//////////
+
+
+///////////
+
 export class ClearErrors implements Action {
     readonly type = CLEAR_ERRORS;
 }
@@ -194,6 +289,15 @@ export type ProjectsActions =
     | DeleteStart
     | DeleteSuccess
     | DeleteFail
+    | CreateImageStart
+    | CreateImageSuccess
+    | CreateImageFail
+    | UpdateImageStart
+    | UpdateImageSuccess
+    | UpdateImageFail
+    | DeleteImageStart
+    | DeleteImageSuccess
+    | DeleteImageFail
     | AddRemoveTagStart
     | AddRemoveTagSuccess
     | AddRemoveTagFail

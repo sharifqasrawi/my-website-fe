@@ -41,6 +41,9 @@ export class EditTrainingCourseComponent implements OnInit, OnDestroy {
 
   editMode = false;
 
+  types = ['online', 'classic'];
+  type: string;
+
   languages = ['en', 'fr'];
   currentLang: string = null;
 
@@ -60,10 +63,10 @@ export class EditTrainingCourseComponent implements OnInit, OnDestroy {
     this.form = new FormGroup({
       name: new FormControl(null, [Validators.required]),
       type: new FormControl(null, [Validators.required]),
-      courseUrl: new FormControl(null, [Validators.required]),
+      courseUrl: new FormControl(null),
       establishment: new FormControl(null, [Validators.required]),
       duration: new FormControl(null, [Validators.required]),
-      dateTime: new FormControl(null, [Validators.required]),
+      dateTime: new FormControl(null),
       country_EN: new FormControl(null),
       country_FR: new FormControl(null),
       city_EN: new FormControl(null),

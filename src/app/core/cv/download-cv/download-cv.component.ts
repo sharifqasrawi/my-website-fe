@@ -1,7 +1,7 @@
 import { Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { Store } from '@ngrx/store';
-import { faDownload, faAsterisk, faGlobe, faFile } from '@fortawesome/free-solid-svg-icons';
+import { faDownload, faAsterisk, faGlobe, faFile, faClock } from '@fortawesome/free-solid-svg-icons';
 import { Component, OnInit } from '@angular/core';
 
 import * as fromApp from '../../../store/app.reducer';
@@ -19,6 +19,7 @@ export class DownloadCvComponent implements OnInit {
   faAsterisk = faAsterisk;
   faGlobe = faGlobe;
   faFile = faFile;
+  faClock = faClock;
 
   files: CVFile[] = null;
   loading = false;

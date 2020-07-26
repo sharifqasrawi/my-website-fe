@@ -1,7 +1,145 @@
-<div class="home">
-    <div class="container-fluid">
-        <div class="homeBox mat-elevation-z4">
-            <div class="homeBoxOverlay"></div>
+<div class="bg info">
+    <div class="home">
+        <div class="container-fluid">
+            <div class="homeBox mat-elevation-z12">
+                <div class="homeBoxOverlay">
+                    <div class="container">
+                        <div class="homeBoxContent">
+                            <div class="row">
+                                <div class="col-lg-4 text-center">
+                                    <div *ngIf="mobileQuery.matches">
+                                        <div *ngIf="loadedPInfo">
+                                            <h1>
+                                                {{ pInfo.name }}
+                                            </h1>
+                                            <p *ngIf="currentLang === 'en'" class="text-muted"
+                                                style="font-style: italic;">
+                                                {{ pInfo.title_EN }}
+                                            </p>
+                                            <p *ngIf="currentLang === 'fr'" class="text-muted"
+                                                style="font-style: italic;">
+                                                {{ pInfo.title_FR }}
+                                            </p>
+                                        </div>
+                                        <div class="loader" *ngIf="loadingPInfo">
+                                            <h1> &nbsp; </h1>
+                                            <p>&nbsp; </p>
+                                        </div>
+                                    </div>
+                                    <img [src]="pInfo.imagePath" alt="image" class="pImage mat-elevation-z2"
+                                        *ngIf="loadedPInfo" style="cursor: pointer;"
+                                        (click)="onViewImage(pInfo.imagePath)">
+                                    <div class="loader pImage mat-elevation-z2" *ngIf="loadingPInfo"
+                                        style="background-color: darkslategrey; margin: 0 auto;"></div>
+
+                                    <div class="mt-3" *ngIf="loadedLanguages && languages.length > 0">
+                                        <strong>{{ 'HOME.SPOKEN_LANGUAGES' | translate }}:</strong>
+                                        <br>
+                                        <div class="lang mat-elevation-z2" *ngFor="let language of languages">
+                                            <span *ngIf="currentLang === 'en'">
+                                                <fa-icon [icon]="faGlobe"></fa-icon> {{ language.name_EN }}
+                                            </span>
+                                            <span *ngIf="currentLang === 'fr'">
+                                                <fa-icon [icon]="faGlobe"></fa-icon> {{ language.name_FR }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="loader mt-3" *ngIf="loadingLanguages">
+                                        <h2 style="width: 50%; margin: 0 auto;">&nbsp;</h2>
+                                        <br>
+                                        <div class="lang mat-elevation-z2" *ngFor="let i of [].constructor(3)">
+                                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div *ngIf="loadedPInfo">
+                                        <div *ngIf="!mobileQuery.matches">
+                                            <h1>
+                                                {{ pInfo.name }}
+                                            </h1>
+                                            <p *ngIf="currentLang === 'en'" class="text-muted"
+                                                style="font-style: italic;">
+                                                {{ pInfo.title_EN }}
+                                            </p>
+                                            <p *ngIf="currentLang === 'fr'" class="text-muted"
+                                                style="font-style: italic;">
+                                                {{ pInfo.title_FR }}
+                                            </p>
+
+                                        </div>
+                                        <p style="font-size: 22px; margin-top: 50px; line-height: 30px;">
+                                            {{ 'HOME.INFO1' | translate }}
+                                        </p>
+                                        <p style="font-size: 16px; margin-top: 20px;">
+                                            {{ 'HOME.INFO2' | translate }}
+                                        </p>
+                                        <p>
+                                            <a [routerLink]="['/cv']" mat-raised-button color="primary"
+                                                class="mr-3">{{ 'CV.CV2' | translate }}</a>
+                                            <a [routerLink]="['/portfolio']" mat-raised-button
+                                                color="accent">{{ 'PORTFOLIO.PORTFOLIO' | translate }}</a>
+                                        </p>
+                                    </div>
+                                    <div class="loader" *ngIf="loadingPInfo">
+                                        <h1> &nbsp; </h1>
+                                        <p>&nbsp; </p>
+                                        <br><br>
+                                        <p>&nbsp; </p>
+                                        <p>&nbsp; </p>
+                                        <br>
+                                        <div>
+                                            <a mat-raised-button color="primary" class="mr-3">&nbsp;</a>
+                                            <a mat-raised-button color="accent" class="mr-3">&nbsp;</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div *ngIf="loadedCInfo">
+                                        <h3>{{ 'CONTACT_ME.CONTACT_ME' | translate }}</h3>
+                                        <hr>
+                                        <p *ngFor="let email of emails" style="word-wrap: break-word;">
+                                            <a [href]="'mailto:' + email">{{email}}</a>
+                                        </p>
+                                        <div class=" mb-3" style="display: flex; justify-content: space-between;">
+                                            <a [href]="cInfo.linkedInUrl" target="_blank" *ngIf="cInfo.linkedInUrl">
+                                                <img src="../../../../assets/images/linkedin.png" alt="linkedin"
+                                                    class="socialBtn">
+                                            </a>
+                                            <a [href]="cInfo.gitHubUrl" target="_blank" *ngIf="cInfo.gitHubUrl">
+                                                <img src="../../../../assets/images/github.png" alt="github"
+                                                    class="socialBtn">
+                                            </a>
+                                            <a [href]="cInfo.facebookUrl" target="_blank" *ngIf="cInfo.facebookUrl">
+                                                <img src="../../../../assets/images/facebook.png" alt="facebook"
+                                                    class="socialBtn">
+                                            </a>
+                                        </div>
+                                        <p>
+                                            <a mat-raised-button color="primary" [routerLink]="['/contact']">
+                                                {{ 'HOME.CONTACT_FORM' | translate }}
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div class="loader" *ngIf="loadingCInfo">
+                                        <h2>&nbsp;</h2>
+                                        <hr>
+                                        <p>&nbsp;</p>
+                                        <p>&nbsp;</p>
+                                        <div class=" mb-3" style="display: flex; justify-content: space-between;">
+                                            <p>&nbsp;</p>
+                                            <p>&nbsp;</p>
+                                            <p>&nbsp;</p>
+                                        </div>
+                                        <p>&nbsp;</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

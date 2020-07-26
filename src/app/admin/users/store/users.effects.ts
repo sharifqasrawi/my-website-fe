@@ -297,12 +297,10 @@ export class UsersEffects {
         ofType(UsersActions.CHANGE_PASSWORD_START),
         switchMap((passwordData: UsersActions.ChangePasswordStart) => {
 
-            return this.http.post<{ result: boolean }>(environment.API_BASE_URL + 'account/change-password',
+            return this.http.post<{ result: boolean }>(environment.API_BASE_URL + 'users/change-password',
                 {
-                    userId: this.userId,
-                    currentPassword: passwordData.payload.currentPassword,
-                    newPassword: passwordData.payload.newPassword,
-                    confirmPassword: passwordData.payload.confirmPassword,
+                    userId: passwordData.payload.userId,
+                    password: passwordData.payload.password,
                 },
                 {
                     headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.token)
@@ -314,6 +312,7 @@ export class UsersEffects {
                         return new UsersActions.ChangePasswordSuccess(resData.result);
                     }),
                     catchError(errorRes => {
+                        // console.log(errorRes);
                         this.getErrorsTranslations();
                         switch (errorRes.status) {
                             case 403:

@@ -1,23 +1,85 @@
 <footer>
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <p>
                     {{ 'FOOTER.CREATED_BY' | translate }}:
                 </p>
                 <hr>
-                <p> Sharif Qasrawi</p>
+                <p> Sharif Qasrawi &copy; {{ currentYear }}</p>
+                <p>
+                    <em>{{ 'FOOTER.VERSION' | translate }}: 1.0 Beta.</em>
+                </p>
+                <p>
+                    <a (click)="onOpenPrivacyPolicy()" style="cursor: pointer;">
+                        {{ 'FOOTER.PRIVACY_POLICY' | translate }}.
+                    </a>
+                </p>
+            </div>
+            <div class="col-md-3">
+                <p>
+                    {{ 'FOOTER.CONTACT' | translate }}:
+                </p>
+                <hr>
                 <p>
                     <a href="mailto:sharif@qasrawi.fr">
-                        <fa-icon [icon]="faLink"></fa-icon>
+                        <fa-icon [icon]="faAt"></fa-icon>
                         sharif@qasrawi.fr
                     </a>
                 </p>
                 <p>
-                    <em>{{ 'FOOTER.VERSION' | translate }}: 1.0 Beta.</em>
+                    <a href="mailto:contact@sharifqasrawi.com">
+                        <fa-icon [icon]="faAt"></fa-icon>
+                        contact@sharifqasrawi.com
+                    </a>
                 </p>
             </div>
+    
             <div class="col-md-4">
+                <p>
+                    {{ 'FOOTER.USEFUL_LINKS' | translate }}:
+                </p>
+                <hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>
+                            <a [routerLink]="['/cv']">
+                                <fa-icon [icon]="faLink"></fa-icon>
+                                {{ 'CV.CV2' | translate }}
+                            </a>
+                        </p>
+                        <p>
+                            <a [routerLink]="['/portfolio']">
+                                <fa-icon [icon]="faLink"></fa-icon>
+                                {{ 'PORTFOLIO.PORTFOLIO' | translate }}
+                            </a>
+                        </p>
+                        <p>
+                            <a [routerLink]="['/contact']">
+                                <fa-icon [icon]="faLink"></fa-icon>
+                                {{ 'CONTACT_ME.CONTACT_ME' | translate }}
+                            </a>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <a href="https://qasrawi.fr" target="_blank">
+                                <fa-icon [icon]="faLink"></fa-icon>
+                                https://qasrawi.fr
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://old.sharifqasrawi.com/" target="_blank">
+                                <fa-icon [icon]="faLink"></fa-icon>
+                                {{ 'FOOTER.OLD_WEBSITE' | translate }}
+                            </a>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-2">
                 <p>
                     {{ 'COMMON.LANGUAGE' | translate }}:
                 </p>
@@ -38,24 +100,6 @@
                         English
                         <fa-icon [icon]="faCheckCircle" class="ml-1" style="color: greenyellow;"
                             *ngIf="translate.currentLang === 'en'"></fa-icon>
-                    </a>
-                </p>
-            </div>
-            <div class="col-md-4">
-                <p>
-                    {{ 'FOOTER.USEFUL_LINKS' | translate }}:
-                </p>
-                <hr>
-                <p>
-                    <a [routerLink]="['/cv']">
-                        <fa-icon [icon]="faLink"></fa-icon>
-                        {{ 'CV.CV2' | translate }}
-                    </a>
-                </p>
-                <p>
-                    <a [routerLink]="['/portfolio']">
-                        <fa-icon [icon]="faLink"></fa-icon>
-                        {{ 'PORTFOLIO.PORTFOLIO' | translate }}
                     </a>
                 </p>
             </div>

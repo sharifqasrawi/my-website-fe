@@ -71,9 +71,9 @@ export class ContactInfoComponent implements OnInit, OnDestroy {
       zipCode: new FormControl(null, [Validators.required]),
       street: new FormControl(null, [Validators.required]),
       streetNumber: new FormControl(null, [Validators.required]),
-      linkedInUrl: new FormControl(null, [Validators.required]),
-      gitHubUrl: new FormControl(null, [Validators.required]),
-      facebookUrl: new FormControl(null, [Validators.required]),
+      linkedInUrl: new FormControl(null),
+      gitHubUrl: new FormControl(null),
+      facebookUrl: new FormControl(null),
     });
 
     this.store.dispatch(new ContactInfoActions.FetchStart());

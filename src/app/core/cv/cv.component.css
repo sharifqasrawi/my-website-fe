@@ -10,16 +10,18 @@
 
 .cv {
     width: 100%;
-    min-height: calc(100vh - 200px);
+    /* min-height: calc(100vh - 200px); */
     background: url(../../../assets/images/cvbg2.jpg);
     background-position: center;
     background-size: cover;
     margin-bottom: -18px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .overlay {
     width: 100%;
-    min-height: calc(100vh - 200px);
+    /* min-height: calc(100vh - 200px); */
     background-color: rgba(0, 0, 0, 0.4);
 }
 

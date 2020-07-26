@@ -1,0 +1,94 @@
+<div class="info bg ">
+    <div class="container pb-3">
+        <app-breadcrumb [links]="breadcrumbLinks"></app-breadcrumb>
+        <div *ngIf="errors">
+            <div class="alert alert-danger" *ngFor="let error of errors">
+                <strong>{{error}}</strong>
+            </div>
+        </div>
+        <div>
+            <h1>
+                <strong>
+                    <fa-icon [icon]="faEdit"></fa-icon>
+                    {{ 'CONTACT_ME.SEND_ME_MESSAGE' | translate }}
+                </strong>
+            </h1>
+            <hr>
+            <div *ngIf="sent">
+                <div class="alert alert-success text-center">
+                    <h2 translate>CONTACT_ME.MESSAGE_SENT</h2>
+                </div>
+            </div>
+            <form class="form-horizontal" [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="!sent">
+                <mat-vertical-stepper #linearVerticalStepper="matVerticalStepper" formArrayName="formArray"
+                    class="mat-elevation-z4 p-2" [linear]="true" style="opacity: 0.9;">
+                    <mat-step formGroupName="0" [stepControl]="formArray?.get([0])">
+                        <ng-template matStepLabel>
+                            <div translate>REGISTER.FILL_OUT_YOUR_NAME</div>
+                        </ng-template>
+
+                        <mat-form-field class="full-width" appearance="legacy">
+                            <mat-label translate>CONTACT_ME.YOUR_NAME</mat-label>
+                            <input matInput formControlName="name" required>
+                            <mat-error translate>VALIDATION.REQUIRED</mat-error>
+                        </mat-form-field>
+                        <div>
+                            <button mat-button matStepperNext>{{ 'COMMON.NEXT' | translate }}</button>
+                        </div>
+                    </mat-step>
+
+
+                    <mat-step formGroupName="1" [stepControl]="formArray?.get([1])">
+                        <ng-template matStepLabel>
+                            <div translate>REGISTER.FILL_OUT_YOUR_EMAIL</div>
+                        </ng-template>
+                        <mat-form-field class="full-width" appearance="legacy">
+                            <mat-label translate>COMMON.EMAIL</mat-label>
+                            <input matInput placeholder="Ex. laurnace@example.com" formControlName="email">
+                            <mat-error translate>VALIDATION.INVALID_EMAIL</mat-error>
+                        </mat-form-field>
+                        <div>
+                            <button mat-button matStepperPrevious>{{ 'COMMON.BACK' | translate }}</button>
+                            <button mat-button matStepperNext>{{ 'COMMON.NEXT' | translate }}</button>
+                        </div>
+                    </mat-step>
+
+                    <mat-step formGroupName="2" [stepControl]="formArray?.get([2])">
+                        <ng-template matStepLabel>
+                            <div translate>CONTACT_ME.FILL_OUT_MESSAGE_SUBJECT</div>
+                        </ng-template>
+                        <mat-form-field class="full-width" appearance="legacy">
+                            <mat-label translate>CONTACT_ME.SUBJECT</mat-label>
+                            <input matInput formControlName="subject" required>
+                            <mat-error translate>VALIDATION.REQUIRED</mat-error>
+                        </mat-form-field>
+                        <div>
+                            <button mat-button matStepperPrevious>{{ 'COMMON.BACK' | translate }}</button>
+                            <button mat-button matStepperNext>{{ 'COMMON.NEXT' | translate }}</button>
+                        </div>
+                    </mat-step>
+
+                    <mat-step formGroupName="3" [stepControl]="formArray?.get([3])">
+                        <ng-template matStepLabel>
+                            <div translate>CONTACT_ME.FILL_OUT_YOUR_MESSAGE</div>
+                        </ng-template>
+                        <mat-form-field class="full-width" appearance="legacy">
+                            <mat-label translate>COMMON.TEXT</mat-label>
+                            <textarea matInput formControlName="text" rows="10" required></textarea>
+                            <mat-error translate>VALIDATION.REQUIRED</mat-error>
+                        </mat-form-field>
+                        <div>
+                            <button mat-button
+                                (click)="linearVerticalStepper.reset()">{{ 'COMMON.RESET' | translate }}</button>
+                            <button mat-button matStepperPrevious>{{ 'COMMON.BACK' | translate }}</button>
+                            <button mat-raised-button color="accent" matStepperNext [disabled]="!form.valid || sending">
+                                {{ !sending ? ('COMMON.SEND' | translate) : ('COMMON.SENDING' | translate)}}
+                            </button>
+                        </div>
+                    </mat-step>
+
+                </mat-vertical-stepper>
+            </form>
+        </div>
+    </div>
+</div>

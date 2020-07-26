@@ -1,9 +1,12 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './../shared/shared.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserModule } from '@angular/platform-browser';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatVideoModule } from 'mat-video';
 
 import { MaterialModule } from './../material-module';
 
@@ -21,6 +24,10 @@ import { LanguagesComponent } from './cv/languages/languages.component';
 import { TrainingCoursesComponent } from './cv/training-courses/training-courses.component';
 import { DownloadCvComponent } from './cv/download-cv/download-cv.component';
 import { ProjectsComponent } from './portfolio/projects/projects.component';
+import { ViewProjectComponent } from './portfolio/projects/view-project/view-project.component';
+import { PortfolioComponent } from './portfolio/portfolio.component';
+import { ContactMeComponent } from './contact-me/contact-me.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 
 
 
@@ -38,13 +45,21 @@ import { ProjectsComponent } from './portfolio/projects/projects.component';
     LanguagesComponent,
     TrainingCoursesComponent,
     DownloadCvComponent,
-    ProjectsComponent
+    ProjectsComponent,
+    ViewProjectComponent,
+    PortfolioComponent,
+    ContactMeComponent,
+    PrivacyPolicyComponent
   ],
   imports: [
     CommonModule,
     MaterialModule,
     FontAwesomeModule,
     TranslateModule,
+    FormsModule,
+    ReactiveFormsModule,
+    // BrowserAnimationsModule,
+    MatVideoModule,
     SharedModule,
     CoreRoutingModule
   ]

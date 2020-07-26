@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" style="color: lightgrey;">
     <div class="col-md-8">
         <h2>
             <fa-icon [icon]="faFileAlt"></fa-icon>
@@ -17,7 +17,7 @@
 
 <hr>
 
-<div *ngIf="documents">
+<div *ngIf="documents" style="color: lightgrey;">
     <div class="docBox mat-elevation-z8" *ngFor="let doc of documents">
         <p *ngIf="currentLang === 'en'">
             <b>{{ 'CV.DOCUMENTS.NAME' | translate }}: </b> {{ doc.name_EN }}
@@ -27,8 +27,15 @@
             <b>{{ 'CV.DOCUMENTS.NAME' | translate }}: </b> {{ doc.name_FR }}
             <span style="color: lawngreen;">({{ doc.type }})</span>
         </p>
+        <p class="small">
+            <b>{{ 'CV.DOCUMENTS.LAST_UPDATE' | translate }}: </b>
+            {{ doc.lastUpdatedDate | date:'medium' }}
+        </p>
         <hr>
         <p class="text-center" style="display: flex; justify-content: space-around;">
+            <span style="cursor: pointer; color: mediumspringgreen;" (click)="onViewPdf(doc.path)">
+                <fa-icon [icon]="faEye"></fa-icon>
+            </span>
             <span style="cursor: pointer; color: blue;" (click)="onEdit(doc.id)">
                 <fa-icon [icon]="faEdit"></fa-icon>
             </span>

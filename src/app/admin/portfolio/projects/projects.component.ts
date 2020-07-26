@@ -4,7 +4,7 @@ import { Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
-import { faProjectDiagram, faTrash, faEdit, faTags } from '@fortawesome/free-solid-svg-icons';
+import { faProjectDiagram, faTrash, faEdit, faTags, faImages } from '@fortawesome/free-solid-svg-icons';
 
 import { ConfirmDialogComponent } from './../../../shared/confirm-dialog/confirm-dialog.component';
 import { Project } from './../../../models/project.model';
@@ -22,6 +22,7 @@ export class ProjectsComponent implements OnInit {
   faEdit = faEdit;
   faTrash = faTrash;
   faTags = faTags;
+  faImages = faImages;
 
   projects: Project[] = null;
   loading = false;
@@ -54,7 +55,7 @@ export class ProjectsComponent implements OnInit {
     });
 
     if (!this.projects)
-      this.store.dispatch(new ProjectsActions.FetchStart());
+      this.store.dispatch(new ProjectsActions.FetchStart('admin'));
 
     this.store.select('projects').subscribe(state => {
       this.projects = state.projects;
@@ -68,7 +69,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   onRefresh() {
-    this.store.dispatch(new ProjectsActions.FetchStart());
+    this.store.dispatch(new ProjectsActions.FetchStart('admin'));
   }
 
   onDelete(id: number) {

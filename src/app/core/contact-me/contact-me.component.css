@@ -1,0 +1,40 @@
+.bg{
+    background: url(../../../assets/images/cvbg2.jpg);
+    width: 100%;
+    min-height: calc(100vh - 200px);
+    background-position: center;
+    background-size: cover;
+    margin-bottom: -18px;
+}
+
+.container {
+    padding-top: 30px;
+    color: lightgrey;
+    background-color: #303030cb;
+    padding: 14px;
+    min-height: calc(100vh - 200px);
+}
+.info {
+    animation: animInfo .4s ease-in forwards;
+}
+
+@keyframes animInfo {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.full-width {
+    width: 100%;
+  }
+
+.contactBox{
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #202020;
+    /* box-shadow: 7px 7px 7px 7px rgb(197, 195, 195); */
+}

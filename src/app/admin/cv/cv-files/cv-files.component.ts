@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { Store } from '@ngrx/store';
-import { faFileArchive, faPlusCircle, faFileDownload, faGlobe, faFile, faEdit, faTrash, faDownload } from '@fortawesome/free-solid-svg-icons';
+import { faFileArchive, faPlusCircle, faFileDownload, faGlobe, faFile, faEdit, faTrash, faDownload, faClock } from '@fortawesome/free-solid-svg-icons';
 
 import { CVFile } from './../../../models/cvFile.model';
 import * as fromApp from '../../../store/app.reducer';
@@ -27,6 +27,7 @@ export class CvFilesComponent implements OnInit {
   faEdit = faEdit;
   faTrash = faTrash;
   faDownload = faDownload;
+  faClock = faClock;
 
   editMode = false;
   editedFileId: number = null;

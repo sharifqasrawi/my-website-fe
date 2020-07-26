@@ -1,9 +1,11 @@
+import { ProjectImage } from './projectImage.model';
 import { Tag } from './tag.model';
 
 export class Project {
     constructor(
         public id: number,
         public name_EN: string,
+        public slug_EN:string,
         public description_EN: string,
         public type: string,
         public size: string,
@@ -15,6 +17,8 @@ export class Project {
         public imagePath: string,
         public description_FR?: string,
         public name_FR?: string,
-        public tags?: Tag[]
+        public slug_FR?: string,
+        public tags?: Tag[],
+        public projectImages?: ProjectImage[]
     ) { }
 }

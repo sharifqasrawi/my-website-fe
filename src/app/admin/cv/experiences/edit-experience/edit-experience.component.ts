@@ -130,8 +130,8 @@ export class EditExperienceComponent implements OnInit, OnDestroy {
               city_EN: exp.city_EN,
               city_FR: exp.city_FR,
               company: exp.company,
-              startDate: new Date(exp.startDate).toISOString().substr(0, 10),
-              endDate: !exp.isCurrentlyWorking ? new Date(exp.endDate).toISOString().substr(0, 10) : null,
+              startDate:  new Date(new Date(exp.startDate).getTime() - (new Date().getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+              endDate: !exp.isCurrentlyWorking ? new Date(new Date(exp.endDate).getTime() - (new Date().getTimezoneOffset() * 60000)).toISOString().substr(0, 10) : null,
               isCurrentlyWorking: exp.isCurrentlyWorking
             });
           }

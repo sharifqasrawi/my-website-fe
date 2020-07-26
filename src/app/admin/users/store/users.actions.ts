@@ -162,11 +162,7 @@ export class UpdateProfileFail implements Action {
 export class ChangePasswordStart implements Action {
     readonly type = CHANGE_PASSWORD_START;
 
-    constructor(public payload: {
-        currentPassword: string,
-        newPassword: string,
-        confirmPassword: string
-    }) { }
+    constructor(public payload: { userId: string, password: string }) { }
 }
 
 export class ChangePasswordSuccess implements Action {

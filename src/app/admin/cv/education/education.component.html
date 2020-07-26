@@ -27,8 +27,10 @@
     <div *ngIf="errors">
         <div class="alert alert-danger" *ngFor="let error of errors">{{error}}</div>
     </div>
-
-    <div *ngIf="loaded">
+    <div class="alert alert-info text-center" *ngIf="loaded && educations.length === 0">
+        <h2>{{ 'COMMON.NO_DATA' | translate }}</h2>
+    </div>
+    <div *ngIf="loaded && educations.length > 0">
         <div class="eduBox mat-elevation-z12" *ngFor="let edu of educations">
             <div class="row">
                 <div class="col-md-10">

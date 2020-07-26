@@ -1,3 +1,6 @@
+import { ContactMeComponent } from './contact-me/contact-me.component';
+import { PortfolioComponent } from './portfolio/portfolio.component';
+import { ViewProjectComponent } from './portfolio/projects/view-project/view-project.component';
 import { ProjectsComponent } from './portfolio/projects/projects.component';
 import { DownloadCvComponent } from './cv/download-cv/download-cv.component';
 import { NgModule } from '@angular/core';
@@ -30,8 +33,13 @@ const routes: Routes = [
                 ]
             },
             {
-                path: 'portfolio', component: ProjectsComponent
+                path: 'portfolio', component: PortfolioComponent, children: [
+                    { path: 'projects', component: ProjectsComponent },
+                    { path: 'projects/:id/:slug', component: ViewProjectComponent },
+                    { path: '', redirectTo: 'projects', pathMatch: 'full' }
+                ]
             },
+            { path: 'contact', component: ContactMeComponent },
             { path: '', component: HomeComponent, pathMatch: 'full' }
         ]
     }

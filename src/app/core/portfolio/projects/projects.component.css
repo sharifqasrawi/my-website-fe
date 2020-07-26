@@ -1,0 +1,88 @@
+.container {
+    padding-top: 30px;
+    color: lightgrey;
+}
+.info {
+    animation: animInfo .4s ease-in forwards;
+}
+
+@keyframes animInfo {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+.projectBox {
+    width: 320px;
+    height: 290px;
+    background-color: #424242;
+    position: relative;
+    border-radius: 10px;
+    margin: 0 20px 20px 0;
+    display: inline-block;
+}
+
+.projectBox .projectBadge {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    padding: 10px;
+    background-color: rgba(182, 108, 108, 0.7);
+    border-radius: 0 10px 10px 0;
+    color: lightgrey;
+    font-style: italic;
+    font-size: 14px;
+    opacity: 0.9;
+    min-width: 100px;
+    text-align: center;
+}
+
+.projectBox .projectImage img {
+    width: 100%;
+    height: 150px;
+    border-radius: 10px 10px 0 0;
+}
+
+.projectBox .projectBody {
+    padding: 10px;
+}
+
+.projectBox  .projectActions a{
+    text-decoration: none;
+}
+
+
+
+/* Loader */
+.loader{
+    opacity: 0.8;
+    animation: loaderAnim .9s ease-in-out infinite;
+}
+
+@keyframes loaderAnim{
+    0%{
+        opacity: 0.3;
+    }
+    25%{
+        opacity: 0.5;
+    }
+    50%{
+        opacity: 0.8;
+    }
+    75%{
+        opacity: 0.5;
+    }
+    100%{
+        opacity: 0.3;
+    }
+}
+
+.loader p, .loader h3{
+    width: 100%;
+    background-color: darkslategrey;
+    border-radius: 10px;
+}

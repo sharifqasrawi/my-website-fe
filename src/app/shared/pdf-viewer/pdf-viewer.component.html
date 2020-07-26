@@ -1,3 +1,4 @@
 <div class="pdf-container">
-    <pdf-viewer [src]="data.filePath" [original-size]="false"></pdf-viewer>
+    <mat-spinner *ngIf="!loaded" color="accent" style="margin:0 auto;"></mat-spinner>
+    <pdf-viewer [src]="data.filePath" [original-size]="false" (on-progress)="onProgress($event)"></pdf-viewer>
 </div>

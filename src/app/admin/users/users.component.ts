@@ -16,6 +16,7 @@ import * as fromApp from '../../store/app.reducer';
 import * as UsersActions from './store/users.actions';
 import { User } from './../../models/user.model';
 import { ConfirmDialogComponent } from '../../shared/confirm-dialog/confirm-dialog.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @Component({
   selector: 'app-users',
@@ -141,6 +142,14 @@ export class UsersComponent implements OnInit {
       }
     });
 
+  }
+
+  onResetPassword(id: string) {
+    const DialogRef = this.dialog.open(ResetPasswordComponent, {
+      width: '500px',
+      disableClose: true,
+      data: { id: id }
+    });
   }
 
   ngOnDestroy() {

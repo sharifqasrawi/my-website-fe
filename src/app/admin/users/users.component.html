@@ -144,6 +144,10 @@
                                 (click)="onChangeStatus(row.id, 'deactivate')">
                                 {{ 'COMMON.DEACTIVATE' | translate }}
                             </button>
+                            <button class="dropdown-item" 
+                            (click)="onResetPassword(row.id)">
+                            {{ 'AUTH.RESET_PASSWORD' | translate }}
+                        </button>
                         </mat-menu>
 
                     </td>
